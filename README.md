@@ -63,6 +63,8 @@ Udeaku-CareSpring/
 ├── 📄 package.json              # Dependencies & scripts
 ├── 📄 webpack.config.js        # Build configuration
 ├── 📄 netlify.toml             # Deployment configuration
+├── 📄 Dockerfile               # Docker container configuration
+├── 📄 .dockerignore            # Docker ignore patterns
 ├── 📄 .eslintrc.js              # ESLint configuration
 ├── 📄 .env.example              # Environment template
 ├── 📄 .gitignore                # Git exclusions
@@ -134,12 +136,19 @@ Udeaku-CareSpring/
 ## Available Scripts
 
 ```bash
-npm start          # Start production server
-npm run dev        # Start development server with hot reload
-npm run build      # Build for production
-npm run lint       # Run ESLint code quality check
-npm run lint:fix   # Fix ESLint issues automatically
-npm run format     # Format code with Prettier
+npm start              # Start production server
+npm run dev            # Start development server with hot reload
+npm run build          # Build for production
+npm run dev:client     # Start webpack dev server only
+npm run lint           # Run ESLint code quality check
+npm run lint:fix       # Fix ESLint issues automatically
+npm run format         # Format code with Prettier
+npm run docker:build   # Build Docker image
+npm run docker:run     # Run Docker container
+npm run k8s:deploy      # Deploy to Kubernetes
+npm run k8s:delete      # Delete Kubernetes deployment
+npm run k8s:logs        # View Kubernetes logs
+npm run k8s:status      # Check Kubernetes status
 ```
 
 ## Deployment
@@ -161,6 +170,23 @@ npm run format     # Format code with Prettier
 2. **Set environment variables**
 3. **Configure** database if needed
 4. **Scale** as needed
+
+### Docker Deployment
+
+1. **Build Docker image:**
+   ```bash
+   docker build -t udeaku-carespring .
+   ```
+
+2. **Run container:**
+   ```bash
+   docker run -p 5000:5000 --env-file .env udeaku-carespring
+   ```
+
+3. **Docker Compose (optional):**
+   ```bash
+   docker-compose up -d
+   ```
 
 ### Static Deployment Alternative
 
