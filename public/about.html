@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/styles.css?v=20251121-22-t175245">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Udeaku CareSpring Support Foundation</title>
+    <link rel="icon" type="image/x-icon" href="/images/shared/TitleImage.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet" />
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/images/shared/logo.jpeg" as="image">
+    <link rel="preload" href="/css/styles.css?v=20251121-22-t175245" as="style">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="About Us - Udeaku CareSpring Support Foundation">
+    <meta property="og:description" content="Learn about our mission, values, and impact.">
+    <meta property="og:image" content="/images/shared/logo.jpeg">
+    <meta property="og:url" content="https://carespringsup.org/about">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<style>
+    /* Responsive Navigation */
+    @media (min-width: 769px) {
+        .desktop-nav {
+            display: none !important;
+        }
+        .nav-toggle {
+            display: none !important;
+        }
+        .site-nav.site-nav {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            font-size: 0.9rem !important;
+            position: static !important;
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            top: auto !important;
+            right: auto !important;
+            left: auto !important;
+            width: auto !important;
+            height: auto !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            z-index: auto !important;
+            pointer-events: auto !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        
+        .site-nav.site-nav a {
+            color: var(--text-soft) !important;
+            text-decoration: none !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 999px !important;
+            border: 1px solid transparent !important;
+            background: transparent !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            position: relative !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .site-nav.site-nav a:hover,
+        .site-nav.site-nav a:focus-visible {
+            border-color: rgba(46, 204, 113, 0.6) !important;
+            background: linear-gradient(120deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.98)) !important;
+            color: var(--text-main) !important;
+        }
+        
+        .site-nav.site-nav a span {
+            z-index: 1 !important;
+            position: relative !important;
+        }
+        
+        .site-nav.site-nav a::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            background: radial-gradient(circle at 0 0, rgba(46, 204, 113, 0.38), transparent 55%) !important;
+            opacity: 0 !important;
+            border-radius: 999px !important;
+            transition: opacity 0.3s ease !important;
+        }
+        
+        .site-nav.site-nav a:hover::before,
+        .site-nav.site-nav a:focus-visible::before {
+            opacity: 1 !important;
+        }
+        
+        /* Circular ring CTA button with page theme colors and reduced brightness effects */
+        body header nav.site-nav.site-nav a.nav-cta {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            padding: 0.8rem 1.5rem !important;
+            background: linear-gradient(135deg, 
+                var(--accent, rgba(46, 204, 113, 0.9)),
+                rgba(39, 174, 96, 0.85),
+                rgba(52, 152, 219, 0.8),
+                rgba(155, 89, 182, 0.75),
+                rgba(241, 196, 15, 0.8)
+            ) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningGradient 3s ease-in-out infinite !important;
+            border: 3px solid rgba(255, 255, 255, 0.8) !important;
+            border-radius: 50% !important;
+            box-shadow: 
+                0 0 15px rgba(46, 204, 113, 0.4),
+                0 0 25px rgba(39, 174, 96, 0.3),
+                0 0 35px rgba(52, 152, 219, 0.2),
+                inset 0 0 15px rgba(255, 255, 255, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            min-width: 80px !important;
+            min-height: 80px !important;
+            filter: brightness(1.05) !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        body header nav.site-nav.site-nav a.nav-cta::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -3px !important;
+            left: -3px !important;
+            right: -3px !important;
+            bottom: -3px !important;
+            background: linear-gradient(45deg, 
+                var(--accent, #2ecc71),
+                #27ae60,
+                #3498db,
+                #9b59b6,
+                #f1c40f,
+                var(--accent, #2ecc71),
+                #27ae60,
+                #3498db,
+                #9b59b6,
+                #f1c40f
+            ) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningBorder 2.5s linear infinite !important;
+            border-radius: 50% !important;
+            z-index: -1 !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+            filter: brightness(1.1) !important;
+        }
+        
+        body header nav.site-nav.site-nav a.nav-cta:hover::before {
+            opacity: 1 !important;
+        }
+        
+        body header nav.site-nav.site-nav a.nav-cta span {
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 0.75rem !important;
+            line-height: 1.2 !important;
+            letter-spacing: 0.5px !important;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 2px rgba(255, 255, 255, 0.6) !important;
+            z-index: 2 !important;
+            filter: brightness(1.1) !important;
+            animation: textBrightening 2s ease-in-out infinite !important;
+        }
+        
+        body header nav.site-nav.site-nav a.nav-cta:hover {
+            transform: scale(1.1) !important;
+            filter: brightness(1.15) saturate(1.1) !important;
+            box-shadow: 
+                0 0 20px rgba(46, 204, 113, 0.5),
+                0 0 30px rgba(39, 174, 96, 0.4),
+                0 0 40px rgba(52, 152, 219, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.4) !important;
+        }
+        
+        @keyframes brighteningGradient {
+            0% { 
+                background-position: 0% 50%; 
+                filter: brightness(1.05) saturate(1);
+            }
+            25% { 
+                background-position: 50% 25%; 
+                filter: brightness(1.1) saturate(1.05);
+            }
+            50% { 
+                background-position: 100% 50%; 
+                filter: brightness(1.15) saturate(1.1);
+            }
+            75% { 
+                background-position: 50% 75%; 
+                filter: brightness(1.1) saturate(1.05);
+            }
+            100% { 
+                background-position: 0% 50%; 
+                filter: brightness(1.05) saturate(1);
+            }
+        }
+        
+        @keyframes brighteningBorder {
+            0% { 
+                background-position: 0% 0%; 
+                filter: brightness(1.1) hue-rotate(0deg);
+            }
+            25% { 
+                background-position: 100% 25%; 
+                filter: brightness(1.2) hue-rotate(90deg);
+            }
+            50% { 
+                background-position: 200% 50%; 
+                filter: brightness(1.25) hue-rotate(180deg);
+            }
+            75% { 
+                background-position: 300% 75%; 
+                filter: brightness(1.2) hue-rotate(270deg);
+            }
+            100% { 
+                background-position: 400% 0%; 
+                filter: brightness(1.1) hue-rotate(360deg);
+            }
+        }
+        
+        @keyframes textBrightening {
+            0%, 100% { 
+                filter: brightness(1.1) drop-shadow(0 0 1px rgba(255, 255, 255, 0.6));
+            }
+            50% { 
+                filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+            }
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .desktop-nav {
+            display: none !important;
+        }
+        .nav-toggle {
+            display: inline-flex !important;
+        }
+        .site-nav {
+            display: none !important;
+            padding: 0.2rem !important;
+            top: 75px !important;
+            right: 0.5rem !important;
+            left: auto !important;
+            border-radius: 6px !important;
+            width: 120px !important;
+            margin: 0 !important;
+            position: absolute !important;
+            z-index: 1000 !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        .site-nav.nav-open {
+            display: block !important;
+        }
+        
+        .site-nav a {
+            display: block !important;
+            margin-bottom: 2px !important;
+        }
+        
+        .site-nav a span {
+            font-size: 0.75rem !important;
+            padding: 0.3rem 0.5rem !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            color: white !important;
+            display: block !important;
+            border-radius: 4px !important;
+        }
+        
+        .site-nav a.nav-cta span {
+            background: rgba(46, 204, 113, 0.8) !important;
+        }
+        
+        /* Mobile nav-cta with page theme colors and reduced brightness effects */
+        body header nav.site-nav a.nav-cta {
+            background: linear-gradient(135deg, 
+                var(--accent, rgba(46, 204, 113, 0.9)),
+                rgba(39, 174, 96, 0.85),
+                rgba(52, 152, 219, 0.8),
+                rgba(155, 89, 182, 0.75),
+                rgba(241, 196, 15, 0.8)
+            ) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningGradient 3s ease-in-out infinite !important;
+            border: 2px solid rgba(255, 255, 255, 0.8) !important;
+            border-radius: 50% !important;
+            box-shadow: 
+                0 0 12px rgba(46, 204, 113, 0.4),
+                0 0 20px rgba(39, 174, 96, 0.3),
+                inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
+            padding: 0.3rem !important;
+            margin: 0.2rem auto !important;
+            filter: brightness(1.05) !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+            min-width: 60px !important;
+            min-height: 60px !important;
+        }
+        
+        body header nav.site-nav a.nav-cta span {
+            background: transparent !important;
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 0.65rem !important;
+            line-height: 1.1 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.6) !important;
+            filter: brightness(1.1) !important;
+            animation: textBrightening 2s ease-in-out infinite !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        body header nav.site-nav a.nav-cta span::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -8px !important;
+            left: -8px !important;
+            right: -8px !important;
+            bottom: -8px !important;
+            border-radius: 50% !important;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.1) 45deg,
+                rgba(255, 255, 255, 0.3) 90deg,
+                rgba(255, 255, 255, 0.1) 135deg,
+                transparent 180deg,
+                transparent 360deg
+            ) !important;
+            animation: moonlightRotation 4s linear infinite !important;
+            z-index: 1 !important;
+        }
+        
+        body header nav.site-nav a.nav-cta:hover {
+            filter: brightness(1.15) saturate(1.1) !important;
+            transform: scale(1.05) !important;
+            box-shadow: 
+                0 0 15px rgba(46, 204, 113, 0.5),
+                0 0 25px rgba(39, 174, 96, 0.4),
+                inset 0 0 12px rgba(255, 255, 255, 0.4) !important;
+        }
+
+        body header nav.site-nav a.nav-cta:hover span::before {
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.2) 45deg,
+                rgba(255, 255, 255, 0.4) 90deg,
+                rgba(255, 255, 255, 0.2) 135deg,
+                transparent 180deg,
+                transparent 360deg
+            ) !important;
+            animation: moonlightRotation 2s linear infinite !important;
+        }
+
+        @keyframes moonlightRotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+    
+    @media (max-width: 768px) {
+        /* Improved mobile responsiveness for aims section */
+        .section-aims {
+            padding: 3rem 1rem !important;
+        }
+        
+        .section-aims * {
+            text-align: justify !important;
+        }
+        
+        .section-aims .section-label,
+        .section-aims .section-heading,
+        .section-aims .aim-title,
+        .section-aims .aims-side-highlight,
+        .section-aims .aims-side-highlight span,
+        .section-aims .aim-item-index {
+            text-align: center !important;
+        }
+        
+        .aims-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 2rem !important;
+        }
+        
+        .aims-list {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+        }
+        
+        .aim-item {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+            padding: 1.5rem !important;
+            border-radius: 12px !important;
+            background: linear-gradient(145deg, rgba(4, 28, 21, 0.8), rgba(2, 8, 6, 0.9)) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        .aim-item-index {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            background: linear-gradient(120deg, var(--accent), var(--accent-strong)) !important;
+            color: #02140d !important;
+            font-weight: 700 !important;
+            font-size: 1rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .aims-side-card {
+            order: -1 !important;
+            margin-bottom: 2rem !important;
+        }
+        
+        .aims-side-highlight {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 0.5rem !important;
+            padding: 1rem !important;
+            border-radius: 8px !important;
+            background: rgba(3, 19, 15, 0.95) !important;
+            margin-top: 1rem !important;
+        }
+        
+        .aims-side-highlight span:first-child {
+            font-size: 2rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .aims-side-highlight span:last-child {
+            line-height: 1.4 !important;
+        }
+        
+        .section-heading {
+            font-size: 1.8rem !important;
+            line-height: 1.3 !important;
+        }
+        
+        .section-intro {
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+            padding: 0 1rem !important;
+        }
+    }
+    
+    @media (min-width: 769px) {
+        .desktop-nav {
+            display: none !important;
+        }
+        .nav-toggle {
+            display: none !important;
+        }
+        .site-nav.site-nav {
+            display: flex !important;
+            position: static !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            max-width: none !important;
+            width: auto !important;
+            flex-direction: row !important;
+            gap: 0.5rem !important;
+        }
+    }
+
+    /* Header layout adjustments */
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+    }
+    
+    /* Text justification for aims section - desktop */
+    .section-aims .aim-body,
+    .section-aims .aims-side-card p {
+        text-align: justify !important;
+    }
+    
+    /* Center align aim titles */
+    .section-aims .aim-title {
+        text-align: center !important;
+    }
+    
+    /* Keep highlight section center-aligned */
+    .section-aims .aims-side-highlight {
+        text-align: center !important;
+    }
+    
+    .section-aims .aims-side-highlight span {
+        text-align: center !important;
+    }
+    
+    @media (min-width: 769px) {
+        .header-inner {
+            gap: 2rem;
+        }
+        
+        .brand {
+            flex-shrink: 0;
+        }
+        
+        .site-nav {
+            flex: 1;
+            justify-content: flex-end;
+        }
+    }
+
+    /* Moonlight #register button styling from projects.html */
+    body header nav.site-nav.site-nav a.nav-cta {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        position: relative !important;
+        padding: 0.6rem 1rem !important;
+        border-radius: 50% !important;
+        width: 80px !important;
+        height: 80px !important;
+        background: linear-gradient(135deg,
+                rgba(46, 204, 113, 0.4),
+                rgba(39, 174, 96, 0.35),
+                rgba(52, 152, 219, 0.3)) !important;
+        border: 2px solid rgba(46, 204, 113, 0.7) !important;
+        box-shadow:
+            0 0 15px rgba(46, 204, 113, 0.3),
+            0 0 25px rgba(39, 174, 96, 0.2),
+            inset 0 0 15px rgba(255, 255, 255, 0.1) !important;
+        color: var(--accent) !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        font-size: 0.65rem !important;
+        line-height: 1.1 !important;
+        letter-spacing: 0.3px !important;
+        overflow: hidden !important;
+        min-height: 70px !important;
+        transition: all 0.3s ease !important;
+        animation: pulseGlow 2s ease-in-out infinite !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -2px !important;
+        left: -2px !important;
+        right: -2px !important;
+        bottom: -2px !important;
+        background: linear-gradient(45deg,
+                rgba(46, 204, 113, 0.8),
+                rgba(39, 174, 96, 0.7),
+                rgba(52, 152, 219, 0.6)) !important;
+        border-radius: 50% !important;
+        z-index: 1 !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover::before {
+        opacity: 1 !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta span {
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 0.7rem !important;
+        line-height: 1.2 !important;
+        letter-spacing: 0.5px !important;
+        text-align: center !important;
+        z-index: 2 !important;
+        position: relative !important;
+        filter: brightness(1.1) !important;
+        text-shadow: 0 0 4px rgba(46, 204, 113, 0.5) !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta span::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -8px !important;
+        left: -8px !important;
+        right: -8px !important;
+        bottom: -8px !important;
+        border-radius: 50% !important;
+        background: conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(255, 255, 255, 0.1) 45deg,
+            rgba(255, 255, 255, 0.3) 90deg,
+            rgba(255, 255, 255, 0.1) 135deg,
+            transparent 180deg,
+            transparent 360deg
+        ) !important;
+        animation: moonlightRotation 4s linear infinite !important;
+        z-index: 1 !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta {
+        transform: scale(1.05) !important;
+        filter: brightness(1.1) saturate(1.2) !important;
+        box-shadow:
+            0 0 30px rgba(46, 204, 113, 0.5),
+            0 0 45px rgba(39, 174, 96, 0.4),
+            0 0 60px rgba(52, 152, 219, 0.3),
+            inset 0 0 30px rgba(255, 255, 255, 0.25) !important;
+        animation: moonlightGlow 2s ease-in-out infinite !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover {
+        transform: scale(1.08) !important;
+        filter: brightness(1.15) saturate(1.3) !important;
+        box-shadow:
+            0 0 35px rgba(46, 204, 113, 0.6),
+            0 0 50px rgba(39, 174, 96, 0.5),
+            0 0 65px rgba(52, 152, 219, 0.4),
+            inset 0 0 35px rgba(255, 255, 255, 0.3) !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover span::before {
+        background: conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(255, 255, 255, 0.15) 45deg,
+            rgba(255, 255, 255, 0.3) 90deg,
+            rgba(255, 255, 255, 0.15) 135deg,
+            transparent 180deg,
+            transparent 360deg
+        ) !important;
+        animation: moonlightRotation 3s linear infinite !important;
+    }
+
+    @keyframes moonlightRotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes moonlightGlow {
+        0% {
+            box-shadow:
+                0 0 40px rgba(46, 204, 113, 0.6),
+                0 0 60px rgba(39, 174, 96, 0.5),
+                0 0 80px rgba(52, 152, 219, 0.4),
+                inset 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+        50% {
+            box-shadow:
+                0 0 60px rgba(46, 204, 113, 0.8),
+                0 0 80px rgba(39, 174, 96, 0.7),
+                0 0 100px rgba(52, 152, 219, 0.6),
+                inset 0 0 50px rgba(255, 255, 255, 0.5);
+        }
+        100% {
+            box-shadow:
+                0 0 40px rgba(46, 204, 113, 0.6),
+                0 0 60px rgba(39, 174, 96, 0.5),
+                0 0 80px rgba(52, 152, 219, 0.4),
+                inset 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    @keyframes pulseGlow {
+        0% {
+            box-shadow:
+                0 0 10px rgba(46, 204, 113, 0.3),
+                0 0 20px rgba(39, 174, 96, 0.2),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        50% {
+            box-shadow:
+                0 0 15px rgba(46, 204, 113, 0.5),
+                0 0 25px rgba(39, 174, 96, 0.3),
+                inset 0 0 15px rgba(255, 255, 255, 0.15);
+        }
+        100% {
+            box-shadow:
+                0 0 10px rgba(46, 204, 113, 0.3),
+                0 0 20px rgba(39, 174, 96, 0.2),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+    }
+</style>
+
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="max-width header-inner">
+                <a href="index.html" class="brand"
+                    style="text-decoration: none; display: flex; align-items: center; gap: 1rem;">
+                    <div class="brand-mark"
+                        style="width: 120px; height: auto; overflow: hidden; border-radius: 16px; flex-shrink: 0; transition: transform 0.3s ease;">
+                        <img src="/images/shared/logo.jpeg" alt="Udeaku CareSpring Support Foundation logo" />
+                    </div>
+                    <div class="brand-text">
+                        <div class="subtitle"
+                            style="font-size: 1.1rem; color: var(--text-soft); font-weight: 500; letter-spacing: 0.3px;">
+                            Renewal | Health | Compassion
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Original Site Navigation (Desktop) -->
+                <nav class="site-nav" id="siteNav">
+                    <a href="index.html"><span>Home</span></a>
+                    <a href="about.html#about"><span>About Us</span></a>
+                    <a href="projects.html#projects"><span>Our Projects</span></a>
+                    <a href="index.html#contact"><span>Contact Us</span></a>
+                    <a href="projects.html#register" class="nav-cta"><span>Free<br>First Aid<br>Training</span></a>
+                </nav>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation" id="navToggle" style="display: none; align-items: center; gap: 0.5rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    Menu
+                </button>
+            </div>
+        </header>
+
+        <section class="section-about" id="about" aria-labelledby="about-heading">
+            <div class="max-width" style="text-align: center;">
+                <div class="reveal visible" style="display: flex; flex-direction: column; align-items: center;">
+                    <div class="section-label" style="justify-content: center;">
+                        <span><strong>About Us</strong></span>
+                    </div>
+                    <h2 id="about-heading" class="section-heading" style="max-width: 800px; margin-left: auto; margin-right: auto;">Udeaku CareSpring Support Foundation</h2>
+                </div>
+                <div class="about-text reveal visible">
+                    <p>
+                        We are a non-profit organization committed to promoting compassion, health education,
+                        and community support especially among young people and vulnerable communities.
+                    </p>
+                </div>
+                <br>
+                <div class="about-grid">
+                    <div class="about-text reveal visible">
+                        <p>
+                            Udeaku CareSpring Support Foundation focuses on empowering individuals with essential
+                            life-saving
+                            skills, health awareness, and humanitarian values. Our journey began with a passion to
+                            extend
+                            care beyond words through practical action and meaningful impact.
+                        </p>
+                        <p>
+                            Since inception, we have carried out impactful initiatives such as the <strong>Pad a
+                                Girl</strong>
+                            campaign, providing menstrual hygiene support for girls, and the payment of hospital
+                            bills for
+                            patients in need.
+                        </p>
+                        <p>
+                            These programs reflect our belief in standing in the gap for others and giving hope
+                            where it’s
+                            most needed. We aim to equip communities, schools, and individuals with knowledge
+                            that saves lives and fosters a culture of care.
+                        </p>
+                        <div class="hero-metrics" style="
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            gap: 1.25rem;
+                            margin: 2rem 0;
+                            padding: 0;
+                            width: 100%;
+                            box-sizing: border-box;
+                        ">
+                            <div class="metric" style="
+                                flex: 1 1 300px;
+                                min-width: 200px;
+                                max-width: 100%;
+                                padding: 1.5rem 1rem;
+                                background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
+                                border: 1px solid rgba(46, 204, 113, 0.15);
+                                border-radius: 12px;
+                                text-align: center;
+                                transition: all 0.3s ease;
+                            ">
+                                <strong style="
+                                    font-size: clamp(1.1rem, 4vw, 1.3rem);
+                                    display: block;
+                                    margin-bottom: 0.5rem;
+                                    color: var(--accent);
+                                    font-weight: 600;
+                                    line-height: 1.3;
+                                ">First Aid Training</strong>
+                                <span style="
+                                    font-size: clamp(0.85rem, 3vw, 0.95rem);
+                                    color: var(--text-soft);
+                                    line-height: 1.5;
+                                    display: block;
+                                ">Health Awareness & Education</span>
+                            </div>
+                            <div class="metric" style="
+                                flex: 1 1 300px;
+                                min-width: 200px;
+                                max-width: 100%;
+                                padding: 1.5rem 1rem;
+                                background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
+                                border: 1px solid rgba(46, 204, 113, 0.15);
+                                border-radius: 12px;
+                                text-align: center;
+                                transition: all 0.3s ease;
+                            ">
+                                <strong style="
+                                    font-size: clamp(1.1rem, 4vw, 1.3rem);
+                                    display: block;
+                                    margin-bottom: 0.5rem;
+                                    color: var(--accent);
+                                    font-weight: 600;
+                                    line-height: 1.3;
+                                ">Pad a Girl</strong>
+                                <span style="
+                                    font-size: clamp(0.85rem, 3vw, 0.95rem);
+                                    color: var(--text-soft);
+                                    line-height: 1.5;
+                                    display: block;
+                                ">Menstrual Health Initiative</span>
+                            </div>
+                            <div class="metric" style="
+                                flex: 1 1 300px;
+                                min-width: 200px;
+                                max-width: 100%;
+                                padding: 1.5rem 1rem;
+                                background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
+                                border: 1px solid rgba(46, 204, 113, 0.15);
+                                border-radius: 12px;
+                                text-align: center;
+                                transition: all 0.3s ease;
+                            ">
+                                <strong style="
+                                    font-size: clamp(1.1rem, 4vw, 1.3rem);
+                                    display: block;
+                                    margin-bottom: 0.5rem;
+                                    color: var(--accent);
+                                    font-weight: 600;
+                                    line-height: 1.3;
+                                ">Community</strong>
+                                <span style="
+                                    font-size: clamp(0.85rem, 3vw, 0.95rem);
+                                    color: var(--text-soft);
+                                    line-height: 1.5;
+                                    display: block;
+                                ">Health Outreach Programs</span>
+                            </div>
+                            <div class="metric" style="
+                                flex: 0 1 250px;
+                                min-width: 200px;
+                                max-width: 280px;
+                                padding: 1rem 0.8rem !important;
+                                background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
+                                border: 1px solid rgba(46, 204, 113, 0.15);
+                                border-radius: 12px;
+                                text-align: center;
+                                transition: all 0.3s ease;
+                                margin-bottom: 1rem;
+                            ">
+                                <strong style="
+                                    font-size: clamp(1.1rem, 4vw, 1.3rem);
+                                    display: block;
+                                    margin-bottom: 0.5rem;
+                                    color: var(--accent);
+                                    font-weight: 600;
+                                    line-height: 1.3;
+                                ">Caregiving</strong>
+                                <span style="
+                                    font-size: clamp(0.85rem, 3vw, 0.95rem);
+                                    color: var(--text-soft);
+                                    line-height: 1.5;
+                                    display: block;
+                                ">Support & Nursing Services</span>
+                            </div>
+                        </div>
+                        <div style="margin: 2rem 0; text-align: center;">
+                            <p style="
+                                font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+                                color: var(--text-soft);
+                                line-height: 1.6;
+                                max-width: 800px;
+                                margin: 0 auto;
+                                padding: 0 1rem;
+                            ">
+                                <span style="color: var(--accent); font-weight: 600;">Motto:</span> <strong style="color: #fff; font-weight: 600;">"Renewal, Health and Compassion"</strong> — a daily reminder that healing is both a process and a promise.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Vision & Mission -->
+        <section class="section-vision" id="vision" aria-labelledby="vision-heading">
+            <div class="max-width">
+                <div class="reveal visible" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <div class="section-label" style="justify-content: center;">
+                        <span><strong>Vision &amp; Mission</strong></span>
+                    </div>
+                    <h2 id="vision-heading" class="section-heading" style="max-width: 800px; margin-left: auto; margin-right: auto;">Our Heartbeat &amp; Direction</h2>
+                    <p class="section-intro" style="max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 1rem;">
+                        Behind every training, outreach, and act of support is a clear vision and mission: that
+                        every
+                        person can access basic first aid, compassionate care, and hope regardless of background.
+                    </p>
+                </div>
+                <div class="vision-grid">
+                    <article class="vision-card reveal visible" aria-label="Vision">
+                        <div class="vision-card-inner">
+                            <div class="vision-chip">
+                                <span class="marker">✨</span>
+                                <span>Vision</span>
+                            </div>
+                            <h3>A world prepared to care</h3>
+                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: left;">
+                                A world where every individual has access to basic first aid, compassionate care,
+                                and the
+                                knowledge to respond in times of emergency.
+                            </p>
+                        </div>
+                    </article>
+                    <article class="vision-card reveal visible" aria-label="Mission">
+                        <div class="vision-card-inner">
+                            <div class="vision-chip">
+                                <span class="marker">🕊️</span>
+                                <span>Mission</span>
+                            </div>
+                            <h3>Bridging communities to health &amp; safety</h3>
+                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: left;">
+                                To bridge communities to health and safety by providing first aid training,
+                                humanitarian
+                                services, and nursing care that upholds dignity, saves lives, and restores hope.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aims & Objectives -->
+        <section class="section-aims" id="aims" aria-labelledby="aims-heading">
+            <div class="max-width">
+                <div class="reveal visible" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <div class="section-label" style="justify-content: center;">
+                        <span><strong>Aims &amp; Objectives</strong></span>
+                    </div>
+                    <h2 id="aims-heading" class="section-heading" style="max-width: 800px; margin-left: auto; margin-right: auto;">Why Udeaku CareSpring Exists</h2>
+                    <p class="section-intro" style="max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 1rem;">
+                        Udeaku CareSpring Support Foundation responds to a real and urgent need in Nigeria:
+                        life-saving
+                        knowledge, compassionate care, and community support. Our aims and objectives guide every
+                        training, outreach, and act of kindness.
+                    </p>
+                </div>
+                <div class="aims-grid">
+                    <div class="aims-list reveal visible">
+                        <article class="aim-item">
+                            <div class="aim-item-index">01</div>
+                            <div>
+                                <h3 class="aim-title">Promote first aid education &amp; awareness</h3>
+                                <p class="aim-body">
+                                    To promote first aid education and awareness among schools, youth, and
+                                    communities
+                                    across Nigeria, addressing the country’s critical need for life-saving knowledge
+                                    as
+                                    highlighted by the World Health Organization (WHO), which reports Nigeria among
+                                    the
+                                    lowest in life expectancy globally due to preventable causes and lack of first
+                                    aid
+                                    awareness.
+                                </p>
+                            </div>
+                            <p class="aim-body">
+                                We bring first aid training closer to people. We are turning fear into confidence and panic into preparedness.
+                            </p>
+                        </article>
+                        <article class="aim-item">
+                            <div class="aim-item-index">02</div>
+                            <div>
+                                <h3 class="aim-title">Enhance community health &amp; safety</h3>
+                                <p class="aim-body">
+                                    To enhance community health and safety through public enlightenment programs
+                                    focused on
+                                    hygiene, preventive care, and emergency response readiness.
+                                </p>
+                            </div>
+                            <p class="aim-body">
+                            <div class="aim-item-index">03</div>
+                            <div>
+                                <h3 class="aim-title">Strengthen basic life-saving skills</h3>
+                                <p class="aim-body">
+                                    To develop and strengthen basic life-saving skills through structured Workshops,
+                                    workshops,
+                                    and outreach activities that empower individuals to act effectively in
+                                    emergencies.
+                                </p>
+                            </div>
+                        </article>
+                        <article class="aim-item">
+                            <div class="aim-item-index">04</div>
+                            <div>
+                                <h3 class="aim-title">Build meaningful partnerships</h3>
+                                <p class="aim-body">
+                                    To establish partnerships with local and international organizations that share
+                                    our
+                                    vision
+                                    of improving health, humanitarian service, and access to first aid education.
+                                </p>
+                            </div>
+                        </article>
+                        <article class="aim-item">
+                            <div class="aim-item-index">05</div>
+                            <div>
+                                <h3 class="aim-title">Inspire compassionate action</h3>
+                                <p class="aim-body">
+                                    To create opportunities for volunteers and caregivers to demonstrate compassion
+                                    and
+                                    social
+                                    responsibility through active participation in community care initiatives.
+                                </p>
+                            </div>
+                        </article>
+                        <article class="aim-item">
+                            <div class="aim-item-index">06</div>
+                            <div>
+                                <h3 class="aim-title">Promote a culture of care</h3>
+                                <p class="aim-body">
+                                    To promote a culture of care, compassion, and service to humanity, inspiring
+                                    young individuals to contribute toward building a safer and healthier society.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                    <aside class="aims-side-card reveal visible" aria-label="Udeaku CareSpring impact focus">
+                        <div class="about-program-image" style="margin-bottom:0.9rem;">
+                            <img src="/images/shared/Clinic.jpeg" alt="Healthcare and clinic support" />
+                        </div>
+                        <h3>From awareness to action</h3>
+                        <p>
+                            Udeaku CareSpring exists as a bridge between compassion and practical support. Each
+                            Workshop, school
+                            visit, or outreach program is crafted to turn knowledge into life-saving ability.
+                        </p>
+                        <p>
+                            By teaching first aid and nurturing a culture of care, we help communities respond
+                            better to
+                            emergencies, prevent avoidable deaths, and uphold dignity in times of crisis.
+                        </p>
+                        <div class="aims-side-highlight">
+                            <br><br>
+                            <span>🌱</span>
+                            <span><strong>Renewal, health and compassion</strong> <br> <i>— beyond words, into action.</i></span>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder -->
+        <section class="section-founder" id="founder" aria-labelledby="founder-heading">
+            <div class="max-width">
+                <div class="reveal visible" style="text-align: center; width: 100%;">
+                    <div class="section-label" style="justify-content: center; display: flex; margin: 0 auto 1rem;">
+                        <span style="margin-left: 0.5rem; font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #ffffff; font-weight: 700; line-height: 1.2; letter-spacing: -0.5px;">The Heart Behind Udeaku CareSpring Foundation</span>
+                    </div>
+                </div>
+                <div class="founder-grid" style="display: grid; grid-template-columns: 1fr; gap: 2.5rem; width: 100%; max-width: 100%; margin: 0 auto; padding: 0 1.5rem; box-sizing: border-box;">
+                    <article class="founder-card reveal visible" aria-label="About the founder" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 2rem; background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7)); border: 1px solid rgba(46, 204, 113, 0.15); border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
+                        <div class="founder-chip-row" style="display: flex; flex-direction: column; align-items: center; margin: 0 auto 1.5rem; max-width: 100%;">
+                            <div class="founder-chip" style="display: inline-block; background: rgba(46, 204, 113, 0.1); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 0.8rem;">
+                                <span class="badge" style="font-size: clamp(0.9rem, 1.1vw, 1.1rem); letter-spacing: 0.5px;"><strong>Our Founder</strong></span>
+                            </div>
+                            <div class="founder-meta" style="margin-top: 0.5rem;">
+                                <div style="font-size: clamp(1rem, 1.2vw, 1.2rem); font-weight: 500; color: var(--text); letter-spacing: 0.3px; line-height: 1.5;">Tourism & Hospitality Management | Practicing Nurse | Humanitarian service</div>
+                            </div>
+                        </div>
+                        <div class="founder-avatar" style="width: 250px; height: 250px; border-radius: 50%; margin: 0 auto 2rem; overflow: hidden; border: 5px solid rgba(46, 204, 113, 0.25); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">
+                            <img src="/images/shared/Precious.jpg"
+                                alt="Portrait of Precious-Winifred Udeaku Onyenaobiya" 
+                                style="width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease;"/>
+                        </div>
+                        <div class="founder-story" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                            <div class="founder-name" style="font-size: clamp(1.5rem, 2.5vw, 2rem); color: #fff; margin-bottom: 0.5rem; line-height: 1.3;"><strong>Precious-Winifred Udeaku Onyenaobiya</strong></div>
+                            <div class="founder-role" style="font-size: clamp(1rem, 1.2vw, 1.2rem); color: var(--accent); margin-bottom: 1.5rem;">Founder, Udeaku CareSpring Support Foundation</div>
+                            <br><br>
+                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: left;">Precious-Winifred is a compassionate and purpose-driven woman whose life experiences
+                                shaped
+                                her vision for the Udeaku CareSpring Support Foundation.
+                            </p>
+                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: left;">
+                                With a background in Tourism & Hospitality Management and professional experience in
+                                nursing and caregiving, she brings both empathy and organization to her humanitarian work. 
+                                Her journey toward founding Udeaku CareSpring was inspired by personal loss. An experience that deepened her desire to help others, provide comfort, and share hope with those in need.
+                            </p>
+                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: left;">
+                                Through Udeaku CareSpring, she has led initiatives like the Pad a Girl Program and
+                                medical bill
+                                support projects, reaching individuals and families who would have struggled in
+                                silence.
+                                She founded Udeaku CareSpring Support Foundation to serve as a bridge between
+                                compassion and action, empowering others to care, respond, and make a difference.
+                            </p>
+                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: left;">
+                                She continues to lead with grace, faith, and a firm belief that one person’s
+                                compassion can spark change in an entire community.
+                            </p>
+                            <br><br>
+                            <div class="founder-text reveal visible" style="background: rgba(3, 19, 15, 0.3); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
+                                <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: left;">
+                                    Udeaku CareSpring Support Foundation is more than an organization; it is an
+                                    answer to a
+                                    deep longing
+                                    to see people comforted, equipped, and restored. The founder’s journey through
+                                    loss,
+                                    caregiving,
+                                    and service has shaped a vision where no one is left to suffer in silence.
+                                </p>
+                                <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: left;">
+                                    Under Precious-Winifred’s leadership, Udeaku CareSpring stands as a bridge between empathy and action transforming compassion into structured programs that educate, support, and uplift communities.
+                                </p>
+                            </div>
+                            <div class="founder-quote-block" style="font-size: clamp(1.1rem, 1.3vw, 1.3rem); font-style: italic; color: #fff; padding: 1.5rem; margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); position: relative; max-width: 800px; margin-left: auto; margin-right: auto;">
+                                Caring is not just an act, it’s a calling. Every person we teach, every life we touch, brings us closer to a safer, more compassionate world.
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="max-width">
+                <div class="footer-content">
+                    <!-- Logo and Description -->
+                    <div class="footer-about">
+                        <div class="footer-logo">
+                            <img src="/images/shared/logo.jpeg" alt="Udeaku CareSpring Support Foundation"
+                                class="footer-logo-img">
+                        </div>
+                        <p class="footer-description">Building safer communities through first aid training and care.
+                        </p>
+                        <div class="footer-copyright">&copy; 2025 Udeaku CareSpring Support Foundation. All rights
+                            reserved.</div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="footer-section">
+                        <h3 class="footer-heading">Quick Links</h3>
+                        <ul class="footer-links-list">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="about.html#about" class="footer-link">About Us</a></li>
+                            <li><a href="projects.html#projects" class="footer-link">Our Projects</a></li>
+                            <li><a href="index.html#contact" class="footer-link">Contact Us</a></li>
+                            <li><a href="projects.html#register" class="footer-link">Register for Training</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="footer-section">
+                        <h3 class="footer-heading">Contact Us</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                        <path
+                                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                                            fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <a href="mailto:carespringsup@gmail.com"
+                                    class="contact-link">carespringsup@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                        <path
+                                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                                            fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <span>Plot 450 Ikenegbu layout, Owerri, Nigeria</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                        <path
+                                            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"
+                                            fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <a href="tel:+2349033432591" class="contact-link">+234 903 343 2591</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="footer-section">
+                        <h3 class="footer-heading">Follow Us</h3>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/profile.php?id=61583077715707" class="social-link"
+                                target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                                        fill="currentColor" />
+                                </svg>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/Udeaku_Carespring_supportfound" class="social-link"
+                                target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none"
+                                        stroke="currentColor" stroke-width="2" />
+                                    <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2" />
+                                    <circle cx="18" cy="6" r="1" fill="currentColor" />
+                                </svg>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://wa.me/2347036152774" class="social-link" target="_blank"
+                                rel="noopener noreferrer" aria-label="WhatsApp">
+                                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                                    <path
+                                        d="M17.5 14.5c-.3 0-.6-.1-.8-.2l-1.5-.8c-.2-.1-.4-.1-.6 0l-1.2.4c-.4.1-.8-.1-1-.4l-2.4-2.4c-.3-.3-.4-.7-.2-1.1l.4-1.2c0-.2 0-.4-.1-.6l-.8-1.5c-.2-.3-.2-.6-.2-.8.1-.3.3-.5.6-.6l1.9-.5c.1 0 .3-.1.4-.1h.1c.3 0 .6.1.8.3l.1.1c.2.2.3.5.3.8v.7c0 .3.2.5.5.6.3.1.5.3.6.6.2.4.4.9.5 1.4.1.5.1 1 0 1.5v.7c0 .3.1.6.3.8l.1.1c.1.1.3.2.4.2.1 0 .2.1.3.1.1 0 .3 0 .4-.1l1.9-.5c.1 0 .3 0 .4-.1.3-.1.5-.3.6-.6 0-.3 0-.6-.2-.8z"
+                                        fill="currentColor" />
+                                    <path
+                                        d="M12 2C6.5 2 2 6.5 2 12c0 2.1.7 4.1 1.8 5.8l-1.4 4.2 4.4-1.4c1.6 1 3.5 1.5 5.4 1.5 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.3c-.2.6-1.3 1.2-1.9 1.3-.5.1-1.2.2-3.4-.7-2.8-1.1-4.6-3.9-4.8-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-2 1-2.3.2-.2.5-.3.7-.3h.5c.2 0 .5 0 .7.3.2.2.7.7.8.9.1.2.2.4.2.6 0 .2-.1.4-.2.6-.1.1-.2.3-.4.5-.1.1-.3.3-.3.5-.1.2 0 .4 0 .5.1.1.4.8 1 1.4.7.7 1.3 1 1.9 1.2.2.1.5.1.7 0 .2-.1.5-.3.6-.5.2-.2.4-.4.5-.5.1-.2.3-.2.5-.1l1.6.8c.2.1.3.2.4.3.1.2.1.5 0 .7-.1.2-.3.5-.5.9z"
+                                        fill="currentColor" />
+                                </svg>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Float Button -->
+                <a href="https://wa.me/2347036152774" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+                    aria-label="Chat with us on WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path
+                            d="M17.498 14.382l-.002.001c-.301.15-.682.124-.93-.101l-1.251-.978a.748.748 0 0 0-.641-.18 9.2 9.2 0 0 1-3.178-.55 9.274 9.274 0 0 1-5.603-7.65.75.75 0 0 1 .45-.689c.14-.06.291-.09.443-.09h.002c.155 0 .31.033.45.09l1.064.532a1.5 1.5 0 0 0 1.169.118l1.28-.426a1.5 1.5 0 0 1 1.88.94l.5 1.41a1.5 1.5 0 0 1-.4 1.65l-.8.8a.75.75 0 0 0-.18.78 7.7 7.7 0 0 0 2.37 3.29.75.75 0 0 0 .78.18l.8-.8a1.5 1.5 0 0 1 1.65-.4l1.41.5a1.5 1.5 0 0 1 .94 1.88l-.426 1.28a1.5 1.5 0 0 0 .118 1.17l.532 1.064a.75.75 0 0 1-.34 1.02 9.27 9.27 0 0 1-4.63 1.24 9.29 9.29 0 0 1-9.21-9.21 9.25 9.25 0 0 1 9.21-9.21 9.25 9.25 0 0 1 9.21 9.21 9.28 9.28 0 0 1-1.24 4.63z" />
+                    </svg>
+                </a>
+            </div>
+            <!-- Attribution -->
+            <div style="text-align: center; padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 2rem;">
+                <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin: 0;">Built and powered by: <span style="color: rgba(46, 204, 113, 0.8); font-weight: 500;">Avalance Tech Solutions</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        const navToggle = document.getElementById('navToggle');
+        const siteNav = document.getElementById('siteNav');
+        
+        // Force pointer-events to auto for our navigation
+        siteNav.style.pointerEvents = 'auto';
+        
+        navToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            siteNav.classList.toggle('nav-open');
+            navToggle.classList.toggle('nav-open');
+            
+            // Ensure pointer-events are enabled when menu is open
+            if (siteNav.classList.contains('nav-open')) {
+                siteNav.style.pointerEvents = 'auto';
+            }
+        });
+
+        // Close menu when clicking outside - use capture phase
+        document.addEventListener('click', function(event) {
+            // Check if click is outside both nav and toggle
+            if (!siteNav.contains(event.target) && !navToggle.contains(event.target)) {
+                siteNav.classList.remove('nav-open');
+                navToggle.classList.remove('nav-open');
+            }
+        }, true); // Use capture phase
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.site-nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent immediate navigation for demo
+                siteNav.classList.remove('nav-open');
+                navToggle.classList.remove('nav-open');
+                
+                // Navigate after a short delay to allow menu to close
+                setTimeout(() => {
+                    window.location.href = this.getAttribute('href');
+                }, 100);
+            });
+        });
+
+        // Prevent menu clicks from bubbling up to document
+        siteNav.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // Handle window resize to reset menu state
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                siteNav.classList.remove('nav-open');
+                navToggle.classList.remove('nav-open');
+            }
+        });
+    </script>
+
+    <script src="/js/main.js" defer></script>
+</body>
+
+</html>

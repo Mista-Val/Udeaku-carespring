@@ -1,0 +1,2561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/styles.css?v=20251121-23-t180015">
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.carespringsup.org; frame-src 'self' https://www.youtube.com https://player.vimeo.com;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Udeaku Udeaku CareSpring Support Foundation</title>
+    <link rel="icon" type="image/x-icon" href="/images/shared/TitleImage.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap"
+        rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/images/shared/logo.jpeg" as="image">
+    <link rel="preload" href="/css/styles.css?v=20251121-23-t180015" as="style">
+
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Projects & Events - Udeaku CareSpring Support Foundation">
+    <meta property="og:description" content="Join our community outreach and first aid training programs.">
+    <meta property="og:image" content="/images/shared/logo.jpeg">
+    <meta property="og:url" content="https://carespringsup.org/projects">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<style>
+    /* Responsive Navigation */
+    @media (min-width: 769px) {
+        .desktop-nav {
+            display: none !important;
+        }
+
+        .nav-toggle {
+            display: none !important;
+        }
+
+        .site-nav.site-nav {
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            font-size: 0.9rem !important;
+            position: static !important;
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            top: auto !important;
+            right: auto !important;
+            left: auto !important;
+            width: auto !important;
+            height: auto !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            z-index: auto !important;
+            pointer-events: auto !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .site-nav.site-nav a {
+            color: var(--text-soft) !important;
+            text-decoration: none !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 999px !important;
+            border: 1px solid transparent !important;
+            background: transparent !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            position: relative !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .site-nav.site-nav a:hover,
+        .site-nav.site-nav a:focus-visible {
+            border-color: rgba(46, 204, 113, 0.6) !important;
+            background: linear-gradient(120deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.98)) !important;
+            color: var(--text-main) !important;
+        }
+
+        .site-nav.site-nav a span {
+            z-index: 1 !important;
+            position: relative !important;
+        }
+
+        .site-nav.site-nav a::before {
+            content: '' !important;
+            position: absolute !important;
+            inset: 0 !important;
+            background: radial-gradient(circle at 0 0, rgba(46, 204, 113, 0.38), transparent 55%) !important;
+            opacity: 0 !important;
+            border-radius: 999px !important;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .site-nav.site-nav a:hover::before,
+        .site-nav.site-nav a:focus-visible::before {
+            opacity: 1 !important;
+        }
+
+        /* Circular ring CTA button with page theme colors and reduced brightness effects */
+        body header nav.site-nav.site-nav a.nav-cta {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            padding: 0.8rem 1.5rem !important;
+            background: linear-gradient(135deg,
+                    var(--accent, rgba(46, 204, 113, 0.9)),
+                    rgba(39, 174, 96, 0.85),
+                    rgba(52, 152, 219, 0.8),
+                    rgba(155, 89, 182, 0.75),
+                    rgba(241, 196, 15, 0.8)) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningGradient 3s ease-in-out infinite !important;
+            border: 3px solid rgba(255, 255, 255, 0.8) !important;
+            border-radius: 50% !important;
+            box-shadow:
+                0 0 15px rgba(46, 204, 113, 0.4),
+                0 0 25px rgba(39, 174, 96, 0.3),
+                0 0 35px rgba(52, 152, 219, 0.2),
+                inset 0 0 15px rgba(255, 255, 255, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            min-width: 80px !important;
+            min-height: 80px !important;
+            filter: brightness(1.05) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -3px !important;
+            left: -3px !important;
+            right: -3px !important;
+            bottom: -3px !important;
+            background: linear-gradient(45deg,
+                    var(--accent, #2ecc71),
+                    #27ae60,
+                    #3498db,
+                    #9b59b6,
+                    #f1c40f,
+                    var(--accent, #2ecc71),
+                    #27ae60,
+                    #3498db,
+                    #9b59b6,
+                    #f1c40f) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningBorder 2.5s linear infinite !important;
+            border-radius: 50% !important;
+            z-index: -1 !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+            filter: brightness(1.1) !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta:hover::before {
+            opacity: 1 !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta span {
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 0.75rem !important;
+            line-height: 1.2 !important;
+            letter-spacing: 0.5px !important;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 2px rgba(255, 255, 255, 0.6) !important;
+            z-index: 2 !important;
+            filter: brightness(1.1) !important;
+            animation: textBrightening 2s ease-in-out infinite !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta:hover {
+            transform: scale(1.1) !important;
+            filter: brightness(1.15) saturate(1.1) !important;
+            box-shadow:
+                0 0 20px rgba(46, 204, 113, 0.5),
+                0 0 30px rgba(39, 174, 96, 0.4),
+                0 0 40px rgba(52, 152, 219, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.4) !important;
+        }
+
+        @keyframes brighteningGradient {
+            0% {
+                background-position: 0% 50%;
+                filter: brightness(1.05) saturate(1);
+            }
+
+            25% {
+                background-position: 50% 25%;
+                filter: brightness(1.1) saturate(1.05);
+            }
+
+            50% {
+                background-position: 100% 50%;
+                filter: brightness(1.15) saturate(1.1);
+            }
+
+            75% {
+                background-position: 50% 75%;
+                filter: brightness(1.1) saturate(1.05);
+            }
+
+            100% {
+                background-position: 0% 50%;
+                filter: brightness(1.05) saturate(1);
+            }
+        }
+
+        @keyframes brighteningBorder {
+            0% {
+                background-position: 0% 0%;
+                filter: brightness(1.1) hue-rotate(0deg);
+            }
+
+            25% {
+                background-position: 100% 25%;
+                filter: brightness(1.2) hue-rotate(90deg);
+            }
+
+            50% {
+                background-position: 200% 50%;
+                filter: brightness(1.25) hue-rotate(180deg);
+            }
+
+            75% {
+                background-position: 300% 75%;
+                filter: brightness(1.2) hue-rotate(270deg);
+            }
+
+            100% {
+                background-position: 400% 0%;
+                filter: brightness(1.1) hue-rotate(360deg);
+            }
+        }
+
+        @keyframes textBrightening {
+
+            0%,
+            100% {
+                filter: brightness(1.1) drop-shadow(0 0 1px rgba(255, 255, 255, 0.6));
+            }
+
+            50% {
+                filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .desktop-nav {
+            display: none !important;
+        }
+
+        .nav-toggle {
+            display: inline-flex !important;
+        }
+
+        .site-nav {
+            display: none !important;
+            padding: 0.2rem !important;
+            top: 75px !important;
+            right: 0.5rem !important;
+            left: auto !important;
+            border-radius: 6px !important;
+            width: 120px !important;
+            margin: 0 !important;
+            position: absolute !important;
+            z-index: 1000 !important;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .site-nav.nav-open {
+            display: block !important;
+        }
+
+        .site-nav a {
+            display: block !important;
+            margin-bottom: 2px !important;
+        }
+
+        .site-nav a span {
+            font-size: 0.75rem !important;
+            padding: 0.3rem 0.5rem !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            color: white !important;
+            display: block !important;
+            border-radius: 4px !important;
+        }
+
+        .site-nav a.nav-cta span {
+            background: rgba(46, 204, 113, 0.8) !important;
+        }
+
+        /* Mobile CTA with page theme colors and reduced brightness effects */
+        body header nav.site-nav a.nav-cta {
+            background: linear-gradient(135deg,
+                    var(--accent, rgba(46, 204, 113, 0.9)),
+                    rgba(39, 174, 96, 0.85),
+                    rgba(52, 152, 219, 0.8),
+                    rgba(155, 89, 182, 0.75),
+                    rgba(241, 196, 15, 0.8)) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningGradient 3s ease-in-out infinite !important;
+            border: 2px solid rgba(255, 255, 255, 0.8) !important;
+            border-radius: 50% !important;
+            box-shadow:
+                0 0 12px rgba(46, 204, 113, 0.4),
+                0 0 20px rgba(39, 174, 96, 0.3),
+                inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
+            padding: 0.3rem !important;
+            margin: 0.2rem auto !important;
+            filter: brightness(1.05) !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+            min-width: 60px !important;
+            min-height: 60px !important;
+        }
+
+        body header nav.site-nav a.nav-cta span {
+            background: transparent !important;
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 0.65rem !important;
+            line-height: 1.1 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.6) !important;
+            filter: brightness(1.1) !important;
+            animation: textBrightening 2s ease-in-out infinite !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        body header nav.site-nav a.nav-cta span::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -8px !important;
+            left: -8px !important;
+            right: -8px !important;
+            bottom: -8px !important;
+            border-radius: 50% !important;
+            background: conic-gradient(from 0deg,
+                    transparent 0deg,
+                    rgba(255, 255, 255, 0.1) 45deg,
+                    rgba(255, 255, 255, 0.3) 90deg,
+                    rgba(255, 255, 255, 0.1) 135deg,
+                    transparent 180deg,
+                    transparent 360deg) !important;
+            animation: moonlightRotation 4s linear infinite !important;
+            z-index: 1 !important;
+        }
+
+        body header nav.site-nav a.nav-cta:hover {
+            filter: brightness(1.15) saturate(1.1) !important;
+            transform: scale(1.05) !important;
+            box-shadow:
+                0 0 15px rgba(46, 204, 113, 0.5),
+                0 0 25px rgba(39, 174, 96, 0.4),
+                inset 0 0 12px rgba(255, 255, 255, 0.4) !important;
+        }
+
+        body header nav.site-nav a.nav-cta:hover span::before {
+            background: conic-gradient(from 0deg,
+                    transparent 0deg,
+                    rgba(255, 255, 255, 0.2) 45deg,
+                    rgba(255, 255, 255, 0.4) 90deg,
+                    rgba(255, 255, 255, 0.2) 135deg,
+                    transparent 180deg,
+                    transparent 360deg) !important;
+            animation: moonlightRotation 2s linear infinite !important;
+        }
+
+        @keyframes moonlightRotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    /* Header layout adjustments */
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    @media (min-width: 769px) {
+        .header-inner {
+            gap: 2rem;
+        }
+
+        .brand {
+            flex-shrink: 0;
+        }
+
+        .site-nav {
+            flex: 1;
+            justify-content: flex-end;
+        }
+    }
+
+    /* Moonlight #register button styling from projects.html */
+    body header nav.site-nav.site-nav a.nav-cta {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        position: relative !important;
+        padding: 0.6rem 1rem !important;
+        border-radius: 50% !important;
+        width: 80px !important;
+        height: 80px !important;
+        background: linear-gradient(135deg,
+                rgba(46, 204, 113, 0.4),
+                rgba(39, 174, 96, 0.35),
+                rgba(52, 152, 219, 0.3)) !important;
+        border: 2px solid rgba(46, 204, 113, 0.7) !important;
+        box-shadow:
+            0 0 15px rgba(46, 204, 113, 0.3),
+            0 0 25px rgba(39, 174, 96, 0.2),
+            inset 0 0 15px rgba(255, 255, 255, 0.1) !important;
+        color: var(--accent) !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        font-size: 0.65rem !important;
+        line-height: 1.1 !important;
+        letter-spacing: 0.3px !important;
+        overflow: hidden !important;
+        min-height: 70px !important;
+        transition: all 0.3s ease !important;
+        animation: pulseGlow 2s ease-in-out infinite !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -2px !important;
+        left: -2px !important;
+        right: -2px !important;
+        bottom: -2px !important;
+        background: linear-gradient(45deg,
+                rgba(46, 204, 113, 0.8),
+                rgba(39, 174, 96, 0.7),
+                rgba(52, 152, 219, 0.6)) !important;
+        border-radius: 50% !important;
+        z-index: 1 !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover::before {
+        opacity: 1 !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta span {
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 0.7rem !important;
+        line-height: 1.2 !important;
+        letter-spacing: 0.5px !important;
+        text-align: center !important;
+        z-index: 2 !important;
+        position: relative !important;
+        filter: brightness(1.1) !important;
+        text-shadow: 0 0 4px rgba(46, 204, 113, 0.5) !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta span::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -8px !important;
+        left: -8px !important;
+        right: -8px !important;
+        bottom: -8px !important;
+        border-radius: 50% !important;
+        background: conic-gradient(from 0deg,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.1) 45deg,
+                rgba(255, 255, 255, 0.3) 90deg,
+                rgba(255, 255, 255, 0.1) 135deg,
+                transparent 180deg,
+                transparent 360deg) !important;
+        animation: moonlightRotation 4s linear infinite !important;
+        z-index: 1 !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta {
+        transform: scale(1.05) !important;
+        filter: brightness(1.1) saturate(1.2) !important;
+        box-shadow:
+            0 0 30px rgba(46, 204, 113, 0.5),
+            0 0 45px rgba(39, 174, 96, 0.4),
+            0 0 60px rgba(52, 152, 219, 0.3),
+            inset 0 0 30px rgba(255, 255, 255, 0.25) !important;
+        animation: moonlightGlow 2s ease-in-out infinite !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover {
+        transform: scale(1.08) !important;
+        filter: brightness(1.15) saturate(1.3) !important;
+        box-shadow:
+            0 0 35px rgba(46, 204, 113, 0.6),
+            0 0 50px rgba(39, 174, 96, 0.5),
+            0 0 65px rgba(52, 152, 219, 0.4),
+            inset 0 0 35px rgba(255, 255, 255, 0.3) !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover span::before {
+        background: conic-gradient(from 0deg,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.15) 45deg,
+                rgba(255, 255, 255, 0.3) 90deg,
+                rgba(255, 255, 255, 0.15) 135deg,
+                transparent 180deg,
+                transparent 360deg) !important;
+        animation: moonlightRotation 3s linear infinite !important;
+    }
+
+    @keyframes moonlightRotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes moonlightGlow {
+        0% {
+            box-shadow:
+                0 0 40px rgba(46, 204, 113, 0.6),
+                0 0 60px rgba(39, 174, 96, 0.5),
+                0 0 80px rgba(52, 152, 219, 0.4),
+                inset 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+
+        50% {
+            box-shadow:
+                0 0 60px rgba(46, 204, 113, 0.8),
+                0 0 80px rgba(39, 174, 96, 0.7),
+                0 0 100px rgba(52, 152, 219, 0.6),
+                inset 0 0 50px rgba(255, 255, 255, 0.5);
+        }
+
+        100% {
+            box-shadow:
+                0 0 40px rgba(46, 204, 113, 0.6),
+                0 0 60px rgba(39, 174, 96, 0.5),
+                0 0 80px rgba(52, 152, 219, 0.4),
+                inset 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    @keyframes pulseGlow {
+        0% {
+            box-shadow:
+                0 0 10px rgba(46, 204, 113, 0.3),
+                0 0 20px rgba(39, 174, 96, 0.2),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        50% {
+            box-shadow:
+                0 0 15px rgba(46, 204, 113, 0.5),
+                0 0 25px rgba(39, 174, 96, 0.3),
+                inset 0 0 15px rgba(255, 255, 255, 0.15);
+        }
+
+        100% {
+            box-shadow:
+                0 0 10px rgba(46, 204, 113, 0.3),
+                0 0 20px rgba(39, 174, 96, 0.2),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+    }
+</style>
+
+<body>
+    <div class="page-shell" style="opacity: 1; visibility: visible;">
+        <header class="site-header">
+            <div class="max-width header-inner">
+                <a href="#" class="brand" style="text-decoration: none; display: flex; align-items: center; gap: 1rem;">
+                    <div class="brand-mark"
+                        style="width: 120px; height: auto; overflow: hidden; border-radius: 16px; flex-shrink: 0; transition: transform 0.3s ease;">
+                        <img src="/images/shared/logo.jpeg" alt="Udeaku CareSpring Support Foundation logo"
+                            style="width: 100%; height: auto; object-fit: contain; transition: transform 0.3s ease;" />
+                    </div>
+                    <div class="brand-text">
+                        <div class="subtitle"
+                            style="font-size: 1.1rem; color: var(--text-soft); font-weight: 500; letter-spacing: 0.3px;">
+                            Renewal | Health | Compassion</div>
+                    </div>
+                </a>
+
+                <!-- Original Site Navigation (Desktop) -->
+                <nav class="site-nav" id="siteNav">
+                    <a href="index.html"><span>Home</span></a>
+                    <a href="about.html#about"><span>About Us</span></a>
+                    <a href="projects.html#projects"><span>Our Projects</span></a>
+                    <a href="#contact"><span>Contact Us</span></a>
+                    <a href="projects.html#register" class="nav-cta"><span>Free<br>First Aid<br>Training</span></a>
+                </nav>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation" id="navToggle"
+                    style="display: none; align-items: center; gap: 0.5rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    Menu
+                </button>
+            </div>
+        </header>
+
+        <main style="opacity: 1; transition: opacity 0.5s ease;">
+            <!-- Hero -->
+            <section class="hero" aria-labelledby="hero-heading" style="text-align: center; padding: 4rem 1rem;">
+                <div class="max-width" style="max-width: 1200px; margin: 0 auto;">
+                    <div class="hero-copy reveal visible" style="max-width: 800px; margin: 0 auto;">
+                        <div class="hero-kicker"
+                            style="margin-bottom: 2rem; animation: fadeInUp 0.8s ease-out forwards;">
+                            <span class="animated-text" style="font-size: 1.8rem; font-weight: 700;">
+                                Udeaku CareSpring Support Foundation
+                            </span>
+                        </div>
+                        <h1 id="hero-heading" class="hero-title"
+                            style="margin-bottom: 2rem; font-size: 3rem; line-height: 1.2;">
+                            First Aid, Compassion &amp;
+                            <span class="highlight">Community Support</span>
+                        </h1>
+                        <div class="hero-actions"
+                            style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <a href="projects.html#register" class="btn-primary"
+                                style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.5rem; font-size: 1.1rem;">
+                                <span>Register for Free First Aid Training</span>
+                                <span>⟶</span>
+                            </a>
+                            <a href="projects.html#projects" class="btn-ghost"
+                                style="display: inline-flex; align-items: center; padding: 0.8rem 1.5rem; font-size: 1.1rem;">
+                                <span>Discover More Outreaches & Projects</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="hero-card reveal visible" aria-label="Workshop snapshot">
+                <div class="about-program-image" style="margin-bottom:0.8rem;">
+                    <img src="images/shared/Training2.jpg" alt="Group during first aid training session" />
+                </div>
+                <div class="hero-card-header">
+                    <div class="hero-card-tag" style="text-align: center;">
+                        <p class="hero-subtitle"
+                            style="text-align: center; margin: 0 auto 1.5rem; max-width: 95%; font-size: 1.1rem; line-height: 1.6;">
+                            Join our <strong style="font-size: 1.15rem;">5-Day First Aid Training Workshop</strong> and
+                            community support
+                            program. Learn life-saving skills, receive support, and become part of a movement
+                            renewing health and hope across Nigeria.
+                        </p>
+                    </div>
+                </div>
+                <div class="hero-card-body">
+                    <div class="hero-card-main" style="margin-bottom: 1.8rem;">
+                        <div class="hero-card-title" style="font-size: 1.1rem; margin-bottom: 0.8rem;">What to expect
+                        </div>
+                        <p class="hero-card-subtitle"
+                            style="font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6;">
+                            A practical, heart-led experience where you will learn to respond in emergencies,
+                            support your community, and embody compassion in action.
+                        </p>
+                        <div class="hero-card-pills" style="
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+">
+                            <div class="hero-pill" style="
+        flex: 1;
+        min-width: 0;
+        padding: 0.7rem 0.8rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(46, 204, 113, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    ">
+                                <span class="dot" style="
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        "></span>
+                                <span style="
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        ">Hands-on First Aid</span>
+                            </div>
+                            <div class="hero-pill" style="
+        flex: 1;
+        min-width: 0;
+        padding: 0.7rem 0.8rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(46, 204, 113, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    ">
+                                <span class="dot" style="
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        "></span>
+                                <span style="
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        ">Health & hygiene</span>
+                            </div>
+                            <div class="hero-pill" style="
+        flex: 1;
+        min-width: 0;
+        padding: 0.7rem 0.8rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(46, 204, 113, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    ">
+                                <span class="dot" style="
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        "></span>
+                                <span style="
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        ">Support pathways</span>
+                            </div>
+                        </div>
+                        <div class="hero-meta-container" style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
+">
+                            <div class="hero-meta-pill" style="
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(46, 204, 113, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+">
+                                <strong style="
+        font-size: 1.3rem;
+        color: #2ecc71;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+        margin-right: 0.5rem;
+    ">Open to:</strong>
+                                <span style="
+        font-size: 1.1rem;
+        color: var(--text-soft);
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    ">Nurses, Healthcare workers, Medical & Non-Medical Students And Caregivers</span>
+                            </div>
+
+                            <style>
+                                @media (max-width: 768px) {
+                                    .hero-meta-pill {
+                                        padding: 0.8rem 1rem !important;
+                                    }
+
+                                    .hero-meta-pill strong {
+                                        font-size: 1.1rem !important;
+                                        margin-right: 0.4rem !important;
+                                    }
+
+                                    .hero-meta-pill span {
+                                        font-size: 1rem !important;
+                                    }
+                                }
+
+                                @media (max-width: 480px) {
+                                    .hero-meta-pill {
+                                        flex-direction: column;
+                                        gap: 0.3rem;
+                                        padding: 0.8rem 0.5rem !important;
+                                    }
+
+                                    .hero-meta-pill strong {
+                                        font-size: 1rem !important;
+                                        margin-right: 0 !important;
+                                    }
+
+                                    .hero-meta-pill span {
+                                        font-size: 0.95rem !important;
+                                    }
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-metrics" style="
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    max-width: 1400px;
+    width: 100%;
+    box-sizing: border-box;
+">
+                    <div class="metric" style="
+        flex: 1 1 300px;
+        min-width: 200px;
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+        background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
+        border: 1px solid rgba(46, 204, 113, 0.15);
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+    ">
+                        <strong style="
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            font-weight: 600;
+            line-height: 1.3;
+        ">5 days</strong>
+                        <span style="
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+            color: var(--text-soft);
+            line-height: 1.5;
+            display: block;
+        ">of life-saving insights</span>
+                    </div>
+                    <div class="metric" style="
+        flex: 1 1 300px;
+        min-width: 200px;
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+        background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
+        border: 1px solid rgba(46, 204, 113, 0.15);
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+    ">
+                        <strong style="
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            font-weight: 600;
+            line-height: 1.3;
+        ">Open access</strong>
+                        <span style="
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+            color: var(--text-soft);
+            line-height: 1.5;
+            display: block;
+        ">for youth, students & caregivers</span>
+                    </div>
+                    <div class="metric" style="
+        flex: 1 1 300px;
+        min-width: 200px;
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+        background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
+        border: 1px solid rgba(46, 204, 113, 0.15);
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+    ">
+                        <strong style="
+            font-size: clamp(1.1rem, 4vw, 1.3rem);
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+            font-weight: 600;
+            line-height: 1.3;
+        ">1 mission</strong>
+                        <span style="
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+            color: var(--text-soft);
+            line-height: 1.5;
+            display: block;
+        ">to renew health & compassion</span>
+                    </div>
+                </div>
+            </aside>
+    </div>
+
+
+
+    <section class="section-about" id="news-events" aria-labelledby="news-heading">
+        <div class="max-width">
+            <div class="reveal visible">
+                <div class="section-label">
+                    <span><strong> Event Updates</strong></span>
+                </div>
+                <h2 id="news-heading" class="section-heading">Latest Events</h2>
+                <p class="section-description">Stay informed about our upcoming community events and initiatives</p>
+            </div>
+
+            <div class="news-grid">
+                <article class="news-item reveal visible">
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">Training</span>
+                            <time datetime="2025-01">December 2025</time>
+                        </div>
+                        <h3 class="news-title">Advanced First Aid Training Program</h3>
+                        <p class="news-excerpt">
+                            In partnership with Nigerian Red Cross, we're offering comprehensive First Aid training
+                            including workplace safety, emergency response, and hands-on casualty simulations. Enhance
+                            your skills and become a certified first responder.
+                        </p>
+                        <div class="news-highlights">
+                            <ul>
+                                <li>​Introduction to First Aid & Safety Principles</li>
+                                <li>Basic Life Support (CPR)</li>
+                                <li>Wounds, Bleeding & Shock Management</li>
+                                <li>Fractures, Sprains & Burns Care</li>
+                                <li>Wound Care & Bandaging Techniques</li>
+                                <li>Medical Emergency Management (Choking, Seizures, Stroke, Asthma, etc.)</li>
+                                <li>Practical Simulation & Role Play</li>
+                            </ul>
+                        </div>
+                        <div class="news-actions">
+                            <a href="projects.html#register" class="btn-primary">Register Now</a>
+                            <a href="tel:+2349033432591" class="btn-ghost">Call +234 903 343 2591</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-item reveal visible">
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category emergency">Emergency Appeal</span>
+                        </div>
+                        <h3 class="news-title">Nigeria Hunger Crisis Support Initiative</h3>
+                        <p class="news-excerpt">
+                            Join us in supporting the Nigerian Red Cross Hunger Crisis Appeal. Thousands of families are
+                            severely affected, with children, women, and the elderly most vulnerable. Your contribution
+                            helps provide essential food supplies and nutritional support.
+                        </p>
+                        <div class="news-highlights">
+                            <ul>
+                                <li>Support for severely affected families</li>
+                                <li>Focus on children, women, and elderly</li>
+                                <li>Partnership with Red Cross and Ecobank</li>
+                                <li>Transparency in fund allocation</li>
+                            </ul>
+                        </div>
+                        <div class="news-actions">
+                            <a href="https://payservice.ecobank.com/PayPortal?bid=iI9z3c9XLX9bRTrbigKSOg%3D%3D"
+                                target="_blank" class="btn-primary">Donate Now</a>
+                            <a href="https://www.redcrossnigeria.org/nigeria-hunger-crisis-appeal" target="_blank"
+                                class="btn-ghost">Learn More</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-item reveal visible">
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">Health Initiative</span>
+                            <time datetime="2025-01">January 2025</time>
+                        </div>
+                        <h3 class="news-title">Women's Health Talk & Free Sanitary Pad Distribution</h3>
+                        <p class="news-excerpt">
+                            Join us for an empowering women's health awareness event featuring comprehensive menstrual
+                            hygiene education, reproductive health discussions, and free sanitary pad distribution. This
+                            community outreach program promotes period dignity, menstrual health management, and
+                            sustainable feminine hygiene practices for girls and women in underserved communities.
+                        </p>
+                        <div class="news-highlights">
+                            <ul>
+                                <li>Menstrual health education and hygiene management</li>
+                                <li>Free sanitary pad distribution for women and girls</li>
+                                <li>Reproductive health awareness and counseling</li>
+                                <li>Period poverty alleviation and community support</li>
+                                <li>Sustainable feminine hygiene practices training</li>
+                                <li>Women's empowerment through health education</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="reveal visible">
+            <div class="section-label">
+                <span><strong>News Updates & Global Health Information</strong></span>
+            </div>
+            <h2 id="news-heading" class="section-heading">Latest Global Health Updates</h2>
+            <p class="section-description">Stay informed about latest global health initiatives, community programs, and
+                research findings</p>
+
+            <div class="global-news-grid">
+                <article class="news-item reveal visible">
+                    <div class="news-image">
+                        <img src="/images/shared/FirstAidDay.jpg.webp" alt="World First Aid Day Celebration"
+                            loading="lazy">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">Global Health</span>
+                            <time datetime="2024-09">September 2024</time>
+                        </div>
+                        <h3 class="news-title">Nigerian Red Cross Society Marks World First Aid Day</h3>
+                        <p class="news-excerpt">
+                            The Nigerian Red Cross Society (NRCS) celebrated World First Aid Day at Jabi Lake, Abuja,
+                            with activities to raise awareness on the importance of 'First Aid in Sports'. This
+                            initiative
+                            aligns with our mission to promote first aid training and emergency preparedness across
+                            communities.
+                        </p>
+                        <div class="news-highlights">
+                            <p class="news-highlights-text">
+                                This landmark World First Aid Day celebration at Jabi Lake, Abuja, focused on 'First Aid
+                                in Sports' awareness,
+                                demonstrating the critical importance of emergency preparedness in athletic activities.
+                                The event featured
+                                comprehensive community engagement programs, hands-on training demonstrations, and
+                                strategic partnership
+                                initiatives with the Nigerian Red Cross Society, showcasing successful collaboration in
+                                promoting first aid
+                                education and emergency response capabilities across communities.
+                            </p>
+                        </div>
+                        <div class="news-actions">
+                            <a href="https://www.redcrossnigeria.org/nigerian-red-cross-society-marks-world-first-aid-day"
+                                target="_blank" class="btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-item reveal visible">
+                    <div class="news-image">
+                        <img src="/images/shared/youth-camp-hikers.jpg.webp" alt="International Youth Camp Activities"
+                            loading="lazy">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">Youth Development</span>
+                            <time datetime="2024-07">July 2024</time>
+                        </div>
+                        <h3 class="news-title">2024 International Youth Camp</h3>
+                        <p class="news-excerpt">
+                            International Youth Camp bringing together young leaders from across Nigeria and beyond
+                            for capacity building, leadership training, and community service. This program empowers
+                            youth to become agents of change in their communities.
+                        </p>
+                        <div class="news-highlights">
+                            <p class="news-highlights-text">
+                                The International Youth Camp brings together young leaders from across Nigeria and
+                                beyond for
+                                comprehensive capacity building, leadership training, and meaningful community service
+                                projects.
+                                This transformative program empowers youth to become effective agents of change through
+                                cross-cultural
+                                exchange opportunities, professional networking, hands-on skills development, and
+                                collaborative
+                                community service initiatives that create lasting positive impact in local communities.
+                            </p>
+                        </div>
+                        <div class="news-actions">
+                            <a href="https://www.redcrossnigeria.org/2024-international-youth-camp" target="_blank"
+                                class="btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-item reveal visible">
+                    <div class="news-image">
+                        <img src="/images/shared/Why-we-need-FA-education.jpg" alt="First Aid Training Guidelines"
+                            loading="lazy">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">First Aid Standards</span>
+                            <time datetime="2024-06">June 2024</time>
+                        </div>
+                        <h3 class="news-title">International First Aid Guidelines 2020</h3>
+                        <p class="news-excerpt">
+                            The International Federation of Red Cross and Red Crescent Societies (IFRC) and the
+                            International
+                            Committee of the Red Cross (ICRC) have released comprehensive first aid guidelines that
+                            serve
+                            as the foundation for high-quality, evidence-based first aid education worldwide, building
+                            safer
+                            and healthier communities through effective emergency response.
+                        </p>
+                        <div class="news-highlights">
+                            <p class="news-highlights-text">
+                                These comprehensive evidence-based first aid guidelines serve as the authoritative
+                                foundation for
+                                first aid program designers worldwide, providing scientifically validated practices and
+                                resuscitation
+                                protocols. Developed through collaboration between IFRC and ICRC, these harmonized
+                                standards ensure
+                                consistency across 192 Red Cross Red Crescent National Societies while allowing
+                                adaptation to local
+                                contexts, enabling communities to build safer, healthier environments through effective
+                                emergency
+                                response training and education programs.
+                            </p>
+                        </div>
+                        <div class="news-actions">
+                            <a href="https://www.globalfirstaidcentre.org/first-aid-guidelines-2020/" target="_blank"
+                                class="btn-primary">View Guidelines</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-item reveal visible">
+                    <div class="news-image">
+                        <img src="/images/shared/world-first-aid-day.jpg" alt="World First Aid Day Digital Theme"
+                            loading="lazy">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-category">First Aid Initiative</span>
+                            <time datetime="2023-09">September 2023</time>
+                        </div>
+                        <h3 class="news-title">World First Aid Day - First Aid in the Digital World</h3>
+                        <p class="news-excerpt">
+                            World First Aid Day provides an annual opportunity for everybody to promote and gain
+                            knowledge in first aid. The 2023 theme "First Aid in the Digital World" highlights
+                            how technology can enhance first aid training and emergency response globally.
+                        </p>
+                        <div class="news-highlights">
+                            <p class="news-highlights-text">
+                                World First Aid Day demonstrates extraordinary global reach, impacting over 4.4 million
+                                people through
+                                coordinated initiatives involving more than 100 National Societies and 1,120 branches
+                                worldwide.
+                                With 90% of National Societies implementing the annual theme and 20 million people
+                                trained globally,
+                                this movement showcases the power of unified first aid education in building resilient
+                                communities
+                                and empowering individuals with life-saving emergency response skills across diverse
+                                cultural contexts.
+                            </p>
+                        </div>
+                        <div class="news-actions">
+                            <a href="https://www.globalfirstaidcentre.org/world-first-aid-day-2/" target="_blank"
+                                class="btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- World First Aid Day Video Section -->
+    <section class="section-about" id="wfad-video" aria-labelledby="wfad-video-heading">
+        <div class="max-width">
+            <div class="reveal visible">
+                <div class="section-label">
+                    <span><strong>World First Aid Day 2025</strong></span>
+                </div>
+                <h2 id="wfad-video-heading" class="section-heading">First Aid & Climate Change</h2>
+                <p class="section-description">
+                    Join us on September 13th, 2025, as we highlight the critical connection between first aid training
+                    and climate change response. Watch how communities worldwide are preparing for climate-related
+                    emergencies.
+                </p>
+
+                <div class="video-showcase">
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Ii8AhEkn0EM?si=AZVyOwf9ZhbkwRlI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Partnership Section -->
+    <section class="section-about" id="partnership" aria-labelledby="partnership-heading">
+        <div class="max-width">
+            <div class="reveal visible">
+                <div class="section-label">
+                    <span><strong>Partnership</strong></span>
+                </div>
+                <h2 id="partnership-heading" class="section-heading">Partner With Us</h2>
+                <p class="section-description">Join our network of partners making a difference in community health and
+                    empowerment</p>
+            </div>
+            <div class="partnership-grid">
+                <article class="news-item reveal visible">
+                    <div class="news-content">
+                        <h3 class="news-title">Community Health Partnership Program</h3>
+                        <p class="news-excerpt">
+                            We're expanding our community health outreach through strategic partnerships with healthcare
+                            organizations. Join our volunteer network to help deliver essential health services and
+                            First Aid training to underserved communities.
+                        </p>
+                        <div class="news-highlights">
+                            <ul>
+                                <li>Volunteer training and certification</li>
+                                <li>Community health outreach programs</li>
+                                <li>Partnership with healthcare institutions</li>
+                                <li>Skills development for youth volunteers</li>
+                            </ul>
+                        </div>
+                        <div class="news-actions">
+                            <a href="#partnership" data-open-partnership class="btn-primary">Become Partner</a>
+                            <a href="mailto:carespringsup@gmail.com" class="btn-ghost">Email Us</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 600px;
+            margin: 3rem auto;
+            gap: 2rem;
+        }
+
+        .global-news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        /* News item with image layout */
+        .news-item {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, rgba(6, 37, 29, 0.8), rgba(3, 19, 15, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .news-item:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .partnership-grid {
+                grid-template-columns: 1fr;
+                max-width: 95%;
+                margin: 2rem auto;
+                gap: 1.5rem;
+            }
+
+            .global-news-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .news-image {
+                height: 180px;
+            }
+
+            .news-content {
+                padding: 1.5rem;
+            }
+
+            /* Center action buttons on mobile */
+            .news-actions {
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            /* Mobile buttons fit content size */
+            .cta-actions button {
+                width: fit-content !important;
+                min-width: auto !important;
+                padding: 1rem 1.5rem !important;
+                font-size: 1rem !important;
+            }
+
+            /* Hero section buttons mobile */
+            .hero-actions .btn-primary,
+            .hero-actions .btn-ghost {
+                width: fit-content !important;
+                min-width: auto !important;
+                padding: 0.9rem 1.5rem !important;
+                font-size: 0.95rem !important;
+            }
+
+            /* Center hero buttons on mobile */
+            .hero-actions {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            /* Events section buttons mobile */
+            .news-actions .btn-primary,
+            .news-actions .btn-ghost {
+                width: fit-content !important;
+                min-width: auto !important;
+                padding: 0.8rem 1.3rem !important;
+                font-size: 0.9rem !important;
+            }
+
+            /* News grid mobile layout */
+            .news-grid .news-actions {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .partnership-grid .news-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .partnership-grid .news-actions a {
+                width: fit-content;
+            }
+        }
+
+        /* Center align section containers but left-align text inside */
+        .section-about .reveal.visible {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-about .section-label {
+            justify-content: center;
+            text-align: center;
+            display: flex;
+            width: fit-content;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .section-about .section-heading,
+        .section-about .section-description {
+            text-align: center;
+        }
+
+        .section-about .max-width>.reveal.visible:not(:first-child) {
+            margin-top: 3rem;
+        }
+
+        /* White color for paper plane icon */
+        .cta-actions button .fas.fa-paper-plane {
+            color: white !important;
+        }
+
+        /* Center alignment for partnership section */
+        .partnership-grid .news-content {
+            text-align: center;
+        }
+
+        .partnership-grid .news-highlights ul {
+            text-align: left;
+            display: inline-block;
+        }
+
+        .partnership-grid .news-highlights li {
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .partnership-grid .news-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Center align "Stay Connected" heading */
+        .contact-news-cta h3 {
+            text-align: center;
+        }
+
+        /* Styling for news highlights paragraphs */
+        .news-highlights-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0;
+            padding: 0;
+            text-align: justify;
+        }
+
+        /* Justify alignment for all news text content */
+        .news-excerpt,
+        .news-highlights-text {
+            text-align: justify;
+        }
+
+        /* Center align action buttons */
+        .news-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+
+        /* Center align news category */
+        .news-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* Video showcase styling */
+        .video-showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+        }
+
+        .video-showcase .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            padding-bottom: 45%; /* 16:9 aspect ratio */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-showcase .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Mobile responsive for video showcase */
+        @media (max-width: 768px) {
+            .video-showcase .video-container {
+                max-width: 100%;
+            }
+        }
+
+        .news-item {
+            background: linear-gradient(135deg, rgba(6, 37, 29, 0.8), rgba(3, 19, 15, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(46, 204, 113, 0.2);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-category {
+            background: var(--accent);
+            color: #02140d;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .news-category.emergency {
+            background: var(--accent-rose);
+            color: white;
+        }
+
+        .news-meta time {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .news-excerpt {
+            color: var(--text-soft);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-highlights {
+            margin-bottom: 1.5rem;
+        }
+
+        .news-highlights ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-highlights li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+            font-size: 0.95rem;
+        }
+
+        .news-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .news-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .news-cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(241, 196, 15, 0.05));
+            border-radius: 16px;
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            margin-top: 3rem;
+        }
+
+        .news-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .news-cta p {
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-soft);
+        }
+
+        .social-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-strong);
+        }
+
+        /* Contact Section News CTA Styling */
+        .contact-news-cta {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(241, 196, 15, 0.05));
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-news-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-gold));
+        }
+
+        .news-cta-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .news-cta-content p {
+            color: var(--text-soft);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-cta-content .cta-actions {
+            margin-top: 1rem;
+        }
+
+        .news-cta-content .social-links {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .news-cta-content .social-links span {
+            margin-right: 0.5rem;
+        }
+
+        .news-cta-content .social-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            margin-right: 0.8rem;
+        }
+
+        .news-cta-content .social-links a:hover {
+            color: var(--accent-strong);
+        }
+
+        @media (max-width: 768px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .news-item {
+                padding: 1.5rem;
+            }
+
+            .news-title {
+                font-size: 1.2rem;
+            }
+
+            .news-actions {
+                flex-direction: column;
+            }
+
+            .news-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            /* Mobile Contact News CTA */
+            .contact-news-cta {
+                padding: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            .news-cta-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .news-cta-content .social-links {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Override home page modal hiding for partnership modal */
+        body.home #partnershipModal.modal-overlay.active {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        /* Ensure partnership modal has proper scrolling */
+        #partnershipModal .modal-card {
+            overflow-y: auto !important;
+            max-height: 90vh !important;
+        }
+    </style>
+
+    <section class="section-about" id="faq" aria-labelledby="faq-heading">
+        <div class="max-width">
+            <div class="reveal visible">
+                <div class="section-label">
+                    <span><strong>FAQ</strong></span>
+                </div>
+                <h2 id="faq-heading" class="section-heading">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal visible">
+                    <button class="faq-question">
+                        What programs does Udeaku CareSpring Foundation run?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        We run several community-focused programs including First Aid Training Workshops,
+                        Pad-a-Girl menstrual hygiene initiative, community health outreaches, and youth support
+                        programs.
+                        More projects will be announced on our website and social platforms.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal visible">
+                    <button class="faq-question">
+                        Are your programs open to everyone?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes. Most programs are open to youth, students, families, caregivers, and community
+                        members
+                        who desire empowerment, health training, or volunteer experience.
+                        Some programs may have specific age or requirement guidelines.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal visible">
+                    <button class="faq-question">
+                        Do your programs require any fees?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Many of our programs, including the First Aid Training Workshop, are completely free.
+                        Where small contributions are needed, participants will be informed ahead of time.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal visible">
+                    <button class="faq-question">
+                        How often do you hold community outreach programs?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Community outreaches are organized several times throughout the year based on community
+                        needs,
+                        available resources, and partnerships.
+                        Updates are communicated through our website and social media.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal visible">
+                    <button class="faq-question">
+                        Can organizations partner with CareSpring Foundation?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Absolutely. We welcome partnerships from schools, NGOs, health institutions, and
+                        corporate bodies.
+                        Simply use the Contact form on the website to initiate a partnership request.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal visible">
+                    <button class="faq-question">
+                        How can I volunteer for other programs besides the First Aid Training?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        You can indicate interest during registration or message us directly through the Contact
+                        page.
+                        We regularly recruit volunteers for Pad-a-Girl outreaches, community health drives, and
+                        logistics
+                        support.
+                    </div>
+                </div>
+
+                <div class="faq-item reveal visible">
+                    <button class="faq-question">
+                        How do I stay updated on upcoming programs?
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Follow us on our social media platforms and join our email list.
+                        Upcoming programs, volunteer calls, and community projects are announced there first.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-about" id="contact" aria-labelledby="contact-heading">
+        <div class="max-width">
+            <div class="reveal visible">
+                <div class="section-label">
+                    <span><strong>Contact Us</strong></span>
+                </div>
+            </div>
+            <div class="contact-news-cta reveal visible">
+                <div class="news-cta-content">
+                    <h2 id="contact-heading" class="section-heading">Partner With Us for Community Impact</h2>
+                    <p>
+                        <strong>Transform your community through collaboration.</strong> Whether you're interested in
+                        our
+                        comprehensive 5-Day First Aid Training Workshop, supporting our impactful Pad a Girl Initiative,
+                        partnering on vital community health outreaches, or inviting Udeaku CareSpring Support
+                        Foundation
+                        to your educational institution, we're ready to create meaningful change together.
+                    </p>
+                    <p>
+                        <em>Our dedicated team responds to all inquiries within 1–3 business days.</em>
+                        Your partnership journey begins with a simple conversation.
+                    </p>
+                    <div class="cta-actions">
+                        <button type="button" data-open-contact
+                            style="border-radius: 700px; padding: 1.2rem 2.2rem; border: none; cursor: pointer; font-weight: 600; font-size: 1.1rem; background: linear-gradient(120deg, var(--accent), var(--accent-strong)); color: #02140d; box-shadow: 0 15px 35px rgba(46, 204, 113, 0.45); display: inline-flex; align-items: center; gap: 0.8rem; margin-top: 1.5rem;">
+                            <span><strong><i class="fas fa-paper-plane"></i> Send an Enquiry</strong></span>
+                        </button>
+                    </div>
+                    <br><br>
+                    <h3>Stay Connected With Our Mission</h3>
+                    <p>
+                        <strong>Join our growing community of changemakers</strong> and be the first to know about
+                        upcoming programs, volunteer opportunities, and inspiring community impact stories that
+                        showcase the power of collective action.
+                    </p>
+                    <div class="cta-actions">
+                        <p class="social-links">
+                            <span><strong>Follow our impact journey:</strong>
+                                <a href="https://www.instagram.com/Udeaku_Carespring_supportfound" target="_blank"
+                                    rel="noopener noreferrer">Instagram</a>
+                                <a href="https://www.facebook.com/profile.php?id=61583077715707" target="_blank"
+                                    rel="noopener noreferrer">Facebook</a>
+                                <a href="https://wa.me/2349033432591" target="_blank"
+                                    rel="noopener noreferrer">WhatsApp</a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Registration Modal -->
+    <div class="modal-overlay" id="partnershipModal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="partnershipModalTitle">
+            <div class="modal-header">
+                <h2 id="partnershipModalTitle" class="modal-title">Partnership Registration</h2>
+                <button type="button" class="close-btn" id="closePartnershipModal">Close</button>
+            </div>
+            <div class="modal-body">
+                <p>We're excited to partner with organizations that share our vision for community health and
+                    empowerment. Please fill out the form below to begin our partnership journey.</p>
+                <form id="partnershipForm" class="contact-form" novalidate>
+                    <div class="modal-form-group">
+                        <label for="orgName">Organization Name *</label>
+                        <input type="text" id="orgName" name="orgName" placeholder="Enter your organization name"
+                            required />
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="orgType">Organization Type *</label>
+                        <select id="orgType" name="orgType" required>
+                            <option value="">Select organization type</option>
+                            <option value="healthcare">Healthcare Institution</option>
+                            <option value="education">Educational Institution</option>
+                            <option value="corporate">Corporate Organization</option>
+                            <option value="ngo">Non-Profit/NGO</option>
+                            <option value="government">Government Agency</option>
+                            <option value="community">Community Group</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="contactPerson">Contact Person *</label>
+                        <input type="text" id="contactPerson" name="contactPerson"
+                            placeholder="Full name of primary contact" required />
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="contactEmail">Email Address *</label>
+                        <input type="email" id="contactEmail" name="contactEmail" placeholder="you@organization.com"
+                            required />
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="contactPhone">Phone Number *</label>
+                        <input type="tel" id="contactPhone" name="contactPhone" placeholder="+234 800 000 0000"
+                            required />
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="partnershipInterest">Partnership Interest *</label>
+                        <select id="partnershipInterest" name="partnershipInterest" required>
+                            <option value="">Select partnership type</option>
+                            <option value="first-aid-training">First Aid Training Programs</option>
+                            <option value="health-outreach">Community Health Outreach</option>
+                            <option value="pad-a-girl">Pad-a-Girl Initiative</option>
+                            <option value="youth-support">Youth Support Programs</option>
+                            <option value="volunteer">Volunteer Recruitment</option>
+                            <option value="funding">Funding & Sponsorship</option>
+                            <option value="facility-use">Facility Use & Venue</option>
+                            <option value="multiple">Multiple Programs</option>
+                            <option value="custom">Custom Partnership</option>
+                        </select>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="orgSize">Organization Size</label>
+                        <select id="orgSize" name="orgSize">
+                            <option value="">Select organization size</option>
+                            <option value="small">Small (1-10 employees)</option>
+                            <option value="medium">Medium (11-50 employees)</option>
+                            <option value="large">Large (51-200 employees)</option>
+                            <option value="enterprise">Enterprise (200+ employees)</option>
+                        </select>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="partnershipGoals">Partnership Goals & Expectations</label>
+                        <textarea id="partnershipGoals" name="partnershipGoals"
+                            placeholder="What do you hope to achieve through this partnership?" rows="3"></textarea>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="availableResources">Resources You Can Contribute</label>
+                        <textarea id="availableResources" name="availableResources"
+                            placeholder="Please describe any resources, expertise, or support you can provide"
+                            rows="3"></textarea>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="timeline">Preferred Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="immediate">Immediate (within 1 month)</option>
+                            <option value="short">Short-term (1-3 months)</option>
+                            <option value="medium">Medium-term (3-6 months)</option>
+                            <option value="long">Long-term (6+ months)</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="additionalInfo">Additional Information</label>
+                        <textarea id="additionalInfo" name="additionalInfo"
+                            placeholder="Any other details you'd like to share about your organization or partnership interest"
+                            rows="3"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem;">
+                            <span>We'll review your partnership request and respond within 3-5 working days.</span>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                                <a href="mailto:carespringsup@gmail.com"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    Email
+                                </a>
+                                <a href="https://wa.me/2349033432591" target="_blank" rel="noopener noreferrer"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <span>Submit Partnership Request</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="max-width">
+            <div class="footer-content">
+                <!-- Logo and Description -->
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="/images/shared/logo.jpeg" alt="Udeaku CareSpring Support Foundation"
+                            class="footer-logo-img">
+                    </div>
+                    <p class="footer-description">Building safer communities through first aid training and care.</p>
+                    <div class="footer-copyright">&copy; 2025 Udeaku CareSpring Support Foundation. All rights reserved.
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="#" class="footer-link">Home</a></li>
+                        <li><a href="about.html#about" class="footer-link">About Us</a></li>
+                        <li><a href="projects.html#projects" class="footer-link">Our Projects</a></li>
+                        <li><a href="#contact" class="footer-link">Contact Us</a></li>
+                        <li><a href="projects.html#register" class="footer-link">Register for Training</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                    <path
+                                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <a href="mailto:carespringsup@gmail.com" class="contact-link">carespringsup@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                    <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <span>Plot 450 Ikenegbu layout, Owerri, Nigeria</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                                    <path
+                                        d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <a href="tel:+2349033432591" class="contact-link">+234 903 343 2591</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="footer-section">
+                    <h3 class="footer-heading">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61583077715707" class="social-link"
+                            target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                                    fill="currentColor" />
+                            </svg>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://www.instagram.com/Udeaku_Carespring_supportfound" class="social-link"
+                            target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor"
+                                    stroke-width="2" />
+                                <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2" />
+                                <circle cx="18" cy="6" r="1" fill="currentColor" />
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://wa.me/2349033432591" class="social-link" target="_blank"
+                            rel="noopener noreferrer" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                                <path
+                                    d="M17.5 14.5c-.3 0-.6-.1-.8-.2l-1.5-.8c-.2-.1-.4-.1-.6 0l-1.2.4c-.4.1-.8-.1-1-.4l-2.4-2.4c-.3-.3-.4-.7-.2-1.1l.4-1.2c0-.2 0-.4-.1-.6l-.8-1.5c-.2-.3-.2-.6-.2-.8.1-.3.3-.5.6-.6l1.9-.5c.1 0 .3-.1.4-.1h.1c.3 0 .6.1.8.3l.1.1c.2.2.3.5.3.8v.7c0 .3.2.5.5.6.3.1.5.3.6.6.2.4.4.9.5 1.4.1.5.1 1 0 1.5v.7c0 .3.1.6.3.8l.1.1c.1.1.3.2.4.2.1 0 .2.1.3.1.1 0 .3 0 .4-.1l1.9-.5c.1 0 .3 0 .4-.1.3-.1.5-.3.6-.6 0-.3 0-.6-.2-.8z"
+                                    fill="currentColor" />
+                                <path
+                                    d="M12 2C6.5 2 2 6.5 2 12c0 2.1.7 4.1 1.8 5.8l-1.4 4.2 4.4-1.4c1.6 1 3.5 1.5 5.4 1.5 5.5 0 10-4.5 10-10S17.5 2 12 2zm5.7 14.3c-.2.6-1.3 1.2-1.9 1.3-.5.1-1.2.2-3.4-.7-2.8-1.1-4.6-3.9-4.8-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-2 1-2.3.2-.2.5-.3.7-.3h.5c.2 0 .5 0 .7.3.2.2.7.7.8.9.1.2.2.4.2.6 0 .2-.1.4-.2.6-.1.1-.2.3-.4.5-.1.1-.3.3-.3.5-.1.2 0 .4 0 .5.1.1.4.8 1 1.4.7.7 1.3 1 1.9 1.2.2.1.5.1.7 0 .2-.1.5-.3.6-.5.2-.2.4-.4.5-.5.1-.2.3-.2.5-.1l1.6.8c.2.1.3.2.4.3.1.2.1.5 0 .7-.1.2-.3.5-.5.9z"
+                                    fill="currentColor" />
+                            </svg>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WhatsApp Float Button -->
+            <a href="https://wa.me/2349033432591" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+                aria-label="Chat with us on WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path
+                        d="M17.498 14.382l-.002.001c-.301.15-.682.124-.93-.101l-1.251-.978a.748.748 0 0 0-.641-.18 9.2 9.2 0 0 1-3.178-.55 9.274 9.274 0 0 1-5.603-7.65.75.75 0 0 1 .45-.689c.14-.06.291-.09.443-.09h.002c.155 0 .31.033.45.09l1.064.532a1.5 1.5 0 0 0 1.169.118l1.28-.426a1.5 1.5 0 0 1 1.88.94l.5 1.41a1.5 1.5 0 0 1-.4 1.65l-.8.8a.75.75 0 0 0-.18.78 7.7 7.7 0 0 0 2.37 3.29.75.75 0 0 0 .78.18l.8-.8a1.5 1.5 0 0 1 1.65-.4l1.41.5a1.5 1.5 0 0 1 .94 1.88l-.426 1.28a1.5 1.5 0 0 0 .118 1.17l.532 1.064a.75.75 0 0 1-.34 1.02 9.27 9.27 0 0 1-4.63 1.24 9.29 9.29 0 0 1-9.21-9.21 9.25 9.25 0 0 1 9.21-9.21 9.25 9.25 0 0 1 9.21 9.21 9.28 9.28 0 0 1-1.24 4.63z" />
+                </svg>
+            </a>
+        </div>
+
+        <!-- Attribution -->
+        <div
+            style="text-align: center; padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 2rem;">
+            <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin: 0;">Built and powered by: <span
+                    style="color: rgba(46, 204, 113, 0.8); font-weight: 500;">Avalance Tech Solutions</span></p>
+        </div>
+    </footer>
+
+    <!-- Contact Us Modal -->
+    <div class="modal-overlay" id="contactModal" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+            <div class="modal-header">
+                <h2 id="contactModalTitle" class="modal-title">Contact Us</h2>
+                <button type="button" class="close-btn" id="closeContactModal">Close</button>
+            </div>
+            <div class="modal-body">
+                <p>If you have enquiries about our programs, outreaches, or partnership opportunities,
+                    please send us a message below.</p>
+                <form id="contactForm" class="contact-form" novalidate>
+                    <div class="modal-form-group">
+                        <label for="contactName">Full Name</label>
+                        <input type="text" id="contactName" name="name" placeholder="Enter your full name" required />
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="contactEmail">Email Address</label>
+                        <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required />
+                    </div>
+                    <div class="modal-form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" name="message" placeholder="Write your enquiry here"
+                            required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem;">
+                            <span>We typically respond within 1–3 working days. You can also reach us
+                                via:</span>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                                <a href="mailto:carespringsup@gmail.com"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    Email
+                                </a>
+                                <a href="https://wa.me/2349033432591" target="_blank" rel="noopener noreferrer"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    WhatsApp
+                                </a>
+                                <a href="https://www.instagram.com/Udeaku_Carespring_supportfound" target="_blank"
+                                    rel="noopener noreferrer"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    Instagram
+                                </a>
+                                <a href="https://www.facebook.com/profile.php?id=61583077715707" target="_blank"
+                                    rel="noopener noreferrer"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    Facebook
+                                </a>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <span>Send Enquiry</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Overlay -->
+    <div class="confirmation-overlay" id="confirmation">
+        <div class="confirmation-card" role="alertdialog" aria-modal="true" aria-labelledby="confirmation-title">
+            <div class="confetti" aria-hidden="true"></div>
+            <div class="confirmation-content">
+                <div class="confirmation-header">
+                    <div class="confirmation-badge">
+                        <span>Registration received</span>
+                    </div>
+                    <button class="close-btn" type="button" id="closeConfirmation">Close</button>
+                </div>
+                <h2 id="confirmation-title" class="confirmation-title">
+                    Thank you for registering for Our 5-Day Free First Aid Training Workshop!
+                </h2>
+                <div class="confirmation-body">
+                    <p>Your registration has been received.</p>
+                    <p>
+                        You will receive a confirmation message with details and schedule updates soon.
+                    </p>
+                    <p>
+                        📩 For enquiries, contact us at:
+                        <strong>carespringsup@gmail.com</strong>
+                    </p>
+                </div>
+                <div class="confirmation-footer">
+                    <div class="tag-chip">
+                        <span>🌿 Renewal.</span>
+                        <span>🩺 Health.</span>
+                        <span>💚 Compassion.</span>
+                    </div>
+                    <span>We look forward to welcoming you.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        const navToggle = document.getElementById('navToggle');
+        const siteNav = document.getElementById('siteNav');
+
+        // Force pointer-events to auto for our navigation
+        siteNav.style.pointerEvents = 'auto';
+
+        navToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            siteNav.classList.toggle('nav-open');
+            navToggle.classList.toggle('nav-open');
+
+            // Ensure pointer-events are enabled when menu is open
+            if (siteNav.classList.contains('nav-open')) {
+                siteNav.style.pointerEvents = 'auto';
+            }
+        });
+
+        // Close menu when clicking outside - use capture phase
+        document.addEventListener('click', function (event) {
+            // Check if click is outside both nav and toggle
+            if (!siteNav.contains(event.target) && !navToggle.contains(event.target)) {
+                siteNav.classList.remove('nav-open');
+                navToggle.classList.remove('nav-open');
+            }
+        }, true); // Use capture phase
+
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.site-nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent immediate navigation for demo
+                siteNav.classList.remove('nav-open');
+                navToggle.classList.remove('nav-open');
+
+                // Navigate after a short delay to allow menu to close
+                setTimeout(() => {
+                    window.location.href = this.getAttribute('href');
+                }, 100);
+            });
+        });
+
+        // Prevent menu clicks from bubbling up to document
+        siteNav.addEventListener('click', function (e) {
+            e.stopPropagation();
+        });
+
+        // Handle window resize to reset menu state
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                siteNav.classList.remove('nav-open');
+                navToggle.classList.remove('nav-open');
+            }
+        });
+
+        // Wait for DOM to be ready before initializing partnership modal
+        document.addEventListener('DOMContentLoaded', function () {
+            // Partnership Modal functionality
+            const partnershipModal = document.getElementById('partnershipModal');
+            const openPartnershipBtns = document.querySelectorAll('[data-open-partnership]');
+            const closePartnershipBtn = document.getElementById('closePartnershipModal');
+            const partnershipForm = document.getElementById('partnershipForm');
+
+            // Only proceed if elements exist
+            if (!partnershipModal || !openPartnershipBtns.length || !closePartnershipBtn || !partnershipForm) {
+                console.error('Partnership modal elements not found');
+                return;
+            }
+
+            // Open partnership modal
+            openPartnershipBtns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    console.log('Opening partnership modal'); // Debug log
+                    partnershipModal.setAttribute('aria-hidden', 'false');
+                    partnershipModal.classList.add('active'); // Add active class
+                    document.body.style.overflow = 'hidden';
+                    // Focus on first input
+                    setTimeout(() => {
+                        partnershipModal.querySelector('#orgName').focus();
+                    }, 100);
+                });
+            });
+
+            // Close partnership modal
+            function closePartnershipModal() {
+                partnershipModal.setAttribute('aria-hidden', 'true');
+                partnershipModal.classList.remove('active'); // Remove active class
+                document.body.style.overflow = '';
+                partnershipForm.reset();
+            }
+
+            closePartnershipBtn.addEventListener('click', closePartnershipModal);
+
+            // Close modal when clicking overlay
+            partnershipModal.addEventListener('click', function (e) {
+                if (e.target === partnershipModal) {
+                    closePartnershipModal();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && partnershipModal.getAttribute('aria-hidden') === 'false') {
+                    closePartnershipModal();
+                }
+            });
+
+            // Handle partnership form submission
+            partnershipForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Get form data
+                const formData = new FormData(partnershipForm);
+                const partnershipData = {
+                    orgName: formData.get('orgName'),
+                    orgType: formData.get('orgType'),
+                    contactPerson: formData.get('contactPerson'),
+                    contactEmail: formData.get('contactEmail'),
+                    contactPhone: formData.get('contactPhone'),
+                    partnershipInterest: formData.get('partnershipInterest'),
+                    orgSize: formData.get('orgSize'),
+                    partnershipGoals: formData.get('partnershipGoals'),
+                    availableResources: formData.get('availableResources'),
+                    timeline: formData.get('timeline'),
+                    additionalInfo: formData.get('additionalInfo'),
+                    submittedAt: new Date().toISOString()
+                };
+
+                // Validate required fields
+                const requiredFields = ['orgName', 'orgType', 'contactPerson', 'contactEmail', 'contactPhone', 'partnershipInterest'];
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!partnershipData[field] || partnershipData[field].trim() === '') {
+                        isValid = false;
+                        const input = partnershipForm.querySelector(`[name="${field}"]`);
+                        if (input) {
+                            input.style.borderColor = 'rgba(231, 76, 60, 0.8)';
+                            input.setAttribute('aria-invalid', 'true');
+                        }
+                    } else {
+                        const input = partnershipForm.querySelector(`[name="${field}"]`);
+                        if (input) {
+                            input.style.borderColor = '';
+                            input.setAttribute('aria-invalid', 'false');
+                        }
+                    }
+                });
+
+                if (!isValid) {
+                    alert('Please fill in all required fields marked with *');
+                    return;
+                }
+
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(partnershipData.contactEmail)) {
+                    alert('Please enter a valid email address');
+                    const emailInput = partnershipForm.querySelector('#contactEmail');
+                    emailInput.style.borderColor = 'rgba(231, 76, 60, 0.8)';
+                    emailInput.focus();
+                    return;
+                }
+
+                // Phone validation (basic Nigerian phone format)
+                const phoneRegex = /^(\+234|0)[789][01]\d{8}$/;
+                const cleanPhone = partnershipData.contactPhone.replace(/\s/g, '');
+                if (!phoneRegex.test(cleanPhone)) {
+                    alert('Please enter a valid Nigerian phone number (e.g., +234 800 000 0000 or 0800 000 0000)');
+                    const phoneInput = partnershipForm.querySelector('#contactPhone');
+                    phoneInput.style.borderColor = 'rgba(231, 76, 60, 0.8)';
+                    phoneInput.focus();
+                    return;
+                }
+
+                // Show loading state
+                const submitBtn = partnershipForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span>Submitting...</span>';
+                submitBtn.disabled = true;
+
+                // Simulate form submission (replace with actual backend call)
+                setTimeout(() => {
+                    // Here you would normally send the data to your backend
+                    console.log('Partnership form submitted:', partnershipData);
+
+                    // Store in localStorage for demo purposes
+                    const existingSubmissions = JSON.parse(localStorage.getItem('partnershipSubmissions') || '[]');
+                    existingSubmissions.push(partnershipData);
+                    localStorage.setItem('partnershipSubmissions', JSON.stringify(existingSubmissions));
+
+                    // Show success message
+                    alert('Thank you for your partnership interest! We have received your request and will contact you within 3-5 working days.');
+
+                    // Reset and close modal
+                    closePartnershipModal();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+
+                    // Send email notification (backend function)
+                    sendPartnershipEmail(partnershipData);
+                }, 2000);
+            });
+
+            // Backend email function (to be implemented on server)
+            function sendPartnershipEmail(data) {
+                // This would be a server-side function
+                // For demo, we'll just log what would be sent
+                const emailContent = `
+New Partnership Request:
+
+Organization: ${data.orgName}
+Type: ${data.orgType}
+Contact Person: ${data.contactPerson}
+Email: ${data.contactEmail}
+Phone: ${data.contactPhone}
+Partnership Interest: ${data.partnershipInterest}
+Organization Size: ${data.orgSize}
+Goals: ${data.partnershipGoals}
+Resources: ${data.availableResources}
+Timeline: ${data.timeline}
+Additional Info: ${data.additionalInfo}
+Submitted: ${data.submittedAt}
+                `;
+
+                console.log('Email to be sent to carespringsup@gmail.com:');
+                console.log(emailContent);
+
+                // In a real implementation, you would use a server-side service
+                // like Node.js with nodemailer, PHP mail, or a service like SendGrid
+                // Example fetch call to your backend:
+                fetch('/api/send-partnership-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log('Email sent successfully:', result);
+                    })
+                    .catch(error => {
+                        console.error('Error sending email:', error);
+                    });
+            }
+
+            // Clear input styling on focus
+            partnershipForm.querySelectorAll('input, select, textarea').forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.style.borderColor = '';
+                    this.setAttribute('aria-invalid', 'false');
+                });
+            });
+        });
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="/js/main.js" defer></script>
+</body>
+
+</html>

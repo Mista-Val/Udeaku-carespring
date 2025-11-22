@@ -1,0 +1,21 @@
+[build]
+  command = "npm install && npm run build"
+  publish = "./"
+  functions = "functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  framework = "#custom"
+  command = "npm run dev"
+  port = 8000
+  targetPort = 8000
+  publish = "./"
+  autoLaunch = true

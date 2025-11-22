@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: udeaku-config
+  namespace: udeaku-carespring
+  labels:
+    app: udeaku-carespring
+data:
+  NODE_ENV: "production"
+  PORT: "8000"
+  CONTACT_EMAIL: "carespringsup@gmail.com"
+  WHATSAPP_NUMBER: "+2349033432591"
+  FORM_SUBMISSION_ENDPOINT: "/api/register"
+  ALLOWED_ORIGINS: "https://udeaku-carespring.com,https://www.udeaku-carespring.com"
