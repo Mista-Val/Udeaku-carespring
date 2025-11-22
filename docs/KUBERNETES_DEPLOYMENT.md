@@ -112,7 +112,7 @@ kubectl get pods -n udeaku-carespring
 | Variable | Description | Default |
 |----------|-------------|---------|
 | NODE_ENV | Environment mode | production |
-| PORT | Application port | 8000 |
+| PORT | Application port | 5001 |
 | CONTACT_EMAIL | Contact email | carespringsup@gmail.com |
 | WHATSAPP_NUMBER | WhatsApp contact | +2349033432591 |
 | ALLOWED_ORIGINS | CORS allowed origins | udeaku-carespring.com |

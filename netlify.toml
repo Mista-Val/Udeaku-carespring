@@ -15,7 +15,7 @@
 [dev]
   framework = "#custom"
   command = "npm run dev"
-  port = 8000
-  targetPort = 8000
+  port = 5001
+  targetPort = 5001
   publish = "./"
   autoLaunch = true

@@ -12,7 +12,7 @@
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.{js,jsx,json,md,html,css}\"",
     "docker:build": "docker build -t udeaku-carespring:latest .",
-    "docker:run": "docker run -p 5000:5000 --env-file .env udeaku-carespring:latest",
+    "docker:run": "docker run -p 5001:5001 --env-file .env udeaku-carespring:latest",
     "k8s:deploy": "kubectl apply -k k8s/",
     "k8s:delete": "kubectl delete -k k8s/",
     "k8s:logs": "kubectl logs -f deployment/udeaku-carespring -n udeaku-carespring",

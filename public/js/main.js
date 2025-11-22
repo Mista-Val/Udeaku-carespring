@@ -293,9 +293,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 const result = await submitForm(formData);
-                if (result && result.success) {
+                if (result && result.status === 'success') {
                     contactForm.reset();
                     toggleModal(contactModal, false);
+                    alert('Thank you for your message! We will get back to you soon.');
                 } else {
                     console.error('Contact submission failed', result);
                     alert('Sorry, we could not send your message. Please try again later.');

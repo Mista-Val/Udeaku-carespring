@@ -36,17 +36,18 @@ COPY --from=builder --chown=nodejs:nodejs /app/public ./public
 COPY --from=builder --chown=nodejs:nodejs /app/package*.json ./
 
 # Create .env file for production
-RUN echo "NODE_ENV=production" > .env
+RUN echo "NODE_ENV=production" > .env && \
+    echo "PORT=5001" >> .env
 
 # Switch to non-root user
 USER nodejs
 
 # Expose port
-EXPOSE 8000
+EXPOSE 5001
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:8000/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
+  CMD node -e "require('http').get('http://localhost:5001/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"
 
 # Start the application with dumb-init
 ENTRYPOINT ["dumb-init", "--"]

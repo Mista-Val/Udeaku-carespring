@@ -130,8 +130,8 @@ Udeaku-CareSpring/
    ```
 
 5. **Open browser:**
-   - Frontend: http://localhost:3000
-   - API: http://localhost:5000
+   - Frontend: http://localhost:3001
+   - API: http://localhost:5001
 
 ## Available Scripts
 
@@ -180,7 +180,7 @@ npm run k8s:status      # Check Kubernetes status
 
 2. **Run container:**
    ```bash
-   docker run -p 5000:5000 --env-file .env udeaku-carespring
+   docker run -p 5001:5001 --env-file .env udeaku-carespring
    ```
 
 3. **Docker Compose (optional):**

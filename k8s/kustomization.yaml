@@ -24,7 +24,7 @@ configMapGenerator:
   - name: udeaku-config
     literals:
       - NODE_ENV=production
-      - PORT=8000
+      - PORT=5001
       - CONTACT_EMAIL=carespringsup@gmail.com
       - WHATSAPP_NUMBER=+2349033432591
 
