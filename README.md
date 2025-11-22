@@ -44,18 +44,22 @@ Udeaku CareSpring Support Foundation is a non-profit organization dedicated to p
 ```
 Udeaku-CareSpring/
 ├── 📁 public/                    # Static assets (deployment ready)
-│   ├── 📄 index.html            # Main landing page (2,560 lines)
-│   ├── 📄 about.html            # About page (1,348 lines)
-│   ├── 📄 projects.html         # Projects/workshop page (2,913 lines)
-│   ├── 📄 404.html              # Custom error page (453 lines)
+│   ├── 📄 index.html            # Main landing page
+│   ├── 📄 about.html            # About page
+│   ├── 📄 projects.html         # Projects/workshop page
+│   ├── 📄 404.html              # Custom error page
 │   ├── 📁 css/styles.css        # Complete stylesheet
-│   └── 📁 images/shared/        # Optimized images (2.9MB, 15 files)
+│   ├── 📁 js/main.js            # JavaScript bundle
+│   ├── 📁 images/               # Images (15 files)
+│   └── 📁 videos/               # Video files (outreach.mp4, outreach2.mp4)
 ├── 📁 src/                      # Source code
 │   └── 📁 server/               # Backend API
 │       ├── controllers/         # API handlers
 │       ├── middleware/          # Error handling
 │       ├── utils/               # Utilities
 │       └── server.js            # Express server
+├── 📁 docs/                     # Documentation
+├── 📁 k8s/                      # Kubernetes configs
 ├── 📄 package.json              # Dependencies & scripts
 ├── 📄 webpack.config.js        # Build configuration
 ├── 📄 netlify.toml             # Deployment configuration
@@ -114,7 +118,8 @@ Udeaku-CareSpring/
 3. **Set up environment variables:**
    ```bash
    cp .env.example .env
-   # Edit .env with your configuration
+   # Edit .env with your configuration (required)
+   # The server will NOT start without PORT set in .env
    ```
 
 4. **Start development server:**
@@ -124,7 +129,7 @@ Udeaku-CareSpring/
 
 5. **Open browser:**
    - Frontend: http://localhost:3000
-   - API: http://localhost:8000
+   - API: http://localhost:5000
 
 ## Available Scripts
 
@@ -230,16 +235,6 @@ Content-Type: application/json
 - **Image Optimization**: WebP format, lazy loading
 - **Bundle Size**: Optimized with Webpack
 - **Loading**: Progressive loading with skeleton screens
-
-## Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. **Fork** the repository
-2. **Create** your feature branch: `git checkout -b feature/AmazingFeature`
-3. **Commit** your changes: `git commit -m 'Add some AmazingFeature'`
-4. **Push** to the branch: `git push origin feature/AmazingFeature`
-5. **Open** a Pull Request
 
 ### Development Guidelines
 
