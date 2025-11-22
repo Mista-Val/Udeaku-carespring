@@ -18,18 +18,6 @@ Udeaku CareSpring Support Foundation is a non-profit organization dedicated to p
 - **Interactive Forms** - Contact, partnership, and workshop registration
 - **Responsive Design** - Mobile-first approach for all devices
 
-## Upcoming Events
-
-**5-Day First Aid Training Workshop**  
-📅 December 15 - 19, 2025  
-📍 Owerri, Imo State, Nigeria  
-🎯 Certification: International First Aid Standards
-
-**World First Aid Day 2025**  
-📅 September 13, 2025  
-🌍 Theme: "First Aid and Climate Change"  
-🎯 Focus: Climate-related emergency preparedness
-
 ## Technologies Used
 
 ### Frontend
@@ -49,7 +37,6 @@ Udeaku CareSpring Support Foundation is a non-profit organization dedicated to p
 - **Webpack**: Module bundling and build optimization
 - **ESLint**: Code quality and style enforcement
 - **Prettier**: Code formatting
-- **Jest**: Testing framework
 - **Husky**: Git hooks for code quality
 
 ## Project Structure
@@ -62,15 +49,13 @@ Udeaku-CareSpring/
 │   ├── 📄 projects.html         # Projects/workshop page (2,913 lines)
 │   ├── 📄 404.html              # Custom error page (453 lines)
 │   ├── 📁 css/styles.css        # Complete stylesheet
-│   ├── 📁 images/shared/        # Optimized images (2.9MB, 15 files)
-│   └── 📁 js/                   # JavaScript (gitignored)
+│   └── 📁 images/shared/        # Optimized images (2.9MB, 15 files)
 ├── 📁 src/                      # Source code
-│   ├── 📁 server/               # Backend API
-│   │   ├── controllers/         # API handlers
-│   │   ├── middleware/          # Error handling
-│   │   ├── utils/               # Utilities
-│   │   └── server.js            # Express server
-│   └── 📁 client/               # Frontend source
+│   └── 📁 server/               # Backend API
+│       ├── controllers/         # API handlers
+│       ├── middleware/          # Error handling
+│       ├── utils/               # Utilities
+│       └── server.js            # Express server
 ├── 📄 package.json              # Dependencies & scripts
 ├── 📄 webpack.config.js        # Build configuration
 ├── 📄 netlify.toml             # Deployment configuration
@@ -149,8 +134,6 @@ npm run dev        # Start development server with hot reload
 npm run build      # Build for production
 npm run lint       # Run ESLint code quality check
 npm run lint:fix   # Fix ESLint issues automatically
-npm test           # Run test suite
-npm run test:watch # Run tests in watch mode
 npm run format     # Format code with Prettier
 ```
 
@@ -230,7 +213,6 @@ Content-Type: application/json
 - **ESLint**: Configured with recommended rules and Prettier integration
 - **Prettier**: Consistent code formatting
 - **Git Hooks**: Pre-commit hooks for code quality
-- **Testing**: Jest framework setup for unit tests
 - **Build Process**: Webpack optimization for production
 
 ## Browser Support
@@ -263,7 +245,6 @@ We welcome contributions! Please follow these steps:
 
 - Follow ESLint rules and Prettier formatting
 - Write meaningful commit messages
-- Add tests for new features
 - Update documentation as needed
 - Ensure mobile responsiveness
 
