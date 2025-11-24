@@ -117,7 +117,8 @@ body {
 /* Icon styling - CONSOLIDATED */
 .input-with-icon svg {
     position: absolute;
-    left: 1rem !important; /* Increased from 0.8rem for better desktop spacing */
+    left: 1rem !important;
+    /* Increased from 0.8rem for better desktop spacing */
     color: rgba(255, 255, 255, 0.5);
     width: 1rem;
     height: 1rem;
@@ -131,7 +132,8 @@ body {
 .input-with-icon select,
 .input-with-icon textarea {
     width: 100%;
-    padding: 0.6rem 1rem 0.6rem 2.8rem !important; /* Increased from 2.5rem for better spacing */
+    padding: 0.6rem 1rem 0.6rem 2.8rem !important;
+    /* Increased from 2.5rem for better spacing */
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
@@ -144,7 +146,8 @@ body {
 
 .input-with-icon textarea {
     min-height: 80px;
-    padding: 0.8rem 1rem 0.8rem 2.8rem !important; /* Consistent left padding */
+    padding: 0.8rem 1rem 0.8rem 2.8rem !important;
+    /* Consistent left padding */
     resize: vertical;
 }
 
@@ -214,27 +217,32 @@ body {
     .input-with-icon {
         margin-bottom: 0.5rem !important;
     }
-    
+
     .input-with-icon svg {
-        left: 1rem; /* Slightly more space on mobile */
+        left: 1rem;
+        /* Slightly more space on mobile */
         width: 1.1rem;
         height: 1.1rem;
     }
-    
+
     .input-with-icon input,
     .input-with-icon select,
     .input-with-icon textarea {
         font-size: 1rem !important;
-        padding: 0.8rem 1rem 0.8rem 3rem !important; /* Increased left padding for mobile */
-        min-height: 44px; /* Better touch target */
+        padding: 0.8rem 1rem 0.8rem 3rem !important;
+        /* Increased left padding for mobile */
+        min-height: 44px;
+        /* Better touch target */
     }
-    
+
     .input-with-icon textarea {
-        padding: 1rem 1rem 1rem 3rem !important; /* Consistent for textarea */
+        padding: 1rem 1rem 1rem 3rem !important;
+        /* Consistent for textarea */
     }
-    
+
     .input-with-icon select {
-        padding-right: 3rem !important; /* More space for arrow */
+        padding-right: 3rem !important;
+        /* More space for arrow */
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%23ffffff' d='M7 10.5L2 5.5h10z' opacity='0.8'/%3E%3C/svg%3E") !important;
         background-size: 0.8em auto !important;
         background-position: right 1.2rem top 50% !important;
@@ -363,16 +371,7 @@ body {
 }
 
 .form-step::after {
-    content: '';
-    position: absolute;
-    top: -8px;
-    right: 1rem;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    z-index: 2;
+    display: none;
 }
 
 #step-1::after {
@@ -446,14 +445,14 @@ body {
     top: 0;
     left: -1.5rem;
     right: -1.5rem;
-    height: 3px;
+    height: 6px;
     background: linear-gradient(90deg,
             transparent 0%,
             rgba(46, 204, 113, 0.3) 20%,
             rgba(46, 204, 113, 0.8) 50%,
             rgba(46, 204, 113, 0.3) 80%,
             transparent 100%);
-    border-radius: 2px;
+    border-radius: 3px;
     animation: shimmer 3s ease-in-out infinite;
 }
 
@@ -468,7 +467,7 @@ body {
             rgba(52, 152, 219, 1) 50%,
             rgba(52, 152, 219, 0.4) 80%,
             transparent 100%);
-    height: 4px;
+    height: 8px;
     box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
 }
 
@@ -1133,6 +1132,7 @@ body {
 
 .vision-card {
     position: relative;
+    text-align: center;
     padding: 1.8rem 1.6rem;
     border-radius: var(--radius-lg);
     background:
@@ -1566,12 +1566,12 @@ body {
     justify-content: center;
 }
 
-.training-schedule > div,
+.training-schedule>div,
 .course-curriculum ul,
-.certification-details > div,
-.prerequisites > div,
-.contact-support > div,
-.location-map > div {
+.certification-details>div,
+.prerequisites>div,
+.contact-support>div,
+.location-map>div {
     text-align: center;
 }
 
@@ -1580,26 +1580,26 @@ body {
     .section-form {
         padding: 2rem 1rem !important;
     }
-    
+
     .form-header__title {
         font-size: 1.5rem !important;
         line-height: 1.3 !important;
         text-align: center !important;
     }
-    
+
     .form-header__subtitle {
         font-size: 0.9rem !important;
         text-align: center !important;
         padding: 0 1rem !important;
     }
-    
+
     .form-meta {
         flex-direction: column !important;
         gap: 1rem !important;
         align-items: center !important;
         text-align: center !important;
     }
-    
+
     .meta-item {
         flex-direction: row !important;
         gap: 0.5rem !important;
@@ -1607,12 +1607,12 @@ body {
         align-items: center !important;
         justify-content: center !important;
     }
-    
+
     .meta-item svg {
         flex-shrink: 0 !important;
         margin: 0 !important;
     }
-    
+
     .meta-item div {
         display: flex !important;
         flex-direction: row !important;
@@ -1620,35 +1620,35 @@ body {
         gap: 0.5rem !important;
         text-align: center !important;
     }
-    
+
     .meta-label {
         font-weight: 500 !important;
         margin-right: 0.5rem !important;
     }
-    
+
     .meta-value {
         font-weight: normal !important;
     }
-    
+
     .form-notice {
         flex-direction: column !important;
         text-align: center !important;
         padding: 1rem !important;
         max-width: 100% !important;
     }
-    
+
     .form-notice p {
         text-align: center !important;
         font-size: 0.9rem !important;
     }
-    
+
     .form-container {
         display: flex !important;
         flex-direction: column !important;
         gap: 2rem !important;
         width: 100% !important;
     }
-    
+
     .form-sidebar {
         width: 100% !important;
         order: -1 !important;
@@ -1660,27 +1660,27 @@ body {
         border-left: none !important;
         border-bottom: 1px solid rgba(46, 204, 113, 0.1) !important;
     }
-    
+
     .form-sidebar__content {
         width: 90% !important;
         max-width: 400px !important;
         margin: 0 auto !important;
     }
-    
+
     .form-sidebar__title {
         text-align: center !important;
         width: 100% !important;
         max-width: 350px !important;
         margin: 0 auto 1rem auto !important;
     }
-    
+
     .form-sidebar__text {
         text-align: center !important;
         width: 100% !important;
         max-width: 350px !important;
         margin: 0 auto 1.5rem auto !important;
     }
-    
+
     .form-features {
         grid-template-columns: 1fr !important;
         gap: 0.6rem !important;
@@ -1689,7 +1689,7 @@ body {
         max-width: 400px !important;
         margin: 0 auto !important;
     }
-    
+
     .form-feature {
         padding: 0.8rem !important;
         text-align: center !important;
@@ -1699,53 +1699,53 @@ body {
         gap: 0.2rem !important;
         align-items: center !important;
     }
-    
+
     .form-feature svg {
         margin: 0 !important;
         flex-shrink: 0 !important;
     }
-    
+
     .form-feature span {
         margin: 0 !important;
         font-size: 0.9rem !important;
         text-align: center !important;
     }
-    
+
     /* More specific overrides for inline styles */
     .form-sidebar .form-features .form-feature[style*="gap: 0.5rem"] {
         gap: 0.2rem !important;
         align-items: center !important;
         justify-content: center !important;
     }
-    
+
     .form-sidebar .form-features .form-feature[style*="align-items: flex-start"] {
         align-items: center !important;
         gap: 0.2rem !important;
     }
-    
+
     .form-sidebar .form-features .form-feature[style*="display: flex"] {
         display: flex !important;
         align-items: center !important;
         gap: 0.2rem !important;
     }
-    
+
     /* Target all form feature divs within sidebar */
-    .form-sidebar .form-features > div {
+    .form-sidebar .form-features>div {
         gap: 0.2rem !important;
         align-items: center !important;
         justify-content: center !important;
     }
-    
-    .form-sidebar .form-features > div > svg {
+
+    .form-sidebar .form-features>div>svg {
         flex-shrink: 0 !important;
         margin: 0 !important;
     }
-    
-    .form-sidebar .form-features > div > span {
+
+    .form-sidebar .form-features>div>span {
         margin: 0 !important;
         text-align: center !important;
     }
-    
+
     /* Center align all training details sections in sidebar */
     .form-sidebar .training-schedule,
     .form-sidebar .course-curriculum,
@@ -1758,7 +1758,7 @@ body {
         max-width: 400px !important;
         margin: 0 auto !important;
     }
-    
+
     .form-sidebar .training-schedule h4,
     .form-sidebar .course-curriculum h4,
     .form-sidebar .certification-details h4,
@@ -1770,41 +1770,41 @@ body {
         width: 100% !important;
         max-width: 100% !important;
     }
-    
-    .form-sidebar .training-schedule > div,
+
+    .form-sidebar .training-schedule>div,
     .form-sidebar .course-curriculum ul,
-    .form-sidebar .certification-details > div,
-    .form-sidebar .prerequisites > div,
-    .form-sidebar .contact-support > div,
-    .form-sidebar .location-map > div {
+    .form-sidebar .certification-details>div,
+    .form-sidebar .prerequisites>div,
+    .form-sidebar .contact-support>div,
+    .form-sidebar .location-map>div {
         text-align: center !important;
         width: 100% !important;
         max-width: 100% !important;
     }
-    
-    .form-sidebar .training-schedule > div > div,
+
+    .form-sidebar .training-schedule>div>div,
     .form-sidebar .course-curriculum ul li,
-    .form-sidebar .prerequisites > div > div {
+    .form-sidebar .prerequisites>div>div {
         text-align: center !important;
         justify-content: center !important;
         width: 100% !important;
         max-width: 100% !important;
     }
-    
+
     /* Training schedule date/time gap - consolidated */
-    .form-sidebar .training-schedule > div > div > span {
+    .form-sidebar .training-schedule>div>div>span {
         display: block !important;
         text-align: center !important;
         margin-bottom: 1rem !important;
     }
-    
-    .form-sidebar .training-schedule > div > div > span:last-child {
+
+    .form-sidebar .training-schedule>div>div>span:last-child {
         margin-bottom: 0 !important;
         margin-top: 1rem !important;
     }
-    
+
     /* Override inline styles for training schedule */
-    .form-sidebar .training-schedule > div[style*="flex-direction: column"] > div[style*="justify-content: space-between"] {
+    .form-sidebar .training-schedule>div[style*="flex-direction: column"]>div[style*="justify-content: space-between"] {
         justify-content: center !important;
         align-items: center !important;
         flex-direction: column !important;
@@ -1812,17 +1812,18 @@ body {
         width: 100% !important;
         max-width: 100% !important;
     }
-    
-    .form-sidebar .training-schedule > div[style*="flex-direction: column"] > div[style*="justify-content: space-between"] > span {
+
+    .form-sidebar .training-schedule>div[style*="flex-direction: column"]>div[style*="justify-content: space-between"]>span {
         display: block !important;
         text-align: center !important;
         margin-bottom: 1rem !important;
     }
-    
-    .form-sidebar .training-schedule > div[style*="flex-direction: column"] > div[style*="justify-content: space-between"] > span:last-child {
+
+    .form-sidebar .training-schedule>div[style*="flex-direction: column"]>div[style*="justify-content: space-between"]>span:last-child {
         margin-bottom: 0 !important;
         margin-top: 1rem !important;
-    }  
+    }
+
     .form-main {
         width: 100% !important;
         order: 1 !important;
@@ -1831,76 +1832,76 @@ body {
         margin-top: 0 !important;
         padding: 1.5rem !important;
     }
-    
+
     .form-step-title {
         font-size: 1.2rem !important;
         text-align: center !important;
     }
-    
+
     .form-step-description {
         font-size: 0.9rem !important;
         text-align: center !important;
         padding: 0 1rem !important;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr !important;
         gap: 1rem !important;
     }
-    
+
     .form-field {
         margin-bottom: 1rem !important;
     }
-    
+
     .form-field label {
         font-size: 0.9rem !important;
         text-align: left !important;
     }
-    
+
     .radio-group {
         flex-direction: column !important;
         gap: 0.8rem !important;
     }
-    
+
     .radio-option {
         width: 100% !important;
         padding: 0.8rem !important;
     }
-    
+
     .checkbox-option {
         padding: 0.8rem !important;
         font-size: 0.9rem !important;
     }
-    
+
     .form-footer {
         max-width: 100% !important;
         padding: 1rem 0 !important;
         text-align: center !important;
     }
-    
+
     .form-footer strong {
         font-size: 0.8rem !important;
         line-height: 1.3 !important;
     }
-    
+
     .btn-primary.submit-row {
         width: 100% !important;
         padding: 1rem !important;
         font-size: 1rem !important;
         margin-top: 1rem !important;
     }
-    
+
     /* Training details mobile adjustments */
-    .training-schedule > div,
+    .training-schedule>div,
     .course-curriculum ul li,
-    .certification-details > div,
-    .prerequisites > div,
-    .contact-support > div,
-    .location-map > div {
+    .certification-details>div,
+    .prerequisites>div,
+    .contact-support>div,
+    .location-map>div {
         text-align: left !important;
         padding: 0.8rem !important;
     }
-    
+
     .training-schedule h4,
     .course-curriculum h4,
     .certification-details h4,
@@ -1910,7 +1911,7 @@ body {
         font-size: 1rem !important;
         margin-bottom: 1rem !important;
     }
-    
+
     .location-map iframe {
         height: 200px !important;
     }
@@ -1920,40 +1921,41 @@ body {
     .section-form {
         padding: 1.5rem 0.5rem !important;
     }
-    
+
     .form-header__title {
         font-size: 1.3rem !important;
     }
-    
+
     .form-header__subtitle {
         font-size: 0.85rem !important;
         padding: 0 0.5rem !important;
     }
-    
+
     .form-main {
         padding: 1rem !important;
     }
-    
+
     .form-step-title {
         font-size: 1.1rem !important;
     }
-    
+
     .form-step-description {
         font-size: 0.85rem !important;
         padding: 0 0.5rem !important;
     }
-    
+
     .form-field input,
     .form-field select,
     .form-field textarea {
-        font-size: 16px !important; /* Prevents zoom on iOS */
+        font-size: 16px !important;
+        /* Prevents zoom on iOS */
         padding: 0.75rem !important;
     }
-    
+
     .form-footer {
         padding: 0.8rem 0 !important;
     }
-    
+
     .form-footer strong {
         font-size: 0.75rem !important;
     }
@@ -2988,6 +2990,7 @@ textarea:focus::placeholder {
         align-items: stretch;
         min-height: 100%;
     }
+
     .form-step-title {
         font-size: 1.1rem;
     }
@@ -4948,6 +4951,7 @@ footer.site-footer::before {
     background: linear-gradient(145deg, #041c15, #020806);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
     overflow: hidden;
 }
 
@@ -6481,5 +6485,5 @@ footer.site-footer::before {
                                                                                                                                                                                                                                                                                                     }
 
                                                                                                                                                                                                                                                                                                     .hero-kicker:hover .animated-text::after {
-                                                                                                                                                                                                                                                                                                        width: 100%
+                                                                                                                                                                                                                                                                                                        width: 100%;
                                                                                                                                                                                                                                                                                                     }
