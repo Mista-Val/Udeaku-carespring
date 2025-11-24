@@ -6487,3 +6487,526 @@ footer.site-footer::before {
                                                                                                                                                                                                                                                                                                     .hero-kicker:hover .animated-text::after {
                                                                                                                                                                                                                                                                                                         width: 100%;
                                                                                                                                                                                                                                                                                                     }
+
+                                                                                                                                                                                                                                                                                                    /* ========== Inline Style Classes ========== */
+
+                                                                                                                                                                                                                                                                                                    /* Brand and Navigation */
+                                                                                                                                                                                                                                                                                                    .brand-link {
+                                                                                                                                                                                                                                                                                                        text-decoration: none;
+                                                                                                                                                                                                                                                                                                        display: flex;
+                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                                        gap: 1rem;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .brand-mark-custom {
+                                                                                                                                                                                                                                                                                                        width: 120px;
+                                                                                                                                                                                                                                                                                                        height: auto;
+                                                                                                                                                                                                                                                                                                        overflow: hidden;
+                                                                                                                                                                                                                                                                                                        border-radius: 16px;
+                                                                                                                                                                                                                                                                                                        flex-shrink: 0;
+                                                                                                                                                                                                                                                                                                        transition: transform 0.3s ease;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .brand-subtitle {
+                                                                                                                                                                                                                                                                                                        font-size: 1.1rem;
+                                                                                                                                                                                                                                                                                                        color: var(--text-soft);
+                                                                                                                                                                                                                                                                                                        font-weight: 500;
+                                                                                                                                                                                                                                                                                                        letter-spacing: 0.3px;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .nav-toggle-custom {
+                                                                                                                                                                                                                                                                                                        display: none;
+                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                                        gap: 0.5rem;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    /* Section Layout */
+                                                                                                                                                                                                                                                                                                    .section-centered {
+                                                                                                                                                                                                                                                                                                        text-align: center;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .section-centered-flex {
+                                                                                                                                                                                                                                                                                                        display: flex;
+                                                                                                                                                                                                                                                                                                        flex-direction: column;
+                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .section-centered-flex-text {
+                                                                                                                                                                                                                                                                                                        display: flex;
+                                                                                                                                                                                                                                                                                                        flex-direction: column;
+                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                                        text-align: center;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .section-label-centered {
+                                                                                                                                                                                                                                                                                                        justify-content: center;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .section-heading-centered {
+                                                                                                                                                                                                                                                                                                        max-width: 800px;
+                                                                                                                                                                                                                                                                                                        margin-left: auto;
+                                                                                                                                                                                                                                                                                                        margin-right: auto;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .section-intro-centered {
+                                                                                                                                                                                                                                                                                                        max-width: 800px;
+                                                                                                                                                                                                                                                                                                        margin-left: auto;
+                                                                                                                                                                                                                                                                                                        margin-right: auto;
+                                                                                                                                                                                                                                                                                                        padding: 0 1rem;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    /* Vision Card Text */
+                                                                                                                                                                                                                                                                                                    .vision-card-text {
+                                                                                                                                                                                                                                                                                                        font-size: clamp(1rem, 1.1vw, 1.1rem);
+                                                                                                                                                                                                                                                                                                        line-height: 1.7;
+                                                                                                                                                                                                                                                                                                        color: var(--text-soft);
+                                                                                                                                                                                                                                                                                                        margin-bottom: 1.2rem;
+                                                                                                                                                                                                                                                                                                        text-align: center;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    /* Founder Section */
+                                                                                                                                                                                                                                                                                                    .founder-grid-custom {
+                                                                                                                                                                                                                                                                                                        display: grid;
+                                                                                                                                                                                                                                                                                                        grid-template-columns: 1fr;
+                                                                                                                                                                                                                                                                                                        gap: 2.5rem;
+                                                                                                                                                                                                                                                                                                        width: 100%;
+                                                                                                                                                                                                                                                                                                        max-width: 100%;
+                                                                                                                                                                                                                                                                                                        margin: 0 auto;
+                                                                                                                                                                                                                                                                                                        padding: 0 1.5rem;
+                                                                                                                                                                                                                                                                                                        box-sizing: border-box;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-card-custom {
+                                                                                                                                                                                                                                                                                                        width: 100%;
+                                                                                                                                                                                                                                                                                                        max-width: 1200px;
+                                                                                                                                                                                                                                                                                                        margin: 0 auto;
+                                                                                                                                                                                                                                                                                                        padding: 2rem;
+                                                                                                                                                                                                                                                                                                        background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
+                                                                                                                                                                                                                                                                                                        border: 1px solid rgba(46, 204, 113, 0.15);
+                                                                                                                                                                                                                                                                                                        border-radius: 16px;
+                                                                                                                                                                                                                                                                                                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-chip-row-custom {
+                                                                                                                                                                                                                                                                                                        display: flex;
+                                                                                                                                                                                                                                                                                                        flex-direction: column;
+                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                                        margin: 0 auto 1.5rem;
+                                                                                                                                                                                                                                                                                                        max-width: 100%;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-chip-custom {
+                                                                                                                                                                                                                                                                                                        display: inline-block;
+                                                                                                                                                                                                                                                                                                        background: rgba(46, 204, 113, 0.1);
+                                                                                                                                                                                                                                                                                                        padding: 0.5rem 1rem;
+                                                                                                                                                                                                                                                                                                        border-radius: 20px;
+                                                                                                                                                                                                                                                                                                        margin-bottom: 0.8rem;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-badge-custom {
+                                                                                                                                                                                                                                                                                                        font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+                                                                                                                                                                                                                                                                                                        letter-spacing: 0.5px;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-meta-custom {
+                                                                                                                                                                                                                                                                                                        margin-top: 0.5rem;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-background {
+                                                                                                                                                                                                                                                                                                        font-size: clamp(1rem, 1.2vw, 1.2rem);
+                                                                                                                                                                                                                                                                                                        font-weight: 500;
+                                                                                                                                                                                                                                                                                                        color: var(--text);
+                                                                                                                                                                                                                                                                                                        letter-spacing: 0.3px;
+                                                                                                                                                                                                                                                                                                        line-height: 1.5;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-avatar-custom {
+                                                                                                                                                                                                                                                                                                        width: 250px;
+                                                                                                                                                                                                                                                                                                        height: 250px;
+                                                                                                                                                                                                                                                                                                        border-radius: 50%;
+                                                                                                                                                                                                                                                                                                        margin: 0 auto 2rem;
+                                                                                                                                                                                                                                                                                                        overflow: hidden;
+                                                                                                                                                                                                                                                                                                        border: 5px solid rgba(46, 204, 113, 0.25);
+                                                                                                                                                                                                                                                                                                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                                                                                                                                                                                                                                                                                                        transition: all 0.3s ease;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-avatar-img {
+                                                                                                                                                                                                                                                                                                        width: 100%;
+                                                                                                                                                                                                                                                                                                        height: 100%;
+                                                                                                                                                                                                                                                                                                        object-fit: cover;
+                                                                                                                                                                                                                                                                                                        object-position: center top;
+                                                                                                                                                                                                                                                                                                        transition: transform 0.5s ease;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-story-custom {
+                                                                                                                                                                                                                                                                                                        text-align: center;
+                                                                                                                                                                                                                                                                                                        max-width: 800px;
+                                                                                                                                                                                                                                                                                                        margin: 0 auto;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-name-custom {
+                                                                                                                                                                                                                                                                                                        font-size: clamp(1.5rem, 2.5vw, 2rem);
+                                                                                                                                                                                                                                                                                                        color: #fff;
+                                                                                                                                                                                                                                                                                                        margin-bottom: 0.5rem;
+                                                                                                                                                                                                                                                                                                        line-height: 1.3;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-role-custom {
+                                                                                                                                                                                                                                                                                                        font-size: clamp(1rem, 1.2vw, 1.2rem);
+                                                                                                                                                                                                                                                                                                        color: var(--accent);
+                                                                                                                                                                                                                                                                                                        margin-bottom: 1.5rem;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-paragraph {
+                                                                                                                                                                                                                                                                                                        font-size: clamp(1rem, 1.1vw, 1.1rem);
+                                                                                                                                                                                                                                                                                                        line-height: 1.7;
+                                                                                                                                                                                                                                                                                                        color: var(--text-soft);
+                                                                                                                                                                                                                                                                                                        margin-bottom: 1.2rem;
+                                                                                                                                                                                                                                                                                                        text-align: justify;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-quote-custom {
+                                                                                                                                                                                                                                                                                                        background: rgba(3, 19, 15, 0.3);
+                                                                                                                                                                                                                                                                                                        border-left: 3px solid var(--accent);
+                                                                                                                                                                                                                                                                                                        padding: 1.5rem;
+                                                                                                                                                                                                                                                                                                        margin: 2rem 0;
+                                                                                                                                                                                                                                                                                                        border-radius: 0 8px 8px 0;
+                                                                                                                                                                                                                                                                                                    }
+
+                                                                                                                                                                                                                                                                                                    .founder-quote-block-custom {
+                                                                                                                                                                                                                                                                                                        font-size: clamp(1.1rem, 1.3vw, 1.3rem);
+                                                                                                                                                                                                                                                                                                        font-style: italic;
+                                                                                                                                                                                                                                                                                                        color: #fff;
+                                                                                                                                                                                                                                                                                                        padding: 1.5rem;
+                                                                                                                                                                                                                                                                                                        margin-top: 2rem;
+                                                                                                                                                                                                                                                                                                        border-top: 1px solid rgba(255, 255, 255, 0.1);
+                                                                                                                                                                                                                                                                                                        position: relative;
+                                                                                                                                                                                                                                                                                                        max-width: 800px;
+                                                                                                                                                                                                                                                                                                        margin-left: auto;
+                                                                                                                                                                                                                                                                                                        margin-right: auto;
+                                                                                                                                                                                                                                                                                                    }
+
+/* Projects Section */
+.projects-section-centered {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+}
+
+.projects-label-custom {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(46, 204, 113, 0.1);
+    border-radius: 20px;
+}
+
+.projects-label-text {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+}
+
+.projects-heading-custom {
+    text-align: center;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.projects-intro-custom {
+    max-width: 100%;
+    text-align: justify;
+}
+
+.upcoming-projects-custom {
+    margin-top: -1rem;
+}
+
+.projects-label-flex {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0.2rem;
+}
+
+.founder-section-label {
+    justify-content: center;
+    display: flex;
+    margin: 0 auto 1rem;
+}
+
+.founder-section-title {
+    margin-left: 0.5rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.about-program-image-custom {
+    margin: 0.2rem 0;
+}
+
+.svg-icon-middle {
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.form-meta-custom {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.meta-item-custom {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.meta-label-custom {
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.form-notice-custom {
+    margin: 1rem auto;
+    padding: 1rem;
+    background: rgba(33, 150, 243, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 100%;
+}
+
+.notice-icon-custom {
+    flex-shrink: 0;
+    color: #2196F3;
+    margin-top: 2px;
+}
+
+.notice-text-custom {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #cf0f0f;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.notice-text-strong {
+    color: #f5efef;
+}
+
+.form-features-custom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+
+.form-feature-custom {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feature-icon-custom {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.feature-icon-green {
+    color: #4CAF50;
+}
+
+.feature-icon-blue {
+    color: #2196F3;
+}
+
+.feature-icon-orange {
+    color: #FF9800;
+}
+
+.feature-icon-purple {
+    color: #9C27B0;
+}
+
+.feature-text-custom {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.training-schedule-custom {
+    margin-top: 1.5rem;
+}
+
+.training-heading-custom {
+    color: #2ecc71;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.training-days-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.training-day-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.6rem;
+    border-radius: 6px;
+}
+
+.training-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.training-day-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.training-day-time {
+    font-size: 0.8rem;
+}
+
+.training-day-time-green {
+    color: #4CAF50;
+}
+
+.training-day-time-blue {
+    color: #2196F3;
+}
+
+.training-day-time-orange {
+    color: #FF9800;
+}
+
+.training-day-time-purple {
+    color: #9C27B0;
+}
+
+.training-day-time-pink {
+    color: #E91E63;
+}
+
+.training-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 0.3rem;
+}
+
+.training-topic {
+    font-size: 0.75rem;
+}
+
+.training-topic-green {
+    color: #2ecc71;
+}
+
+.training-topic-blue {
+    color: #3498db;
+}
+
+.training-topic-orange {
+    color: #f39c12;
+}
+
+/* Day-specific backgrounds */
+.day-1-bg {
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.day-2-bg {
+    background: rgba(33, 150, 243, 0.1);
+}
+
+.day-3-bg {
+    background: rgba(255, 152, 0, 0.1);
+}
+
+.day-4-bg {
+    background: rgba(156, 39, 176, 0.1);
+}
+
+.day-5-bg {
+    background: rgba(233, 30, 99, 0.1);
+}
+
+/* Page Shell Visibility */
+.page-shell-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Brand Mark Image */
+.brand-mark-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Error Page Container */
+.error-container {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.error-container h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.error-container h2 {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--text);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    max-width: 600px;
+}
+
+.error-container a {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.error-container a:hover {
+    background: #27ae60;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}

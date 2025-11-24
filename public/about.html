@@ -22,735 +22,89 @@
     <meta property="og:image" content="/images/logo.jpeg">
     <meta property="og:url" content="https://carespringsup.org/about">
     <meta name="twitter:card" content="summary_large_image">
+    <style>
+        /* Mobile Navigation Toggle */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none !important;
+            }
+
+            .nav-toggle {
+                display: inline-flex !important;
+            }
+
+            .site-nav {
+                display: none !important;
+                padding: 0.2rem !important;
+                top: 75px !important;
+                right: 0.5rem !important;
+                left: auto !important;
+                border-radius: 6px !important;
+                width: 120px !important;
+                margin: 0 !important;
+                position: absolute !important;
+                z-index: 1000 !important;
+                background: transparent !important;
+                backdrop-filter: none !important;
+                border: 1px solid rgba(255, 255, 255, 0.3) !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+            }
+            
+            .site-nav.nav-open {
+                display: block !important;
+            }
+            
+            .site-nav a {
+                display: block !important;
+                margin-bottom: 2px !important;
+            }
+            
+            .site-nav a span {
+                font-size: 0.75rem !important;
+                padding: 0.3rem 0.5rem !important;
+                background: rgba(0, 0, 0, 0.7) !important;
+                color: white !important;
+                display: block !important;
+                border-radius: 4px !important;
+            }
+            
+            .site-nav a.nav-cta span {
+                background: rgba(46, 204, 113, 0.8) !important;
+            }
+        }
+    </style>
 </head>
 
-<style>
-    /* Responsive Navigation */
-    @media (min-width: 769px) {
-        .desktop-nav {
-            display: none !important;
-        }
-        .nav-toggle {
-            display: none !important;
-        }
-        .site-nav.site-nav {
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.5rem !important;
-            font-size: 0.9rem !important;
-            position: static !important;
-            background: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            top: auto !important;
-            right: auto !important;
-            left: auto !important;
-            width: auto !important;
-            height: auto !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            z-index: auto !important;
-            pointer-events: auto !important;
-            opacity: 1 !important;
-            transform: none !important;
-        }
-        
-        .site-nav.site-nav a {
-            color: var(--text-soft) !important;
-            text-decoration: none !important;
-            padding: 0.6rem 1.2rem !important;
-            border-radius: 999px !important;
-            border: 1px solid transparent !important;
-            background: transparent !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            position: relative !important;
-            font-size: inherit !important;
-            font-weight: inherit !important;
-            transition: all 0.3s ease !important;
-        }
-        
-        .site-nav.site-nav a:hover,
-        .site-nav.site-nav a:focus-visible {
-            border-color: rgba(46, 204, 113, 0.6) !important;
-            background: linear-gradient(120deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.98)) !important;
-            color: var(--text-main) !important;
-        }
-        
-        .site-nav.site-nav a span {
-            z-index: 1 !important;
-            position: relative !important;
-        }
-        
-        .site-nav.site-nav a::before {
-            content: '' !important;
-            position: absolute !important;
-            inset: 0 !important;
-            background: radial-gradient(circle at 0 0, rgba(46, 204, 113, 0.38), transparent 55%) !important;
-            opacity: 0 !important;
-            border-radius: 999px !important;
-            transition: opacity 0.3s ease !important;
-        }
-        
-        .site-nav.site-nav a:hover::before,
-        .site-nav.site-nav a:focus-visible::before {
-            opacity: 1 !important;
-        }
-        
-        /* Circular ring CTA button with page theme colors and reduced brightness effects */
-        body header nav.site-nav.site-nav a.nav-cta {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            text-align: center !important;
-            padding: 0.8rem 1.5rem !important;
-            background: linear-gradient(135deg, 
-                var(--accent, rgba(46, 204, 113, 0.9)),
-                rgba(39, 174, 96, 0.85),
-                rgba(52, 152, 219, 0.8),
-                rgba(155, 89, 182, 0.75),
-                rgba(241, 196, 15, 0.8)
-            ) !important;
-            background-size: 400% 400% !important;
-            animation: brighteningGradient 3s ease-in-out infinite !important;
-            border: 3px solid rgba(255, 255, 255, 0.8) !important;
-            border-radius: 50% !important;
-            box-shadow: 
-                0 0 15px rgba(46, 204, 113, 0.4),
-                0 0 25px rgba(39, 174, 96, 0.3),
-                0 0 35px rgba(52, 152, 219, 0.2),
-                inset 0 0 15px rgba(255, 255, 255, 0.3) !important;
-            position: relative !important;
-            overflow: hidden !important;
-            min-width: 80px !important;
-            min-height: 80px !important;
-            filter: brightness(1.05) !important;
-            transition: all 0.3s ease !important;
-        }
-        
-        body header nav.site-nav.site-nav a.nav-cta::before {
-            content: '' !important;
-            position: absolute !important;
-            top: -3px !important;
-            left: -3px !important;
-            right: -3px !important;
-            bottom: -3px !important;
-            background: linear-gradient(45deg, 
-                var(--accent, #2ecc71),
-                #27ae60,
-                #3498db,
-                #9b59b6,
-                #f1c40f,
-                var(--accent, #2ecc71),
-                #27ae60,
-                #3498db,
-                #9b59b6,
-                #f1c40f
-            ) !important;
-            background-size: 400% 400% !important;
-            animation: brighteningBorder 2.5s linear infinite !important;
-            border-radius: 50% !important;
-            z-index: -1 !important;
-            opacity: 0 !important;
-            transition: opacity 0.3s ease !important;
-            filter: brightness(1.1) !important;
-        }
-        
-        body header nav.site-nav.site-nav a.nav-cta:hover::before {
-            opacity: 1 !important;
-        }
-        
-        body header nav.site-nav.site-nav a.nav-cta span {
-            color: white !important;
-            font-weight: 600 !important;
-            font-size: 0.75rem !important;
-            line-height: 1.2 !important;
-            letter-spacing: 0.5px !important;
-            text-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 2px rgba(255, 255, 255, 0.6) !important;
-            z-index: 2 !important;
-            filter: brightness(1.1) !important;
-            animation: textBrightening 2s ease-in-out infinite !important;
-        }
-        
-        body header nav.site-nav.site-nav a.nav-cta:hover {
-            transform: scale(1.1) !important;
-            filter: brightness(1.15) saturate(1.1) !important;
-            box-shadow: 
-                0 0 20px rgba(46, 204, 113, 0.5),
-                0 0 30px rgba(39, 174, 96, 0.4),
-                0 0 40px rgba(52, 152, 219, 0.3),
-                inset 0 0 20px rgba(255, 255, 255, 0.4) !important;
-        }
-        
-        @keyframes brighteningGradient {
-            0% { 
-                background-position: 0% 50%; 
-                filter: brightness(1.05) saturate(1);
-            }
-            25% { 
-                background-position: 50% 25%; 
-                filter: brightness(1.1) saturate(1.05);
-            }
-            50% { 
-                background-position: 100% 50%; 
-                filter: brightness(1.15) saturate(1.1);
-            }
-            75% { 
-                background-position: 50% 75%; 
-                filter: brightness(1.1) saturate(1.05);
-            }
-            100% { 
-                background-position: 0% 50%; 
-                filter: brightness(1.05) saturate(1);
-            }
-        }
-        
-        @keyframes brighteningBorder {
-            0% { 
-                background-position: 0% 0%; 
-                filter: brightness(1.1) hue-rotate(0deg);
-            }
-            25% { 
-                background-position: 100% 25%; 
-                filter: brightness(1.2) hue-rotate(90deg);
-            }
-            50% { 
-                background-position: 200% 50%; 
-                filter: brightness(1.25) hue-rotate(180deg);
-            }
-            75% { 
-                background-position: 300% 75%; 
-                filter: brightness(1.2) hue-rotate(270deg);
-            }
-            100% { 
-                background-position: 400% 0%; 
-                filter: brightness(1.1) hue-rotate(360deg);
-            }
-        }
-        
-        @keyframes textBrightening {
-            0%, 100% { 
-                filter: brightness(1.1) drop-shadow(0 0 1px rgba(255, 255, 255, 0.6));
-            }
-            50% { 
-                filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
-            }
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .desktop-nav {
-            display: none !important;
-        }
-        .nav-toggle {
-            display: inline-flex !important;
-        }
-        .site-nav {
-            display: none !important;
-            padding: 0.2rem !important;
-            top: 75px !important;
-            right: 0.5rem !important;
-            left: auto !important;
-            border-radius: 6px !important;
-            width: 120px !important;
-            margin: 0 !important;
-            position: absolute !important;
-            z-index: 1000 !important;
-            background: transparent !important;
-            backdrop-filter: none !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-        }
-        
-        .site-nav.nav-open {
-            display: block !important;
-        }
-        
-        .site-nav a {
-            display: block !important;
-            margin-bottom: 2px !important;
-        }
-        
-        .site-nav a span {
-            font-size: 0.75rem !important;
-            padding: 0.3rem 0.5rem !important;
-            background: rgba(0, 0, 0, 0.7) !important;
-            color: white !important;
-            display: block !important;
-            border-radius: 4px !important;
-        }
-        
-        .site-nav a.nav-cta span {
-            background: rgba(46, 204, 113, 0.8) !important;
-        }
-        
-        /* Mobile nav-cta with page theme colors and reduced brightness effects */
-        body header nav.site-nav a.nav-cta {
-            background: linear-gradient(135deg, 
-                var(--accent, rgba(46, 204, 113, 0.9)),
-                rgba(39, 174, 96, 0.85),
-                rgba(52, 152, 219, 0.8),
-                rgba(155, 89, 182, 0.75),
-                rgba(241, 196, 15, 0.8)
-            ) !important;
-            background-size: 400% 400% !important;
-            animation: brighteningGradient 3s ease-in-out infinite !important;
-            border: 2px solid rgba(255, 255, 255, 0.8) !important;
-            border-radius: 50% !important;
-            box-shadow: 
-                0 0 12px rgba(46, 204, 113, 0.4),
-                0 0 20px rgba(39, 174, 96, 0.3),
-                inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
-            padding: 0.3rem !important;
-            margin: 0.2rem auto !important;
-            filter: brightness(1.05) !important;
-            transition: all 0.3s ease !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            text-align: center !important;
-            position: relative !important;
-            overflow: hidden !important;
-            min-width: 60px !important;
-            min-height: 60px !important;
-        }
-        
-        body header nav.site-nav a.nav-cta span {
-            background: transparent !important;
-            color: white !important;
-            font-weight: 600 !important;
-            font-size: 0.65rem !important;
-            line-height: 1.1 !important;
-            padding: 0 !important;
-            border-radius: 0 !important;
-            text-shadow: 0 0 6px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.6) !important;
-            filter: brightness(1.1) !important;
-            animation: textBrightening 2s ease-in-out infinite !important;
-            position: relative !important;
-            z-index: 2 !important;
-        }
-
-        body header nav.site-nav a.nav-cta span::before {
-            content: '' !important;
-            position: absolute !important;
-            top: -8px !important;
-            left: -8px !important;
-            right: -8px !important;
-            bottom: -8px !important;
-            border-radius: 50% !important;
-            background: conic-gradient(
-                from 0deg,
-                transparent 0deg,
-                rgba(255, 255, 255, 0.1) 45deg,
-                rgba(255, 255, 255, 0.3) 90deg,
-                rgba(255, 255, 255, 0.1) 135deg,
-                transparent 180deg,
-                transparent 360deg
-            ) !important;
-            animation: moonlightRotation 4s linear infinite !important;
-            z-index: 1 !important;
-        }
-        
-        body header nav.site-nav a.nav-cta:hover {
-            filter: brightness(1.15) saturate(1.1) !important;
-            transform: scale(1.05) !important;
-            box-shadow: 
-                0 0 15px rgba(46, 204, 113, 0.5),
-                0 0 25px rgba(39, 174, 96, 0.4),
-                inset 0 0 12px rgba(255, 255, 255, 0.4) !important;
-        }
-
-        body header nav.site-nav a.nav-cta:hover span::before {
-            background: conic-gradient(
-                from 0deg,
-                transparent 0deg,
-                rgba(255, 255, 255, 0.2) 45deg,
-                rgba(255, 255, 255, 0.4) 90deg,
-                rgba(255, 255, 255, 0.2) 135deg,
-                transparent 180deg,
-                transparent 360deg
-            ) !important;
-            animation: moonlightRotation 2s linear infinite !important;
-        }
-
-        @keyframes moonlightRotation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    }
-    
-    @media (max-width: 768px) {
-        /* Improved mobile responsiveness for aims section */
-        .section-aims {
-            padding: 3rem 1rem !important;
-        }
-        
-        .section-aims * {
-            text-align: justify !important;
-        }
-        
-        .section-aims .section-label,
-        .section-aims .section-heading,
-        .section-aims .aim-title,
-        .section-aims .aims-side-highlight,
-        .section-aims .aims-side-highlight span,
-        .section-aims .aim-item-index {
-            text-align: center !important;
-        }
-        
-        .aims-grid {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 2rem !important;
-        }
-        
-        .aims-list {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 1.5rem !important;
-        }
-        
-        .aim-item {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 1rem !important;
-            padding: 1.5rem !important;
-            border-radius: 12px !important;
-            background: linear-gradient(145deg, rgba(4, 28, 21, 0.8), rgba(2, 8, 6, 0.9)) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
-        }
-        
-        .aim-item-index {
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            width: 40px !important;
-            height: 40px !important;
-            border-radius: 50% !important;
-            background: linear-gradient(120deg, var(--accent), var(--accent-strong)) !important;
-            color: #02140d !important;
-            font-weight: 700 !important;
-            font-size: 1rem !important;
-            margin-bottom: 0.5rem !important;
-        }
-        
-        .aims-side-card {
-            order: -1 !important;
-            margin-bottom: 2rem !important;
-        }
-        
-        .aims-side-highlight {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            gap: 0.5rem !important;
-            padding: 1rem !important;
-            border-radius: 8px !important;
-            background: rgba(3, 19, 15, 0.95) !important;
-            margin-top: 1rem !important;
-        }
-        
-        .aims-side-highlight span:first-child {
-            font-size: 2rem !important;
-            margin-bottom: 0.5rem !important;
-        }
-        
-        .aims-side-highlight span:last-child {
-            line-height: 1.4 !important;
-        }
-        
-        .section-heading {
-            font-size: 1.8rem !important;
-            line-height: 1.3 !important;
-        }
-        
-        .section-intro {
-            font-size: 1rem !important;
-            line-height: 1.6 !important;
-            padding: 0 1rem !important;
-        }
-    }
-    
-    @media (min-width: 769px) {
-        .desktop-nav {
-            display: none !important;
-        }
-        .nav-toggle {
-            display: none !important;
-        }
-        .site-nav.site-nav {
-            display: flex !important;
-            position: static !important;
-            background: transparent !important;
-            backdrop-filter: none !important;
-            border-radius: 0 !important;
-            padding: 0 !important;
-            box-shadow: none !important;
-            max-width: none !important;
-            width: auto !important;
-            flex-direction: row !important;
-            gap: 0.5rem !important;
-        }
-    }
-
-    /* Header layout adjustments */
-    .header-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-    }
-    
-    /* Text justification for aims section - desktop */
-    .section-aims .aim-body,
-    .section-aims .aims-side-card p {
-        text-align: justify !important;
-    }
-    
-    /* Center align aim titles */
-    .section-aims .aim-title {
-        text-align: center !important;
-    }
-    
-    /* Keep highlight section center-aligned */
-    .section-aims .aims-side-highlight {
-        text-align: center !important;
-    }
-    
-    .section-aims .aims-side-highlight span {
-        text-align: center !important;
-    }
-    
-    @media (min-width: 769px) {
-        .header-inner {
-            gap: 2rem;
-        }
-        
-        .brand {
-            flex-shrink: 0;
-        }
-        
-        .site-nav {
-            flex: 1;
-            justify-content: flex-end;
-        }
-    }
-
-    /* Moonlight #register button styling from projects.html */
-    body header nav.site-nav.site-nav a.nav-cta {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        text-align: center !important;
-        position: relative !important;
-        padding: 0.6rem 1rem !important;
-        border-radius: 50% !important;
-        width: 80px !important;
-        height: 80px !important;
-        background: linear-gradient(135deg,
-                rgba(46, 204, 113, 0.4),
-                rgba(39, 174, 96, 0.35),
-                rgba(52, 152, 219, 0.3)) !important;
-        border: 2px solid rgba(46, 204, 113, 0.7) !important;
-        box-shadow:
-            0 0 15px rgba(46, 204, 113, 0.3),
-            0 0 25px rgba(39, 174, 96, 0.2),
-            inset 0 0 15px rgba(255, 255, 255, 0.1) !important;
-        color: var(--accent) !important;
-        text-decoration: none !important;
-        font-weight: 600 !important;
-        font-size: 0.65rem !important;
-        line-height: 1.1 !important;
-        letter-spacing: 0.3px !important;
-        overflow: hidden !important;
-        min-height: 70px !important;
-        transition: all 0.3s ease !important;
-        animation: pulseGlow 2s ease-in-out infinite !important;
-    }
-
-    body header nav.site-nav.site-nav a.nav-cta::before {
-        content: '' !important;
-        position: absolute !important;
-        top: -2px !important;
-        left: -2px !important;
-        right: -2px !important;
-        bottom: -2px !important;
-        background: linear-gradient(45deg,
-                rgba(46, 204, 113, 0.8),
-                rgba(39, 174, 96, 0.7),
-                rgba(52, 152, 219, 0.6)) !important;
-        border-radius: 50% !important;
-        z-index: 1 !important;
-        opacity: 0 !important;
-        transition: opacity 0.3s ease !important;
-    }
-
-    body header nav.site-nav.site-nav a.nav-cta:hover::before {
-        opacity: 1 !important;
-    }
-
-    body header nav.site-nav.site-nav a.nav-cta span {
-        color: white !important;
-        font-weight: 700 !important;
-        font-size: 0.7rem !important;
-        line-height: 1.2 !important;
-        letter-spacing: 0.5px !important;
-        text-align: center !important;
-        z-index: 2 !important;
-        position: relative !important;
-        filter: brightness(1.1) !important;
-        text-shadow: 0 0 4px rgba(46, 204, 113, 0.5) !important;
-    }
-
-    body header nav.site-nav.site-nav a.nav-cta span::before {
-        content: '' !important;
-        position: absolute !important;
-        top: -8px !important;
-        left: -8px !important;
-        right: -8px !important;
-        bottom: -8px !important;
-        border-radius: 50% !important;
-        background: conic-gradient(
-            from 0deg,
-            transparent 0deg,
-            rgba(255, 255, 255, 0.1) 45deg,
-            rgba(255, 255, 255, 0.3) 90deg,
-            rgba(255, 255, 255, 0.1) 135deg,
-            transparent 180deg,
-            transparent 360deg
-        ) !important;
-        animation: moonlightRotation 4s linear infinite !important;
-        z-index: 1 !important;
-    }
-
-    body header nav.site-nav.site-nav a.nav-cta {
-        transform: scale(1.05) !important;
-        filter: brightness(1.1) saturate(1.2) !important;
-        box-shadow:
-            0 0 30px rgba(46, 204, 113, 0.5),
-            0 0 45px rgba(39, 174, 96, 0.4),
-            0 0 60px rgba(52, 152, 219, 0.3),
-            inset 0 0 30px rgba(255, 255, 255, 0.25) !important;
-        animation: moonlightGlow 2s ease-in-out infinite !important;
-    }
-
-    body header nav.site-nav.site-nav a.nav-cta:hover {
-        transform: scale(1.08) !important;
-        filter: brightness(1.15) saturate(1.3) !important;
-        box-shadow:
-            0 0 35px rgba(46, 204, 113, 0.6),
-            0 0 50px rgba(39, 174, 96, 0.5),
-            0 0 65px rgba(52, 152, 219, 0.4),
-            inset 0 0 35px rgba(255, 255, 255, 0.3) !important;
-    }
-
-    body header nav.site-nav.site-nav a.nav-cta:hover span::before {
-        background: conic-gradient(
-            from 0deg,
-            transparent 0deg,
-            rgba(255, 255, 255, 0.15) 45deg,
-            rgba(255, 255, 255, 0.3) 90deg,
-            rgba(255, 255, 255, 0.15) 135deg,
-            transparent 180deg,
-            transparent 360deg
-        ) !important;
-        animation: moonlightRotation 3s linear infinite !important;
-    }
-
-    @keyframes moonlightRotation {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    @keyframes moonlightGlow {
-        0% {
-            box-shadow:
-                0 0 40px rgba(46, 204, 113, 0.6),
-                0 0 60px rgba(39, 174, 96, 0.5),
-                0 0 80px rgba(52, 152, 219, 0.4),
-                inset 0 0 40px rgba(255, 255, 255, 0.3);
-        }
-        50% {
-            box-shadow:
-                0 0 60px rgba(46, 204, 113, 0.8),
-                0 0 80px rgba(39, 174, 96, 0.7),
-                0 0 100px rgba(52, 152, 219, 0.6),
-                inset 0 0 50px rgba(255, 255, 255, 0.5);
-        }
-        100% {
-            box-shadow:
-                0 0 40px rgba(46, 204, 113, 0.6),
-                0 0 60px rgba(39, 174, 96, 0.5),
-                0 0 80px rgba(52, 152, 219, 0.4),
-                inset 0 0 40px rgba(255, 255, 255, 0.3);
-        }
-    }
-
-    @keyframes pulseGlow {
-        0% {
-            box-shadow:
-                0 0 10px rgba(46, 204, 113, 0.3),
-                0 0 20px rgba(39, 174, 96, 0.2),
-                inset 0 0 10px rgba(255, 255, 255, 0.1);
-        }
-        50% {
-            box-shadow:
-                0 0 15px rgba(46, 204, 113, 0.5),
-                0 0 25px rgba(39, 174, 96, 0.3),
-                inset 0 0 15px rgba(255, 255, 255, 0.15);
-        }
-        100% {
-            box-shadow:
-                0 0 10px rgba(46, 204, 113, 0.3),
-                0 0 20px rgba(39, 174, 96, 0.2),
-                inset 0 0 10px rgba(255, 255, 255, 0.1);
-        }
-    }
-</style>
-
 <body>
-    <div class="page-shell">
+    <div class="page-shell page-shell-visible">
         <header class="site-header">
             <div class="max-width header-inner">
-                <a href="index.html" class="brand"
-                    style="text-decoration: none; display: flex; align-items: center; gap: 1rem;">
-                    <div class="brand-mark"
-                        style="width: 120px; height: auto; overflow: hidden; border-radius: 16px; flex-shrink: 0; transition: transform 0.3s ease;">
-                        <img src="/images/logo.jpeg" alt="Udeaku CareSpring Support Foundation logo" />
+                <a href="index.html" class="brand brand-link">
+                    <div class="brand-mark brand-mark-custom">
+                        <img src="/images/logo.jpeg" alt="Udeaku CareSpring Support Foundation logo"
+                            class="brand-mark-img" />
                     </div>
                     <div class="brand-text">
-                        <div class="subtitle"
-                            style="font-size: 1.1rem; color: var(--text-soft); font-weight: 500; letter-spacing: 0.3px;">
-                            Renewal | Health | Compassion
-                        </div>
+                        <div class="subtitle brand-subtitle">
+                            Renewal | Health | Compassion</div>
                     </div>
                 </a>
-                
+
                 <!-- Original Site Navigation (Desktop) -->
                 <nav class="site-nav" id="siteNav">
                     <a href="index.html"><span>Home</span></a>
                     <a href="about.html#about"><span>About Us</span></a>
                     <a href="projects.html#projects"><span>Our Projects</span></a>
                     <a href="index.html#contact"><span>Contact Us</span></a>
-                    <a href="https://payservice.ecobank.com/PayPortal?bid=iI9z3c9XLX9bRTrbigKSOg%3D%3D" target="_blank" class="nav-cta"><span>SUPPORT<br>US<br>TODAY</span></a>
+                    <a href="404.html" target="_blank"
+                        class="nav-cta"><span>SUPPORT<br>US<br>TODAY</span></a>
                 </nav>
-                
+
                 <!-- Mobile Menu Toggle -->
-                <button class="nav-toggle" type="button" aria-label="Toggle navigation" id="navToggle" style="display: none; align-items: center; gap: 0.5rem;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation" id="navToggle"
+                    style="display: none; align-items: center; gap: 0.5rem;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
                         <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -761,12 +115,12 @@
         </header>
 
         <section class="section-about" id="about" aria-labelledby="about-heading">
-            <div class="max-width" style="text-align: center;">
-                <div class="reveal visible" style="display: flex; flex-direction: column; align-items: center;">
-                    <div class="section-label" style="justify-content: center;">
+            <div class="max-width section-centered">
+                <div class="reveal visible section-centered-flex">
+                    <div class="section-label section-label-centered">
                         <span><strong>About Us</strong></span>
                     </div>
-                    <h2 id="about-heading" class="section-heading" style="max-width: 800px; margin-left: auto; margin-right: auto;">Udeaku CareSpring Support Foundation</h2>
+                    <h2 id="about-heading" class="section-heading section-heading-centered">Udeaku CareSpring Support Foundation</h2>
                 </div>
                 <div class="about-text reveal visible">
                     <p>
@@ -889,7 +243,7 @@
                                 flex: 0 1 250px;
                                 min-width: 200px;
                                 max-width: 280px;
-                                padding: 1rem 0.8rem !important;
+                                padding: 1rem 0.8rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
                                 border: 1px solid rgba(46, 204, 113, 0.15);
                                 border-radius: 12px;
@@ -932,12 +286,12 @@
         <!-- Vision & Mission -->
         <section class="section-vision" id="vision" aria-labelledby="vision-heading">
             <div class="max-width">
-                <div class="reveal visible" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div class="section-label" style="justify-content: center;">
+                <div class="reveal visible section-centered-flex-text">
+                    <div class="section-label section-label-centered">
                         <span><strong>Vision &amp; Mission</strong></span>
                     </div>
-                    <h2 id="vision-heading" class="section-heading" style="max-width: 800px; margin-left: auto; margin-right: auto;">Our Heartbeat &amp; Direction</h2>
-                    <p class="section-intro" style="max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 1rem;">
+                    <h2 id="vision-heading" class="section-heading section-heading-centered">Our Heartbeat &amp; Direction</h2>
+                    <p class="section-intro section-intro-centered">
                         Behind every training, outreach, and act of support is a clear vision and mission: that
                         every
                         person can access basic first aid, compassionate care, and hope regardless of background.
@@ -951,7 +305,7 @@
                                 <span>Vision</span>
                             </div>
                             <h3>A world prepared to care</h3>
-                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: center;">
+                            <p class="vision-card-text">
                                 A world where every individual has access to basic first aid, compassionate care,
                                 and the
                                 knowledge to respond in times of emergency.
@@ -965,7 +319,7 @@
                                 <span>Mission</span>
                             </div>
                             <h3> community health &amp; safety</h3>
-                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: center;">
+                            <p class="vision-card-text">
                                 To bridge communities to health and safety by providing first aid training,
                                 humanitarian
                                 services, and nursing care that upholds dignity, saves lives, and restores hope.
@@ -979,12 +333,12 @@
         <!-- Aims & Objectives -->
         <section class="section-aims" id="aims" aria-labelledby="aims-heading">
             <div class="max-width">
-                <div class="reveal visible" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div class="section-label" style="justify-content: center;">
+                <div class="reveal visible section-centered-flex-text">
+                    <div class="section-label section-label-centered">
                         <span><strong>Aims &amp; Objectives</strong></span>
                     </div>
-                    <h2 id="aims-heading" class="section-heading" style="max-width: 800px; margin-left: auto; margin-right: auto;">Why Udeaku CareSpring Exists</h2>
-                    <p class="section-intro" style="max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 1rem;">
+                    <h2 id="aims-heading" class="section-heading section-heading-centered">Why Udeaku CareSpring Exists</h2>
+                    <p class="section-intro section-intro-centered">
                         Udeaku CareSpring Support Foundation responds to a real and urgent need in Nigeria:
                         life-saving
                         knowledge, compassionate care, and community support. Our aims and objectives guide every
@@ -1060,7 +414,7 @@
                         </article>
                     </div>
                     <aside class="aims-side-card reveal visible" aria-label="Udeaku CareSpring impact focus">
-                        <div class="about-program-image" style="margin-bottom:0.9rem;">
+                        <div class="about-program-image about-program-image-custom">
                             <img src="/images/Clinic.jpeg" alt="Healthcare and clinic support" />
                         </div>
                         <h3>From awareness to action</h3>
@@ -1087,67 +441,64 @@
         <!-- Founder -->
         <section class="section-founder" id="founder" aria-labelledby="founder-heading">
             <div class="max-width">
-                <div class="reveal visible" style="text-align: center; width: 100%;">
-                    <div class="section-label" style="justify-content: center; display: flex; margin: 0 auto 1rem;">
-                        <span style="margin-left: 0.5rem; font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #ffffff; font-weight: 700; line-height: 1.2; letter-spacing: -0.5px;">The Heart Behind Udeaku CareSpring Foundation</span>
+                <div class="reveal visible section-centered">
+                    <div class="section-label founder-section-label">
+                        <span class="founder-section-title">The Heart Behind Udeaku CareSpring Foundation</span>
                     </div>
                 </div>
-                <div class="founder-grid" style="display: grid; grid-template-columns: 1fr; gap: 2.5rem; width: 100%; max-width: 100%; margin: 0 auto; padding: 0 1.5rem; box-sizing: border-box;">
-                    <article class="founder-card reveal visible" aria-label="About the founder" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 2rem; background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7)); border: 1px solid rgba(46, 204, 113, 0.15); border-radius: 16px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                        <div class="founder-chip-row" style="display: flex; flex-direction: column; align-items: center; margin: 0 auto 1.5rem; max-width: 100%;">
-                            <div class="founder-chip" style="display: inline-block; background: rgba(46, 204, 113, 0.1); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 0.8rem;">
-                                <span class="badge" style="font-size: clamp(0.9rem, 1.1vw, 1.1rem); letter-spacing: 0.5px;"><strong>Our Founder</strong></span>
+                <div class="founder-grid founder-grid-custom">
+                    <article class="founder-card reveal visible founder-card-custom" aria-label="About the founder">
+                        <div class="founder-chip-row founder-chip-row-custom">
+                            <div class="founder-chip founder-chip-custom">
+                                <span class="badge founder-badge-custom"><strong>Our Founder</strong></span>
                             </div>
-                            <div class="founder-meta" style="margin-top: 0.5rem;">
-                                <div style="font-size: clamp(1rem, 1.2vw, 1.2rem); font-weight: 500; color: var(--text); letter-spacing: 0.3px; line-height: 1.5;">Tourism & Hospitality Management | Practicing Nurse | Humanitarian service</div>
+                            <div class="founder-meta founder-meta-custom">
+                                <div class="founder-background">Tourism & Hospitality Management | Practicing Nurse | Humanitarian service</div>
                             </div>
                         </div>
-                        <div class="founder-avatar" style="width: 250px; height: 250px; border-radius: 50%; margin: 0 auto 2rem; overflow: hidden; border: 5px solid rgba(46, 204, 113, 0.25); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">
+                        <div class="founder-avatar founder-avatar-custom">
                             <img src="/images/Precious.jpg"
                                 alt="Portrait of Precious-Winifred Udeaku Onyenaobiya" 
-                                style="width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease;"/>
+                                class="founder-avatar-img"/>
                         </div>
-                        <div class="founder-story" style="text-align: center; max-width: 800px; margin: 0 auto;">
-                            <div class="founder-name" style="font-size: clamp(1.5rem, 2.5vw, 2rem); color: #fff; margin-bottom: 0.5rem; line-height: 1.3;"><strong>Precious-Winifred Udeaku Onyenaobiya</strong></div>
-                            <div class="founder-role" style="font-size: clamp(1rem, 1.2vw, 1.2rem); color: var(--accent); margin-bottom: 1.5rem;">Founder, Udeaku CareSpring Support Foundation</div>
+                        <div class="founder-story founder-story-custom">
+                            <div class="founder-name founder-name-custom"><strong>Precious-Winifred Udeaku Onyenaobiya</strong></div>
+                            <div class="founder-role founder-role-custom">Founder, Udeaku CareSpring Support Foundation</div>
                             <br><br>
-                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: justify;">Precious-Winifred is a compassionate and purpose-driven woman whose life experiences
+                            <p class="founder-paragraph">Precious-Winifred is a compassionate and purpose-driven woman whose life experiences
                                 shaped
                                 her vision for the Udeaku CareSpring Support Foundation.
                             </p>
-                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: justify;">
+                            <p class="founder-paragraph founder-paragraph-custom">
                                 With a background in Tourism & Hospitality Management and professional experience in
                                 nursing and caregiving, she brings both empathy and organization to her humanitarian work. 
                                 Her journey toward founding Udeaku CareSpring was inspired by personal loss. An experience that deepened her desire to help others, provide comfort, and share hope with those in need.
                             </p>
-                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: justify;">
+                            <p class="founder-paragraph founder-paragraph-custom">
                                 Through Udeaku CareSpring, she has led initiatives like the Pad a Girl Program and
                                 medical bill
                                 support projects, reaching individuals and families who would have struggled in
                                 silence.
                                 She founded Udeaku CareSpring Support Foundation to serve as a bridge between
-                                compassion and action, empowering others to care, respond, and make a difference.
+                                compassion and structured support.
                             </p>
-                            <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: justify;">
-                                She continues to lead with grace, faith, and a firm belief that one person’s
+                            <p class="founder-paragraph founder-paragraph-custom">
+                                She continues to lead with grace, faith, and a firm belief that one person's
                                 compassion can spark change in an entire community.
                             </p>
                             <br><br>
-                            <div class="founder-text reveal visible" style="background: rgba(3, 19, 15, 0.3); border-left: 3px solid var(--accent); padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
-                                <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: justify;">
+                            <div class="founder-quote founder-quote-custom">
+                                <p class="founder-paragraph founder-paragraph-custom">
                                     Udeaku CareSpring Support Foundation is more than an organization; it is an
                                     answer to a
                                     deep longing
-                                    to see people comforted, equipped, and restored. The founder’s journey through
-                                    loss,
-                                    caregiving,
-                                    and service has shaped a vision where no one is left to suffer in silence.
+                                    for hope, care, and practical support in communities where these are most needed.
                                 </p>
-                                <p style="font-size: clamp(1rem, 1.1vw, 1.1rem); line-height: 1.7; color: var(--text-soft); margin-bottom: 1.2rem; text-align: justify;">
-                                    Under Precious-Winifred’s leadership, Udeaku CareSpring stands as a bridge between empathy and action transforming compassion into structured programs that educate, support, and uplift communities.
+                                <p class="founder-paragraph founder-paragraph-custom">
+                                    Under Precious-Winifred's leadership, Udeaku CareSpring stands as a bridge between empathy and action transforming compassion into structured programs that educate, support, and uplift communities.
                                 </p>
                             </div>
-                            <div class="founder-quote-block" style="font-size: clamp(1.1rem, 1.3vw, 1.3rem); font-style: italic; color: #fff; padding: 1.5rem; margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); position: relative; max-width: 800px; margin-left: auto; margin-right: auto;">
+                            <div class="founder-quote-block founder-quote-block-custom">
                                 Caring is not just an act, it’s a calling. Every person we teach, every life we touch, brings us closer to a safer, more compassionate world.
                             </div>
                         </div>
@@ -1644,274 +995,6 @@
         });
     </script>
 
-    <style>
-        /* Chatbot Styles */
-        .chatbot-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 380px;
-            height: 600px;
-            background: linear-gradient(145deg, rgba(4, 26, 20, 0.95), rgba(2, 7, 7, 0.95));
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            z-index: 10000;
-            transform: translateY(120%);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .chatbot-widget.open {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .chatbot-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background: rgba(46, 204, 113, 0.1);
-            border-bottom: 1px solid rgba(46, 204, 113, 0.2);
-            border-radius: 16px 16px 0 0;
-        }
-        
-        .chatbot-info {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .chatbot-avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        
-        .chatbot-details h4 {
-            margin: 0;
-            font-size: 1rem;
-            color: var(--accent);
-            font-weight: 600;
-        }
-        
-        .status {
-            font-size: 0.8rem;
-            color: #2ecc71;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        
-        .status::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #2ecc71;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        .chatbot-close {
-            background: none;
-            border: none;
-            color: var(--text-soft);
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
-        
-        .chatbot-close:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-        
-        .chatbot-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .message {
-            max-width: 80%;
-            animation: fadeInUp 0.3s ease;
-        }
-        
-        .bot-message {
-            align-self: flex-start;
-        }
-        
-        .user-message {
-            align-self: flex-end;
-        }
-        
-        .message-content {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.75rem 1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(46, 204, 113, 0.1);
-        }
-        
-        .user-message .message-content {
-            background: var(--accent);
-            color: white;
-        }
-        
-        .message-content p {
-            margin: 0;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-        
-        .message-time {
-            font-size: 0.75rem;
-            color: var(--text-soft);
-            margin-top: 0.25rem;
-            opacity: 0.7;
-        }
-        
-        .chatbot-input-container {
-            padding: 1rem;
-            border-top: 1px solid rgba(46, 204, 113, 0.2);
-        }
-        
-        .chatbot-quick-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .quick-action {
-            background: rgba(46, 204, 113, 0.1);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            color: var(--accent);
-            padding: 0.5rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .quick-action:hover {
-            background: var(--accent);
-            color: white;
-        }
-        
-        .chatbot-input-wrapper {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-        
-        .chatbot-input-wrapper input {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(46, 204, 113, 0.2);
-            color: white;
-            padding: 0.75rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .chatbot-input-wrapper input::placeholder {
-            color: var(--text-soft);
-        }
-        
-        .chatbot-input-wrapper button {
-            background: var(--accent);
-            border: none;
-            color: white;
-            padding: 0.75rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        
-        .chatbot-input-wrapper button:hover {
-            background: #27ae60;
-        }
-        
-        .chatbot-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: var(--accent);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4);
-            transition: all 0.3s ease;
-            z-index: 9999;
-        }
-        
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(46, 204, 113, 0.5);
-        }
-        
-        .chat-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #e74c3c;
-            color: white;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.4rem;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 480px) {
-            .chatbot-widget {
-                width: 100%;
-                height: 100vh;
-                bottom: 0;
-                right: 0;
-                border-radius: 16px 16px 0 0;
-            }
-            
-            .chatbot-toggle {
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-    </style>
 </body>
 
 </html>
