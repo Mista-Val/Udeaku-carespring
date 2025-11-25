@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="/css/styles.css?v=20251121-23-t180015">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - Udeaku CareSpring</title>
+    <title>Support Page Currently Unavailable - Udeaku CareSpring</title>
     <link rel="icon" type="image/x-icon" href="/images/TitleImage.jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,8 +35,7 @@
                     <a href="about.html#about"><span>About Us</span></a>
                     <a href="projects.html#projects"><span>Our Projects</span></a>
                     <a href="index.html#contact"><span>Contact Us</span></a>
-                    <a href="404.html" target="_blank"
-                        class="nav-cta"><span>SUPPORT<br>US<br>TODAY</span></a>
+                    <a href="404.html" target="_blank" class="nav-cta"><span>SUPPORT<br>US<br>TODAY</span></a>
                 </nav>
 
                 <!-- Mobile Menu Toggle -->
@@ -51,47 +51,50 @@
                 </button>
             </div>
         </header>
-        
-        <main class="error-container section-centered section-centered-flex">
-    <h1 class="section-heading-centered">🚧 404: Page Not Found</h1>
-    
-    <div class="error-content">
-        <h2 class="section-intro-centered">
-            It looks like you've hit a digital roadblock.
-        </h2>
-        <p>
-            We couldn't find the page you were looking for. This often happens because the link is outdated, you mistyped the address, or the page has been moved.
-        </p>
 
-        <h3><span>What can you do now?</span></h3>
-        <ul>
-            <li><strong>Double-Check the URL:</strong> Make sure the web address in your browser is spelled correctly.</li><br>
-            <li><strong>Go Back:</strong> Use your browser's back button to return to the previous page.</li><br>
-            <li><strong>Search Our Site:</strong> Use the search bar (if available) to find what you need.</li><br>
-            <li><strong>Visit the Homepage:</strong> Click the link below to start over.</li><br>
-        </ul>
+        <main class="error-container section-centered section-centered-flex" style="text-align: center;">
+            <h1 class="section-heading-centered">🚧 404: Page Not Available</h1>
+
+            <p style="color: red !important;">
+                <strong>We sincerely apologize — Our Support page integration is not available at the moment.</strong><br>
+                </p>
+            <p>Our technical team is working diligently to restore the feature.</p>
+            <p>Kindly be patient and check back again soon.</p>
+            <br><br>
+            <p class="text-gray-600 mt-4 leading-relaxed" style="text-align: center; color: var(--text-soft);">
+                We deeply appreciate your generosity, compassion, and willingness to support our mission of saving
+                lives.<br>
+                Your love and kindness never go unnoticed.<br> May God reward you abundantly for your good deeds.
+            </p>
+            <br><br>
+            <h3 class="text-xl font-semibold text-gray-800 mt-8">What Can You Do Now?</h3>
+
+            <ul class="text-left list-disc list-inside text-gray-700 mt-4 space-y-3">
+                <li><strong>Go Back:</strong> Use your browser's back button to return to the previous page.</li>
+                <li><strong>Visit the Homepage:</strong> Explore more about us on other pages.</li>
+            </ul>
+
+            <button onclick="window.location.href='index.html'" class="btn-primary"
+                style="width: fit-content; margin: 2rem auto; padding: 1rem 2rem; border-radius: 999px; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none;">
+                Return to Homepage
+            </button>
+
+        </main>
     </div>
 
-    <a href="index.html" class="button primary-button">
-        Return to Homepage
-    </a>
-
-</main>
-    </div>
-    
     <script>
         // Mobile menu toggle functionality
         const navToggle = document.getElementById('navToggle');
         const siteNav = document.getElementById('siteNav');
-        
+
         // Force pointer-events to auto for our navigation
         siteNav.style.pointerEvents = 'auto';
-        
-        navToggle.addEventListener('click', function(e) {
+
+        navToggle.addEventListener('click', function (e) {
             e.stopPropagation();
             siteNav.classList.toggle('nav-open');
             navToggle.classList.toggle('nav-open');
-            
+
             // Ensure pointer-events are enabled when menu is open
             if (siteNav.classList.contains('nav-open')) {
                 siteNav.style.pointerEvents = 'auto';
@@ -99,7 +102,7 @@
         });
 
         // Close menu when clicking outside - use capture phase
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             // Check if click is outside both nav and toggle
             if (!siteNav.contains(event.target) && !navToggle.contains(event.target)) {
                 siteNav.classList.remove('nav-open');
@@ -110,11 +113,11 @@
         // Close menu when clicking on a link
         const navLinks = document.querySelectorAll('.site-nav a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault(); // Prevent immediate navigation for demo
                 siteNav.classList.remove('nav-open');
                 navToggle.classList.remove('nav-open');
-                
+
                 // Navigate after a short delay to allow menu to close
                 setTimeout(() => {
                     window.location.href = this.getAttribute('href');
@@ -123,19 +126,20 @@
         });
 
         // Prevent menu clicks from bubbling up to document
-        siteNav.addEventListener('click', function(e) {
+        siteNav.addEventListener('click', function (e) {
             e.stopPropagation();
         });
 
         // Handle window resize to reset menu state
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth > 768) {
                 siteNav.classList.remove('nav-open');
                 navToggle.classList.remove('nav-open');
             }
         });
     </script>
-    
+
     <script src="/js/main.js" defer></script>
 </body>
+
 </html>
