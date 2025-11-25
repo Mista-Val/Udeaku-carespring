@@ -222,21 +222,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Show/hide currency selection based on payment method
                 const currencyGroup = document.getElementById('currencyGroup');
-                const amountInput = document.getElementById('donationAmount');
-                const amountLabel = document.querySelector('label[for="donationAmount"]');
                 
                 if (this.value === 'stripe') {
                     // Show currency selection for Stripe
                     currencyGroup.style.display = 'block';
-                    amountLabel.textContent = 'Donation Amount (USD/EUR) *';
-                    amountInput.placeholder = 'Enter amount in USD or EUR';
-                    amountInput.min = 1; // Minimum $1 or €1
                 } else {
                     // Hide currency selection for NGN payments
                     currencyGroup.style.display = 'none';
-                    amountLabel.textContent = 'Donation Amount (NGN) *';
-                    amountInput.placeholder = 'Enter amount in NGN';
-                    amountInput.min = 100; // Minimum ₦100
                 }
             }
         });

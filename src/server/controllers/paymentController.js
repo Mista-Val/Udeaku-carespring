@@ -70,14 +70,14 @@ exports.initializePayment = async (req, res, next) => {
   try {
     console.log('🚀 Payment initialization request received:', req.body);
     
-    const { amount, email, donorName, phone, paymentMethod, currency } = req.body;
+    const { email, donorName, phone, paymentMethod, currency } = req.body;
     
-    console.log('📋 Extracted fields:', { amount, email, donorName, phone, paymentMethod, currency });
+    console.log('📋 Extracted fields:', { email, donorName, phone, paymentMethod, currency });
     
     // Validate required fields
-    if (!amount || !email || !donorName) {
-      console.log('❌ Missing required fields:', { amount, email, donorName });
-      return next(new AppError('Amount, email, and donor name are required', 400));
+    if (!email || !donorName) {
+      console.log('❌ Missing required fields:', { email, donorName });
+      return next(new AppError('Email and donor name are required', 400));
     }
     
     // Validate payment method
@@ -95,85 +95,47 @@ exports.initializePayment = async (req, res, next) => {
     // Set default currency for non-Stripe payments
     const paymentCurrency = currency || 'NGN';
     
-    // Validate amount based on currency
-    const minAmount = paymentCurrency === 'NGN' ? 100 : 1; // ₦100 for NGN, $1/€1 for USD/EUR
-    if (amount < minAmount) {
-      console.log('❌ Amount too low:', amount, 'Minimum:', minAmount, paymentCurrency);
-      return next(new AppError(`Minimum donation amount is ${minAmount} ${paymentCurrency}`, 400));
-    }
-    
-    // Convert amount based on currency
-    let processedAmount = amount;
-    if (paymentCurrency === 'NGN') {
-      processedAmount = amount * 100; // Convert to kobo for Paystack
-    }
-    
-    const paymentData = {
-      amount: processedAmount,
+    // Create checkout session data (amount will be selected on checkout page)
+    const checkoutData = {
       email: email,
+      donorName: donorName,
+      phone: phone || '',
+      paymentMethod: paymentMethod,
       currency: paymentCurrency,
       reference: `UDK-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-      payment_method: paymentMethod,
       metadata: {
         donorName: donorName,
         phone: phone || '',
         paymentMethod: paymentMethod,
-        currency: paymentCurrency,
-        custom_fields: [
-          {
-            display_name: "Donor Name",
-            variable_name: "donor_name",
-            value: donorName
-          },
-          {
-            display_name: "Phone",
-            variable_name: "phone",
-            value: phone || 'Not provided'
-          },
-          {
-            display_name: "Payment Method",
-            variable_name: "payment_method",
-            value: paymentMethod
-          },
-          {
-            display_name: "Currency",
-            variable_name: "currency",
-            value: paymentCurrency
-          }
-        ]
-      },
-      callback_url: process.env.PAYMENT_SUCCESS_URL,
-      channels: paymentMethod === 'googlepay' ? ['mobile_money', 'card'] : 
-               paymentMethod === 'stripe' ? ['card'] : 
-               ['card', 'bank', 'ussd', 'qr']
+        currency: paymentCurrency
+      }
     };
     
-    console.log('📋 Payment data prepared:', paymentData);
+    console.log('📋 Checkout data prepared:', checkoutData);
     
     // In development, mock payment initialization
     if (process.env.NODE_ENV !== 'production' || process.env.MOCK_PAYMENT === 'true') {
-      console.log('🧪 Development mode: Mock payment initialization', paymentData);
+      console.log('🧪 Development mode: Mock checkout initialization', checkoutData);
       
       let baseUrl, responseMessage;
       
       if (paymentMethod === 'stripe') {
         baseUrl = 'https://checkout.stripe.com/pay';
-        responseMessage = `Stripe payment initialized (${paymentCurrency})`;
+        responseMessage = `Stripe checkout initialized (${paymentCurrency})`;
       } else if (paymentMethod === 'googlepay') {
         baseUrl = 'https://pay.google.com/gpay';
-        responseMessage = 'Google Pay payment initialized';
+        responseMessage = 'Google Pay checkout initialized';
       } else {
         baseUrl = 'https://checkout.paystack.co';
-        responseMessage = 'Paystack payment initialized';
+        responseMessage = 'Paystack checkout initialized';
       }
       
       return res.status(200).json({
         status: 'success',
         message: `${responseMessage} - Development mode`,
         data: {
-          reference: paymentData.reference,
-          access_url: `${baseUrl}/${paymentData.reference}`,
-          amount: amount,
+          reference: checkoutData.reference,
+          access_url: `${baseUrl}/${checkoutData.reference}?currency=${paymentCurrency}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(donorName)}`,
           email: email,
           donorName: donorName,
           paymentMethod: paymentMethod,
