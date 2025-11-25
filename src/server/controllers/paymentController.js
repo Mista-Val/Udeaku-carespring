@@ -1,32 +1,124 @@
-const paystack = require('paystack')(process.env.PAYSTACK_SECRET_KEY);
+// Mock Paystack for development (remove when paystack-sdk is installed)
+// Updated: 2025-11-25
+const mockPaystack = {
+  transaction: {
+    initialize: async (data) => {
+      const baseUrl = data.paymentMethod === 'googlepay' 
+        ? 'https://pay.google.com' 
+        : 'https://checkout.paystack.co';
+      
+      return {
+        status: true,
+        data: {
+          reference: data.reference,
+          access_url: `${baseUrl}/${data.paymentMethod === 'googlepay' ? 'gpay' : '#'}${data.reference}`,
+          amount: data.amount,
+          email: data.email,
+          paymentMethod: data.paymentMethod,
+          currency: data.currency || 'NGN'
+        }
+      };
+    },
+    verify: async (reference) => {
+      return {
+        status: true,
+        data: {
+          reference: reference,
+          status: 'success',
+          amount: 5000,
+          paid_at: new Date().toISOString(),
+          customer: {
+            email: 'test@example.com',
+            name: 'Test Donor'
+          }
+        }
+      };
+    }
+  }
+};
+
+// Mock Stripe for development (remove when stripe is installed)
+const mockStripe = {
+  checkout: {
+    sessions: {
+      create: async (data) => {
+        return {
+          status: true,
+          data: {
+            reference: data.reference,
+            access_url: `https://checkout.stripe.com/pay/${data.reference}`,
+            amount: data.amount,
+            email: data.email,
+            paymentMethod: 'stripe',
+            currency: data.currency || 'USD'
+          }
+        };
+      }
+    }
+  }
+};
+
+// Use real paystack if available, otherwise use mock
+const paystack = process.env.NODE_ENV === 'production' && process.env.PAYSTACK_SECRET_KEY ? 
+  require('paystack-sdk')(process.env.PAYSTACK_SECRET_KEY) : 
+  mockPaystack;
+
 const AppError = require('../utils/appError');
 
 // Initialize Payment
 exports.initializePayment = async (req, res, next) => {
   try {
-    const { amount, email, donorName, phone } = req.body;
+    console.log('🚀 Payment initialization request received:', req.body);
+    
+    const { amount, email, donorName, phone, paymentMethod, currency } = req.body;
+    
+    console.log('📋 Extracted fields:', { amount, email, donorName, phone, paymentMethod, currency });
     
     // Validate required fields
     if (!amount || !email || !donorName) {
+      console.log('❌ Missing required fields:', { amount, email, donorName });
       return next(new AppError('Amount, email, and donor name are required', 400));
     }
     
-    // Validate amount (minimum 100 NGN for Paystack)
-    if (amount < 100) {
-      return next(new AppError('Minimum donation amount is 100 NGN', 400));
+    // Validate payment method
+    if (!paymentMethod || !['paystack', 'googlepay', 'stripe'].includes(paymentMethod)) {
+      console.log('❌ Invalid payment method:', paymentMethod);
+      return next(new AppError('Invalid payment method selected', 400));
     }
     
-    // Convert amount to kobo (Paystack expects amount in kobo)
-    const amountInKobo = amount * 100;
+    // Validate currency for Stripe
+    if (paymentMethod === 'stripe' && (!currency || !['USD', 'EUR'].includes(currency))) {
+      console.log('❌ Invalid currency for Stripe:', currency);
+      return next(new AppError('USD or EUR required for Stripe payments', 400));
+    }
+    
+    // Set default currency for non-Stripe payments
+    const paymentCurrency = currency || 'NGN';
+    
+    // Validate amount based on currency
+    const minAmount = paymentCurrency === 'NGN' ? 100 : 1; // ₦100 for NGN, $1/€1 for USD/EUR
+    if (amount < minAmount) {
+      console.log('❌ Amount too low:', amount, 'Minimum:', minAmount, paymentCurrency);
+      return next(new AppError(`Minimum donation amount is ${minAmount} ${paymentCurrency}`, 400));
+    }
+    
+    // Convert amount based on currency
+    let processedAmount = amount;
+    if (paymentCurrency === 'NGN') {
+      processedAmount = amount * 100; // Convert to kobo for Paystack
+    }
     
     const paymentData = {
-      amount: amountInKobo,
+      amount: processedAmount,
       email: email,
-      currency: 'NGN',
+      currency: paymentCurrency,
       reference: `UDK-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      payment_method: paymentMethod,
       metadata: {
         donorName: donorName,
         phone: phone || '',
+        paymentMethod: paymentMethod,
+        currency: paymentCurrency,
         custom_fields: [
           {
             display_name: "Donor Name",
@@ -37,36 +129,71 @@ exports.initializePayment = async (req, res, next) => {
             display_name: "Phone",
             variable_name: "phone",
             value: phone || 'Not provided'
+          },
+          {
+            display_name: "Payment Method",
+            variable_name: "payment_method",
+            value: paymentMethod
+          },
+          {
+            display_name: "Currency",
+            variable_name: "currency",
+            value: paymentCurrency
           }
         ]
       },
       callback_url: process.env.PAYMENT_SUCCESS_URL,
-      channels: ['card', 'bank', 'ussd', 'qr']
+      channels: paymentMethod === 'googlepay' ? ['mobile_money', 'card'] : 
+               paymentMethod === 'stripe' ? ['card'] : 
+               ['card', 'bank', 'ussd', 'qr']
     };
+    
+    console.log('📋 Payment data prepared:', paymentData);
     
     // In development, mock payment initialization
     if (process.env.NODE_ENV !== 'production' || process.env.MOCK_PAYMENT === 'true') {
-      console.log('Development mode: Mock payment initialization', paymentData);
+      console.log('🧪 Development mode: Mock payment initialization', paymentData);
+      
+      let baseUrl, responseMessage;
+      
+      if (paymentMethod === 'stripe') {
+        baseUrl = 'https://checkout.stripe.com/pay';
+        responseMessage = `Stripe payment initialized (${paymentCurrency})`;
+      } else if (paymentMethod === 'googlepay') {
+        baseUrl = 'https://pay.google.com/gpay';
+        responseMessage = 'Google Pay payment initialized';
+      } else {
+        baseUrl = 'https://checkout.paystack.co';
+        responseMessage = 'Paystack payment initialized';
+      }
+      
       return res.status(200).json({
         status: 'success',
-        message: 'Payment initialized successfully (Development mode)',
+        message: `${responseMessage} - Development mode`,
         data: {
           reference: paymentData.reference,
-          access_url: `https://checkout.paystack.co/#${paymentData.reference}`,
+          access_url: `${baseUrl}/${paymentData.reference}`,
           amount: amount,
           email: email,
-          donorName: donorName
+          donorName: donorName,
+          paymentMethod: paymentMethod,
+          currency: paymentCurrency
         }
       });
     }
     
     // Initialize payment with Paystack
+    console.log('💳 Initializing Paystack payment...');
     const response = await paystack.transaction.initialize(paymentData);
     
+    console.log('📨 Paystack response:', response);
+    
     if (response.status !== true) {
+      console.log('❌ Paystack initialization failed:', response);
       return next(new AppError('Failed to initialize payment', 500));
     }
     
+    console.log('✅ Payment initialized successfully');
     res.status(200).json({
       status: 'success',
       message: 'Payment initialized successfully',
@@ -74,7 +201,7 @@ exports.initializePayment = async (req, res, next) => {
     });
     
   } catch (error) {
-    console.error('Payment initialization error:', error);
+    console.error('💥 Payment initialization error:', error);
     next(new AppError('Failed to initialize payment. Please try again.', 500));
   }
 };

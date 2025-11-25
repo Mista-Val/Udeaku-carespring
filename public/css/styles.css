@@ -5360,10 +5360,12 @@ footer.site-footer::before {
     gap: 0.75rem;
 }
 
+/* Custom Radio Button Styling */
 .payment-option {
+    position: relative;
     display: flex;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 3rem; /* Extra left padding for custom radio */
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -5376,8 +5378,153 @@ footer.site-footer::before {
     border-color: rgba(46, 204, 113, 0.3);
 }
 
+.payment-option.selected {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+}
+
+/* Hide default radio button */
 .payment-option input[type="radio"] {
-    margin-right: 0.75rem;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Custom radio button */
+.payment-option::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover::before {
+    border-color: var(--accent);
+}
+
+.payment-option.selected::before {
+    border-color: var(--accent);
+    background: var(--accent);
+}
+
+/* Radio button inner dot */
+.payment-option::after {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+.payment-option.selected::after {
+    transform: translateY(-50%) scale(1);
+}
+
+/* Currency Selection Styling */
+.currency-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.currency-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.currency-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(46, 204, 113, 0.3);
+}
+
+.currency-option.selected {
+    background: rgba(46, 204, 113, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+}
+
+/* Hide default radio button */
+.currency-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Custom radio button */
+.currency-option::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.currency-option:hover::before {
+    border-color: var(--accent);
+}
+
+.currency-option.selected::before {
+    border-color: var(--accent);
+    background: var(--accent);
+}
+
+/* Radio button inner dot */
+.currency-option::after {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+.currency-option.selected::after {
+    transform: translateY(-50%) scale(1);
+}
+
+.currency-symbol {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent);
 }
 
 .payment-icon {
@@ -5455,6 +5602,113 @@ footer.site-footer::before {
     
     .impact-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Donation Modal Styles */
+.donation-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.donation-modal.active {
+    display: block;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    max-width: 900px;
+    max-height: 90vh;
+    margin: 2rem auto;
+    background: linear-gradient(145deg, rgba(4, 26, 20, 0.95), rgba(2, 7, 7, 0.95));
+    border: 1px solid rgba(46, 204, 113, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: slideInUp 0.4s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 1rem;
+        padding: 1.5rem;
+        max-height: 95vh;
+    }
+    
+    .modal-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+    
+    .donation-form-card {
+        padding: 1rem;
     }
 }
 

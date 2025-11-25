@@ -82,7 +82,20 @@ app.get('/', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, _next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  
+  // Handle AppError instances
+  if (err.isOperational) {
+    return res.status(err.statusCode).json({
+      status: err.status,
+      message: err.message
+    });
+  }
+  
+  // Handle other errors
+  res.status(err.statusCode || 500).json({
+    status: 'error',
+    message: err.message || 'Internal Server Error'
+  });
 });
 
 const PORT = 5001;

@@ -861,8 +861,7 @@
                             Donate Today <strong>— Be the Reason Someone Lives, Learns, and Thrives</strong>
                         </p>
                         <div class="news-actions">
-                            <a href="404.html"
-                                target="_blank" class="btn-primary">Support Our Mission</a>
+                            <a href="#" onclick="openDonationModal(); return false;" class="btn-primary">Support Our Mission</a>
                             <a href="projects.html#projects" class="btn-ghost">See Our Impact</a>
                         </div>
                     </div>
@@ -1814,14 +1813,17 @@
         </div>
     </section>
 
-    <!-- Donation Section -->
-    <section class="section-about" id="donation" aria-labelledby="donation-heading">
-        <div class="max-width">
+    <!-- Donation Modal/Overlay -->
+    <div id="donationModal" class="donation-modal">
+        <div class="modal-overlay" onclick="closeDonationModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeDonationModal()">×</button>
+            
             <div class="reveal visible section-centered-flex-text">
                 <div class="section-label section-label-centered">
                     <span><strong>Support Our Mission</strong></span>
                 </div>
-                <h2 id="donation-heading" class="section-heading section-heading-centered">Make a Difference Today</h2>
+                <h2 class="section-heading section-heading-centered">Make a Difference Today</h2>
                 <p style="text-align: center; margin-bottom: 2rem;">
                     Your generous donation helps us provide first aid training, medical support, and humanitarian assistance to communities in need.
                 </p>
@@ -1847,16 +1849,20 @@
                             <input type="tel" id="donorPhone" name="donorPhone" placeholder="+234XXXXXXXXXX">
                         </div>
                         
-                        <div class="form-group">
-                            <label for="donationAmount">Donation Amount (NGN) *</label>
-                            <div class="amount-options">
-                                <button type="button" class="amount-btn" data-amount="1000">₦1,000</button>
-                                <button type="button" class="amount-btn" data-amount="5000">₦5,000</button>
-                                <button type="button" class="amount-btn" data-amount="10000">₦10,000</button>
-                                <button type="button" class="amount-btn" data-amount="25000">₦25,000</button>
-                                <button type="button" class="amount-btn" data-amount="50000">₦50,000</button>
+                        <div class="form-group" id="currencyGroup" style="display: none;">
+                            <label for="currency">Currency</label>
+                            <div class="currency-options">
+                                <label class="currency-option">
+                                    <input type="radio" name="currency" value="USD" checked>
+                                    <span class="currency-symbol">$</span>
+                                    <span>USD - US Dollar</span>
+                                </label>
+                                <label class="currency-option">
+                                    <input type="radio" name="currency" value="EUR">
+                                    <span class="currency-symbol">€</span>
+                                    <span>EUR - Euro</span>
+                                </label>
                             </div>
-                            <input type="number" id="donationAmount" name="donationAmount" required placeholder="Enter custom amount" min="100">
                         </div>
                         
                         <div class="form-group">
@@ -1865,12 +1871,17 @@
                                 <label class="payment-option">
                                     <input type="radio" name="paymentMethod" value="paystack" checked>
                                     <span class="payment-icon">💳</span>
-                                    <span>Paystack (Card/Bank Transfer)</span>
+                                    <span>Paystack (NGN Card/Bank Transfer)</span>
                                 </label>
                                 <label class="payment-option">
                                     <input type="radio" name="paymentMethod" value="googlepay">
                                     <span class="payment-icon">📱</span>
-                                    <span>Google Pay</span>
+                                    <span>Google Pay (NGN)</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="stripe">
+                                    <span class="payment-icon">🌍</span>
+                                    <span>Stripe (USD/EUR - International)</span>
                                 </label>
                             </div>
                         </div>
@@ -1893,11 +1904,6 @@
                     <h3 style="margin-bottom: 1.5rem; color: var(--text-main);">Your Impact</h3>
                     <div class="impact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
                         <div class="impact-item">
-                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏥</div>
-                            <h4 style="color: var(--accent);">Medical Support</h4>
-                            <p style="font-size: 0.9rem;">Help provide medical supplies and equipment</p>
-                        </div>
-                        <div class="impact-item">
                             <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
                             <h4 style="color: var(--accent);">First Aid Training</h4>
                             <p style="font-size: 0.9rem;">Fund training programs for community members</p>
@@ -1911,7 +1917,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <section class="section-about" id="contact" aria-labelledby="contact-heading">
         <div class="max-width">

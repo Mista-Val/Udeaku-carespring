@@ -1,40 +1,27 @@
 // Donation Form Handler
 document.addEventListener('DOMContentLoaded', function() {
     const donationForm = document.getElementById('donationForm');
-    const amountButtons = document.querySelectorAll('.amount-btn');
-    const amountInput = document.getElementById('donationAmount');
     const donateBtn = document.getElementById('donateBtn');
     const btnText = donateBtn.querySelector('.btn-text');
     const btnLoader = donateBtn.querySelector('.btn-loader');
 
-    // Amount button selection
-    amountButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove selected class from all buttons
-            amountButtons.forEach(btn => btn.classList.remove('selected'));
-            
-            // Add selected class to clicked button
-            this.classList.add('selected');
-            
-            // Set the amount input value
-            const amount = this.getAttribute('data-amount');
-            amountInput.value = amount;
-            
-            // Trigger input event for validation
-            amountInput.dispatchEvent(new Event('input'));
-        });
-    });
+    // Modal control functions
+    window.openDonationModal = function() {
+        const modal = document.getElementById('donationModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    };
 
-    // Custom amount input handler
-    amountInput.addEventListener('input', function() {
-        // Remove selected class from all buttons when custom amount is entered
-        amountButtons.forEach(btn => btn.classList.remove('selected'));
-        
-        // Validate minimum amount
-        if (this.value && parseInt(this.value) < 100) {
-            this.setCustomValidity('Minimum donation amount is ₦100');
-        } else {
-            this.setCustomValidity('');
+    window.closeDonationModal = function() {
+        const modal = document.getElementById('donationModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDonationModal();
         }
     });
 
@@ -48,18 +35,34 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Get form data
+        // Get form data (no amount - will be handled on checkout)
+        const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+        console.log('💳 Selected payment method element:', selectedPaymentMethod);
+        
+        // Get currency for Stripe payments
+        const selectedCurrency = document.querySelector('input[name="currency"]:checked');
+        const currency = selectedCurrency ? selectedCurrency.value : 'NGN';
+        
         const formData = {
+            email: document.getElementById('donorEmail').value.trim(),
             donorName: document.getElementById('donorName').value.trim(),
-            donorEmail: document.getElementById('donorEmail').value.trim(),
-            donorPhone: document.getElementById('donorPhone').value.trim(),
-            amount: parseInt(document.getElementById('donationAmount').value),
-            paymentMethod: document.querySelector('input[name="paymentMethod"]:checked').value
+            phone: document.getElementById('donorPhone').value.trim(),
+            paymentMethod: selectedPaymentMethod ? selectedPaymentMethod.value : 'paystack',
+            currency: currency
         };
 
-        // Validate amount
-        if (formData.amount < 100) {
-            showError('Minimum donation amount is ₦100');
+        // Debug: Log form data
+        console.log('📋 Form data being sent:', formData);
+
+        // Validate required fields
+        if (!formData.donorName || !formData.email) {
+            showError('Please fill in all required fields');
+            return;
+        }
+
+        // Validate currency for Stripe
+        if (formData.paymentMethod === 'stripe' && (!formData.currency || !['USD', 'EUR'].includes(formData.currency))) {
+            showError('Please select USD or EUR for Stripe payments');
             return;
         }
 
@@ -68,6 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         try {
             // Initialize payment
+            console.log('🚀 Sending payment request to:', '/api/payment/initialize');
+            console.log('📋 Request payload:', JSON.stringify(formData, null, 2));
+            
             const response = await fetch('/api/payment/initialize', {
                 method: 'POST',
                 headers: {
@@ -76,15 +82,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(formData)
             });
 
+            console.log('📨 Response status:', response.status);
+            console.log('📨 Response headers:', response.headers);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('❌ Response error text:', errorText);
+                throw new Error(`HTTP ${response.status}: ${errorText}`);
+            }
+
             const result = await response.json();
+            console.log('✅ Response data:', result);
 
             if (result.status === 'success') {
-                // Redirect to payment page
-                if (result.data.access_url) {
+                // Different handling based on payment method
+                if (result.data.paymentMethod === 'stripe') {
+                    // Stripe handling - redirect to checkout with amount selection
+                    console.log('🌍 Stripe payment initiated for', result.data.currency);
+                    window.location.href = result.data.access_url;
+                } else if (result.data.paymentMethod === 'googlepay') {
+                    // Google Pay handling
+                    console.log('📱 Google Pay payment initiated');
                     window.location.href = result.data.access_url;
                 } else {
-                    // For development or mock mode
-                    showSuccessMessage('Payment initialized successfully!', result.data);
+                    // Paystack handling
+                    if (result.data.access_url) {
+                        console.log('💳 Redirecting to Paystack:', result.data.access_url);
+                        window.location.href = result.data.access_url;
+                    } else {
+                        // For development or mock mode
+                        showSuccessMessage('Payment initialized successfully!', result.data);
+                    }
                 }
             } else {
                 throw new Error(result.message || 'Payment initialization failed');
@@ -164,13 +192,100 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Payment method selection enhancement
     const paymentOptions = document.querySelectorAll('.payment-option');
+    const paymentRadios = document.querySelectorAll('input[name="paymentMethod"]');
+    
     paymentOptions.forEach(option => {
         option.addEventListener('click', function() {
-            // Add visual feedback
-            paymentOptions.forEach(opt => opt.style.background = 'rgba(255, 255, 255, 0.05)');
-            this.style.background = 'rgba(46, 204, 113, 0.1)';
+            // Remove selected class from all options
+            paymentOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+            
+            // Ensure the radio button is checked
+            const radio = this.querySelector('input[type="radio"]');
+            if (radio) {
+                radio.checked = true;
+                console.log('💳 Payment method selected:', radio.value);
+            }
         });
     });
+    
+    // Add change event listener to radio buttons
+    paymentRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Update visual selection
+            paymentOptions.forEach(opt => opt.classList.remove('selected'));
+            if (this.checked) {
+                this.closest('.payment-option').classList.add('selected');
+                console.log('💳 Payment method changed to:', this.value);
+                
+                // Show/hide currency selection based on payment method
+                const currencyGroup = document.getElementById('currencyGroup');
+                const amountInput = document.getElementById('donationAmount');
+                const amountLabel = document.querySelector('label[for="donationAmount"]');
+                
+                if (this.value === 'stripe') {
+                    // Show currency selection for Stripe
+                    currencyGroup.style.display = 'block';
+                    amountLabel.textContent = 'Donation Amount (USD/EUR) *';
+                    amountInput.placeholder = 'Enter amount in USD or EUR';
+                    amountInput.min = 1; // Minimum $1 or €1
+                } else {
+                    // Hide currency selection for NGN payments
+                    currencyGroup.style.display = 'none';
+                    amountLabel.textContent = 'Donation Amount (NGN) *';
+                    amountInput.placeholder = 'Enter amount in NGN';
+                    amountInput.min = 100; // Minimum ₦100
+                }
+            }
+        });
+    });
+    
+    // Initialize first option as selected
+    const defaultOption = document.querySelector('input[name="paymentMethod"]:checked');
+    if (defaultOption) {
+        defaultOption.closest('.payment-option').classList.add('selected');
+    }
+    
+    // Currency selection handling
+    const currencyOptions = document.querySelectorAll('.currency-option');
+    const currencyRadios = document.querySelectorAll('input[name="currency"]');
+    
+    currencyOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove selected class from all options
+            currencyOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+            
+            // Ensure the radio button is checked
+            const radio = this.querySelector('input[type="radio"]');
+            if (radio) {
+                radio.checked = true;
+                console.log('💱 Currency selected:', radio.value);
+            }
+        });
+    });
+    
+    // Add change event listener to currency radio buttons
+    currencyRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Update visual selection
+            currencyOptions.forEach(opt => opt.classList.remove('selected'));
+            if (this.checked) {
+                this.closest('.currency-option').classList.add('selected');
+                console.log('💱 Currency changed to:', this.value);
+            }
+        });
+    });
+    
+    // Initialize first currency option as selected
+    const defaultCurrency = document.querySelector('input[name="currency"]:checked');
+    if (defaultCurrency) {
+        defaultCurrency.closest('.currency-option').classList.add('selected');
+    }
 
     // Add CSS for messages (if not already in styles.css)
     if (!document.querySelector('#donation-message-styles')) {
