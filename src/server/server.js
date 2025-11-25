@@ -4,6 +4,8 @@ const path = require('path');
 const cors = require('cors');
 const workshopController = require('./controllers/workshopController');
 const contactController = require('./controllers/contactController');
+const paymentController = require('./controllers/paymentController');
+const donationController = require('./controllers/donationController');
 
 const app = express();
 const publicPath = path.join(__dirname, '../../public');
@@ -42,6 +44,19 @@ app.use(express.static(publicPath));
 app.post('/api/register', workshopController.registerForWorkshop);
 app.post('/api/contact', contactController.submitContact);
 app.post('/api/send-partnership-email', contactController.sendPartnershipEmail);
+
+// Payment Routes
+app.post('/api/payment/initialize', paymentController.initializePayment);
+app.get('/api/payment/verify/:reference', paymentController.verifyPayment);
+app.post('/api/payment/webhook', paymentController.handleWebhook);
+
+// Donation Routes (Admin)
+app.get('/api/donations', donationController.getAllDonations);
+app.get('/api/donations/:id', donationController.getDonationById);
+app.post('/api/donations', donationController.createDonation);
+app.patch('/api/donations/:id/status', donationController.updateDonationStatus);
+app.get('/api/donations/stats', donationController.getDonationStats);
+app.delete('/api/donations/:id', donationController.deleteDonation);
 
 // Log all API requests
 app.use('/api', (req, res, next) => {

@@ -11,7 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/rate-limit: "100"
     nginx.ingress.kubernetes.io/rate-limit-window: "1m"
     nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "https://udeaku-carespring.com,https://www.udeaku-carespring.com"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://udeakucarespringsupportfoundation.org,https://www.udeakucarespringsupportfoundation.org"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
   labels:
@@ -19,11 +19,11 @@ metadata:
 spec:
   tls:
   - hosts:
-    - udeaku-carespring.com
-    - www.udeaku-carespring.com
+    - udeakucarespringsupportfoundation.org
+    - www.udeakucarespringsupportfoundation.org
     secretName: udeaku-carespring-tls
   rules:
-  - host: udeaku-carespring.com
+  - host: udeakucarespringsupportfoundation.org
     http:
       paths:
       - path: /
@@ -33,7 +33,7 @@ spec:
             name: udeaku-carespring-service
             port:
               number: 80
-  - host: www.udeaku-carespring.com
+  - host: www.udeakucarespringsupportfoundation.org
     http:
       paths:
       - path: /

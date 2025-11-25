@@ -1814,6 +1814,105 @@
         </div>
     </section>
 
+    <!-- Donation Section -->
+    <section class="section-about" id="donation" aria-labelledby="donation-heading">
+        <div class="max-width">
+            <div class="reveal visible section-centered-flex-text">
+                <div class="section-label section-label-centered">
+                    <span><strong>Support Our Mission</strong></span>
+                </div>
+                <h2 id="donation-heading" class="section-heading section-heading-centered">Make a Difference Today</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">
+                    Your generous donation helps us provide first aid training, medical support, and humanitarian assistance to communities in need.
+                </p>
+            </div>
+            
+            <div class="donation-container" style="max-width: 600px; margin: 0 auto;">
+                <div class="donation-form-card reveal visible">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-main);">Make a Donation</h3>
+                    
+                    <form id="donationForm" class="donation-form">
+                        <div class="form-group">
+                            <label for="donorName">Full Name *</label>
+                            <input type="text" id="donorName" name="donorName" required placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donorEmail">Email Address *</label>
+                            <input type="email" id="donorEmail" name="donorEmail" required placeholder="info@udeakucarespringsupportfoundation.org">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donorPhone">Phone Number</label>
+                            <input type="tel" id="donorPhone" name="donorPhone" placeholder="+234XXXXXXXXXX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donationAmount">Donation Amount (NGN) *</label>
+                            <div class="amount-options">
+                                <button type="button" class="amount-btn" data-amount="1000">₦1,000</button>
+                                <button type="button" class="amount-btn" data-amount="5000">₦5,000</button>
+                                <button type="button" class="amount-btn" data-amount="10000">₦10,000</button>
+                                <button type="button" class="amount-btn" data-amount="25000">₦25,000</button>
+                                <button type="button" class="amount-btn" data-amount="50000">₦50,000</button>
+                            </div>
+                            <input type="number" id="donationAmount" name="donationAmount" required placeholder="Enter custom amount" min="100">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="paymentMethod">Payment Method</label>
+                            <div class="payment-methods">
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="paystack" checked>
+                                    <span class="payment-icon">💳</span>
+                                    <span>Paystack (Card/Bank Transfer)</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="paymentMethod" value="googlepay">
+                                    <span class="payment-icon">📱</span>
+                                    <span>Google Pay</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="donation-btn" id="donateBtn">
+                            <span class="btn-text">Donate Now</span>
+                            <span class="btn-loader" style="display: none;">Processing...</span>
+                        </button>
+                    </form>
+                    
+                    <div class="donation-info">
+                        <p style="text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-top: 1.5rem;">
+                            <strong>100% Secure:</strong> Your payment information is encrypted and secure.<br>
+                            <strong>Tax Deductible:</strong> All donations are tax-deductible as applicable by law.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="donation-impact reveal visible" style="text-align: center; margin-top: 3rem;">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-main);">Your Impact</h3>
+                    <div class="impact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                        <div class="impact-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏥</div>
+                            <h4 style="color: var(--accent);">Medical Support</h4>
+                            <p style="font-size: 0.9rem;">Help provide medical supplies and equipment</p>
+                        </div>
+                        <div class="impact-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📚</div>
+                            <h4 style="color: var(--accent);">First Aid Training</h4>
+                            <p style="font-size: 0.9rem;">Fund training programs for community members</p>
+                        </div>
+                        <div class="impact-item">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤝</div>
+                            <h4 style="color: var(--accent);">Community Outreach</h4>
+                            <p style="font-size: 0.9rem;">Support humanitarian assistance programs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section-about" id="contact" aria-labelledby="contact-heading">
         <div class="max-width">
             <div class="reveal visible">
@@ -2112,7 +2211,7 @@
                     </div>
                     <div class="modal-form-group">
                         <label for="contactEmail">Email Address</label>
-                        <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required />
+                        <input type="email" id="contactEmail" name="email" placeholder="info@udeakucarespringsupportfoundation.org" required />
                     </div>
                     <div class="modal-form-group">
                         <label for="contactSubject">Subject</label>
@@ -2454,6 +2553,9 @@ Submitted: ${data.submittedAt}
 
     <!-- Main JavaScript -->
     <script src="/js/main.js" defer></script>
+    
+    <!-- Donation Form JavaScript -->
+    <script src="/js/donation.js" defer></script>
 
     <!-- Chatbot Widget -->
     <div class="chatbot-widget" id="chatbotWidget">

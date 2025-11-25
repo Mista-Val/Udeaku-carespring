@@ -207,7 +207,7 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "john@example.com",
+  "email": "info@udeakucarespringsupportfoundation.org",
   "phone": "+234XXXXXXXXXX",
   "workshop": "First Aid Training"
 }
@@ -220,7 +220,7 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "john@example.com",
+  "email": "info@udeakucarespringsupportfoundation.org",
   "subject": "Inquiry",
   "message": "I would like more information..."
 }
@@ -234,7 +234,7 @@ Content-Type: application/json
 {
   "orgName": "Organization Name",
   "contactPerson": "John Doe",
-  "contactEmail": "john@example.com",
+  "contactEmail": "info@udeakucarespringsupportfoundation.org",
   "partnershipInterest": "Training Program"
 }
 ```

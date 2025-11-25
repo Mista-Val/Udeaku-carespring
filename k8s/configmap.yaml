@@ -11,4 +11,4 @@ data:
   CONTACT_EMAIL: "carespringsup@gmail.com"
   WHATSAPP_NUMBER: "+2347036152774"
   FORM_SUBMISSION_ENDPOINT: "/api/register"
-  ALLOWED_ORIGINS: "https://udeaku-carespring.com,https://www.udeaku-carespring.com"
+  ALLOWED_ORIGINS: "https://udeakucarespringsupportfoundation.org,https://www.udeakucarespringsupportfoundation.org"
