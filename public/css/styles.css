@@ -364,6 +364,123 @@ body {
 }
 
 
+/* Universal Paragraph Styling - Justified Text */
+body p,
+section p,
+div p,
+article p,
+main p,
+.container p,
+.max-width p,
+section.about p,
+.section-about p,
+.projects-section p,
+.faq-section p,
+.contact-section p {
+    text-align: justify !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Override specific cases that should remain centered */
+.form-notice p,
+.form-header p,
+.form-header__subtitle p,
+.modal-body p,
+.confirmation-body p,
+.footer-section p,
+.vision-card p,
+.form-sidebar p,
+.section-heading p,
+.form-step-description p,
+.error-message p,
+.success-message p,
+.tagline p,
+.hero-subtitle p,
+.centered-text p {
+    text-align: center !important;
+}
+
+/* Override project elements to remain centered despite universal justification */
+.projects-section-centered,
+.projects-label-custom,
+.badge-soft,
+.badge-soft h2,
+.section-about .section-label,
+.section-about .section-heading,
+#upcoming-projects-heading {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+}
+
+.badge-soft {
+    display: inline-flex !important;
+}
+
+/* Higher specificity rule for upcoming-projects-heading to override mobile conflicts */
+section#upcoming-projects #upcoming-projects-heading,
+.badge-soft #upcoming-projects-heading {
+    text-align: center !important;
+    display: inline-block !important;
+    margin: 0 auto !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Center parent containers for badge-soft */
+.projects-label-flex {
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+.upcoming-projects-custom .max-width {
+    text-align: center !important;
+    display: block !important;
+}
+
+.upcoming-projects-custom .badge-soft {
+    margin: 0 auto 2rem auto !important;
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Higher specificity to override any conflicting max-width styles */
+section#upcoming-projects .max-width {
+    text-align: center !important;
+    display: block !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+section#upcoming-projects .max-width .projects-label-flex {
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+.section-about .about-grid {
+    margin-top: 2rem !important;
+}
+
+/* Override specific cases that should remain left-aligned */
+.form-field p,
+.form-group p,
+.form-sidebar .contact-support>div p,
+.form-sidebar .location-map>div p,
+.founder-story p {
+    text-align: left !important;
+}
+
 /* Enhanced Step Demarcators with Icons */
 .form-step {
     position: relative;
@@ -1028,7 +1145,6 @@ body {
 }
 
 .about-text {
-    font-size: 0.95rem;
     line-height: 1.7;
 }
 
@@ -1037,14 +1153,16 @@ body {
 }
 
 .badge-soft {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 0.8rem 1.2rem;
-    background: linear-gradient(135deg, rgba(183, 185, 184, 0.6), rgba(174, 182, 178, 0.6), rgba(164, 168, 170, 0.6));
-    border: none;
-    border-radius: var(--radius-md);
-    margin: 1.5rem 0;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    padding: 0.8rem 1.2rem !important;
+    background: linear-gradient(135deg, rgba(183, 185, 184, 0.6), rgba(174, 182, 178, 0.6), rgba(164, 168, 170, 0.6)) !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    margin: 1.5rem auto !important;
+    text-align: center !important;
+    justify-content: center !important;
 }
 
 .badge-soft .icon {
@@ -1885,10 +2003,11 @@ body {
     }
 
     .btn-primary.submit-row {
-        width: 100% !important;
+        width: fit-content !important;
+        margin: 1rem auto 0 auto !important;
         padding: 1rem !important;
         font-size: 1rem !important;
-        margin-top: 1rem !important;
+        display: inline-block !important;
     }
 
     /* Training details mobile adjustments */
@@ -2648,6 +2767,79 @@ textarea.form-control {
 
     .step-title {
         display: none;
+    }
+
+    /* Center project section labels and headings */
+    .section-about .max-width {
+        text-align: center !important;
+        display: block !important;
+    }
+
+    .section-about .reveal {
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .projects-section-centered {
+        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+
+    .projects-label-flex {
+        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+
+    .section-label.projects-label-custom {
+        text-align: center !important;
+        display: inline-flex !important;
+        margin: 0 auto 0.75rem auto !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .badge-soft {
+        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        margin: 0 auto !important;
+        width: fit-content !important;
+    }
+
+    #upcoming-projects-heading {
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    /* Center FAQ section */
+    .section-about .section-label {
+        text-align: center !important;
+        display: inline-block !important;
+        margin: 0 auto !important;
+        width: fit-content !important;
+    }
+
+    .section-about .section-heading {
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 auto 1.5rem auto !important;
     }
 
     .form-navigation {
@@ -3720,7 +3912,6 @@ section {
 }
 
 .about-text {
-    font-size: 0.92rem;
     text-align: justify;
     line-height: 1.7;
     color: var(--text-soft);
@@ -4040,9 +4231,10 @@ select {
 }
 
 .submit-row {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1.5rem;
+    display: inline-block;
+    width: fit-content;
+    margin: 1.5rem auto 0 auto;
+    justify-content: center;
 }
 
 /* Shared primary / ghost buttons */
@@ -7460,29 +7652,60 @@ footer.site-footer::before {
 }
 
 .projects-label-custom {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background: rgba(46, 204, 113, 0.1);
-    border-radius: 20px;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 0.5rem 1rem !important;
+    background: rgba(46, 204, 113, 0.1) !important;
+    border-radius: 20px !important;
+    margin: 0 auto 3rem auto !important;
+    text-align: center !important;
+    justify-content: center !important;
 }
 
 .projects-label-text {
-    font-size: 1rem;
+    font-size: 2.25rem !important;
     letter-spacing: 0.5px;
     margin-left: 0.5rem;
     white-space: nowrap;
 }
 
-.projects-heading-custom {
-    text-align: center;
-    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-    margin-bottom: 1.5rem;
+/* Desktop-specific font size increase for projects section */
+@media (min-width: 769px) {
+    .section-about .about-text p {
+        font-size: 1.1rem !important;
+        line-height: 1.8 !important;
+    }
+}
+
+/* Desktop centering for project section elements */
+.projects-section-centered {
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto 0.75rem !important;
+    width: 100% !important;
+}
+
+.projects-label-flex {
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+}
+
+.section-about .section-label {
+    text-align: center !important;
+    display: inline-block !important;
+    margin: 0 auto !important;
+    width: fit-content !important;
 }
 
 .projects-intro-custom {
     max-width: 100%;
-    text-align: justify;
+    text-align: center !important;
 }
 
 .upcoming-projects-custom {
@@ -7490,10 +7713,12 @@ footer.site-footer::before {
 }
 
 .projects-label-flex {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 0.2rem;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
 }
 
 .founder-section-label {
@@ -7528,14 +7753,37 @@ footer.site-footer::before {
 }
 
 .meta-item-custom {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
+}
+
+.meta-item-custom svg {
+    color: #2ecc71 !important;
+    flex-shrink: 0 !important;
+}
+
+.meta-item-custom div {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
 }
 
 .meta-label-custom {
-    font-weight: 500;
-    margin-right: 0.5rem;
+    font-weight: 500 !important;
+    margin-right: 0.5rem !important;
+    color: #27ae60 !important;
+}
+
+.meta-item-custom .meta-value {
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+    background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
 }
 
 .form-notice-custom {
@@ -7773,6 +8021,28 @@ footer.site-footer::before {
     background: #27ae60;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+/* Add missing centering for project elements */
+.error-container h3 {
+    text-align: center;
+}
+
+.error-container p {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.error-container ul {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-container li {
+    text-align: center;
+    margin-bottom: 0.5rem;
 }
 
 }
