@@ -1610,4 +1610,50 @@
                 font-size: 1rem;
                 white-space: nowrap !important;
             }
-        }</style><script src="/js/main.js" defer="defer"></script></body></html>
+        }</style>
+
+<!-- Contact Modal Structure -->
+<div id="contactModal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 9999; align-items: center; justify-content: center;">
+    <div class="modal-card" style="background: linear-gradient(135deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.95)); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 16px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <h2 style="color: white; margin: 0; font-size: 1.5rem;">Contact Us</h2>
+            <button id="closeContactModal" style="background: rgba(255,255,255,0.1); border: none; color: white; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">×</button>
+        </div>
+        
+        <form id="contactForm" style="padding: 1.5rem;">
+            <div style="margin-bottom: 1rem;">
+                <label style="color: rgba(255,255,255,0.9); display: block; margin-bottom: 0.5rem;">Full Name</label>
+                <input type="text" name="name" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white;">
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+                <label style="color: rgba(255,255,255,0.9); display: block; margin-bottom: 0.5rem;">Email Address</label>
+                <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white;">
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+                <label style="color: rgba(255,255,255,0.9); display: block; margin-bottom: 0.5rem;">Subject</label>
+                <input type="text" name="subject" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white;">
+            </div>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <label style="color: rgba(255,255,255,0.9); display: block; margin-bottom: 0.5rem;">Message</label>
+                <textarea name="message" rows="4" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; color: white; resize: vertical;"></textarea>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                    <p>We'll respond within 24 hours</p>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                        <a href="#" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); padding: 0.4rem 0.8rem; border-radius: 6px; text-decoration: none; font-size: 0.85rem;">Facebook</a>
+                        <a href="#" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); padding: 0.4rem 0.8rem; border-radius: 6px; text-decoration: none; font-size: 0.85rem;">Twitter</a>
+                        <a href="#" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.9); padding: 0.4rem 0.8rem; border-radius: 6px; text-decoration: none; font-size: 0.85rem;">LinkedIn</a>
+                    </div>
+                </div>
+                <button type="submit" style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; border: none; border-radius: 8px; padding: 0.8rem 1.5rem; cursor: pointer; font-size: 0.95rem;">Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/main.js" defer="defer"></script></body></html>

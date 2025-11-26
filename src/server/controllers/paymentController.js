@@ -39,13 +39,28 @@ const mockPaystack = {
   }
 };
 
-// Import Stripe SDK
-const Stripe = require('stripe');
-
-// Initialize Stripe with secret key
-const stripe = process.env.STRIPE_SECRET_KEY ? 
-  new Stripe(process.env.STRIPE_SECRET_KEY) : 
-  null;
+// Mock Stripe for development (remove when stripe is installed)
+// NOTE: Stripe environment variables are configured but Stripe SDK is not yet installed
+// To enable Stripe: 1) npm install stripe 2) Uncomment Stripe implementation below
+const mockStripe = {
+  checkout: {
+    sessions: {
+      create: async (data) => {
+        return {
+          status: true,
+          data: {
+            reference: data.reference,
+            access_url: `https://checkout.stripe.com/pay/${data.reference}`,
+            amount: data.amount,
+            email: data.email,
+            paymentMethod: 'stripe',
+            currency: data.currency || 'USD'
+          }
+        };
+      }
+    }
+  }
+};
 
 // Use real paystack if available, otherwise use mock
 const paystack = process.env.NODE_ENV === 'production' && process.env.PAYSTACK_SECRET_KEY ? 
