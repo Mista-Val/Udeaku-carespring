@@ -63,10 +63,10 @@
             visibility: visible !important;
             opacity: 1 !important;
             pointer-events: auto !important;
-            transform: none !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            gap: 1rem !important;
+            transform: translateY(0) !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.3rem !important;
         }
 
         nav.site-nav a {
@@ -324,6 +324,7 @@
                 opacity: 1 !important;
             }
 
+            /* CRITICAL: Override main stylesheet site-nav rules */
             nav.site-nav {
                 display: none !important;
                 visibility: hidden !important;
@@ -337,7 +338,6 @@
                 padding: 0.8rem !important;
                 box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
                 z-index: 999 !important;
-                pointer-events: none !important;
                 transition: all 0.3s ease !important;
                 transform: translateY(-10px) !important;
                 flex-direction: column !important;
@@ -347,6 +347,9 @@
                 max-width: calc(100vw - 40px) !important;
                 min-width: 250px !important;
                 left: auto !important;
+                /* Override main stylesheet positioning */
+                inset-inline: auto !important;
+                top: 100% !important;
             }
 
             nav.site-nav.nav-open {
@@ -976,7 +979,7 @@
                         </div>
                     </div>
                     <div class="founder-avatar founder-avatar-custom"
-                        style="display: flex !important; justify-content: center !important; align-items: center !important; pointer-events: none !important; transition: all 0.5s ease !important; width: 50%; height: 35%; flex-shrink: 0 !important; margin: 0 auto !important;">
+                        style="display: flex !important; justify-content: center !important; align-items: center !important; transition: all 0.5s ease !important; width: 50%; height: 35%; flex-shrink: 0 !important; margin: 0 auto !important;">
                         <img src="/images/Precious.jpg" alt="Portrait of Precious-Winifred Udeaku Onyenaobiya"
                             class="founder-avatar-img"
                             style="height: auto !important; border-radius: 10% !important; border: 3px solid rgba(46, 204, 113, 0.3) !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) !important; transition: all 0.5s ease !important;" />
