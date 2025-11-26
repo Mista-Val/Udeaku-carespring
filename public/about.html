@@ -345,6 +345,7 @@
                 gap: 0.3rem !important;
                 width: fit-content !important;
                 min-width: 200px !important;
+                max-width: calc(100vw - 40px) !important;
                 left: auto !important;
             }
 
@@ -365,9 +366,11 @@
                 text-align: center !important;
                 margin-bottom: 0.3rem !important;
                 white-space: nowrap !important;
+                padding: 0.8rem 1rem !important;
+                font-size: 0.9rem !important;
             }
 
-            /* Mobile CTA with page theme colors and reduced brightness effects */
+            /* Mobile CTA with proper sizing and visibility */
             body header nav.site-nav a.nav-cta {
                 background: linear-gradient(135deg,
                         var(--accent, rgba(46, 204, 113, 0.9)),
@@ -383,8 +386,8 @@
                     0 0 12px rgba(46, 204, 113, 0.4),
                     0 0 20px rgba(39, 174, 96, 0.3),
                     inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
-                padding: 0.3rem !important;
-                margin: 0.2rem auto !important;
+                padding: 0.5rem !important;
+                margin: 0.3rem auto !important;
                 filter: brightness(1.05) !important;
                 transition: all 0.3s ease !important;
                 display: flex !important;
@@ -393,72 +396,199 @@
                 text-align: center !important;
                 position: relative !important;
                 overflow: hidden !important;
-                min-width: 60px !important;
-                min-height: 60px !important;
+                min-width: 70px !important;
+                min-height: 70px !important;
+                max-width: 80px !important;
+                max-height: 80px !important;
             }
 
             body header nav.site-nav a.nav-cta span {
                 color: white !important;
                 font-weight: 600 !important;
-                font-size: 0.65rem !important;
+                font-size: 0.7rem !important;
                 line-height: 1.1 !important;
-                padding: 0 !important;
-                border-radius: 0 !important;
-                text-shadow: 0 0 6px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.6) !important;
+                letter-spacing: 0.3px !important;
+                text-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 2px rgba(255, 255, 255, 0.6) !important;
+                z-index: 2 !important;
                 filter: brightness(1.1) !important;
                 animation: textBrightening 2s ease-in-out infinite !important;
+            }
+
+            /* Ensure no horizontal overflow */
+            body,
+            html {
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
+            }
+
+            * {
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Fix metrics container */
+            .hero-metrics {
+                max-width: 100% !important;
+                overflow-x: hidden !important;
+            }
+
+            /* Fix text overflow */
+            .metric strong,
+            .metric span {
+                word-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+        }
+
+        /* Extra small mobile screens */
+        @media (max-width: 480px) {
+            .hero-metrics {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            .metric {
+                width: 100% !important;
+                max-width: 300px !important;
+                min-width: 150px !important;
+            }
+
+            nav.site-nav {
+                min-width: 180px !important;
+                max-width: calc(100vw - 30px) !important;
+            }
+
+            body header nav.site-nav a.nav-cta {
+                min-width: 60px !important;
+                min-height: 60px !important;
+                max-width: 70px !important;
+                max-height: 70px !important;
+            }
+
+            body header nav.site-nav a.nav-cta span {
+                font-size: 0.6rem !important;
+            }
+        }
+
+        /* Mobile breakpoint to match main CSS - override grid layout */
+        @media (max-width: 1024px) {
+            /* ULTRA HIGH SPECIFICITY - Defeat all conflicts */
+            
+            /* Override aims-grid with maximum specificity */
+            html body section.section-aims div.max-width div.aims-grid,
+            html body div.page-shell div.section-aims div.max-width div.aims-grid,
+            section.section-aims div.max-width div.aims-grid,
+            div.aims-grid.aims-grid,
+            .aims-grid {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2rem !important;
+                /* Kill all grid properties with maximum force */
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                grid-template-rows: auto !important;
+                grid-template-areas: none !important;
+                grid-auto-flow: row !important;
+                display: flex !important;
+                flex-direction: column !important;
+                grid-template-columns: unset !important;
+                grid-template-rows: unset !important;
+                grid-template-areas: unset !important;
+                grid-auto-flow: unset !important;
+                display: block !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            /* Override aims-side-card with maximum specificity */
+            html body section.section-aims div.max-width div.aims-grid aside.aims-side-card,
+            html body div.page-shell div.section-aims div.max-width div.aims-grid aside.aims-side-card,
+            section.section-aims div.max-width div.aims-grid aside.aims-side-card,
+            aside.aims-side-card.aims-side-card,
+            .aims-side-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                display: block !important;
+                order: -999 !important; /* Ultra negative to guarantee first position */
                 position: relative !important;
-                z-index: 2 !important;
+                padding: 1.5rem !important;
+                border-radius: 12px !important;
+                background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05)) !important;
+                border: 1px solid rgba(46, 204, 113, 0.3) !important;
+                text-align: center !important;
+                overflow: hidden !important;
+                /* Override any conflicting styles */
+                position: relative !important;
+                padding: 1.5rem !important;
+                border-radius: 12px !important;
+                background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.05)) !important;
+                border: 1px solid rgba(46, 204, 113, 0.3) !important;
+                text-align: center !important;
+                overflow: hidden !important;
             }
 
-            body header nav.site-nav a.nav-cta span::before {
-                content: '' !important;
-                position: absolute !important;
-                top: -8px !important;
-                left: -8px !important;
-                right: -8px !important;
-                bottom: -8px !important;
-                border-radius: 50% !important;
-                background: conic-gradient(from 0deg,
-                        transparent 0deg,
-                        rgba(255, 255, 255, 0.2) 45deg,
-                        rgba(255, 255, 255, 0.4) 90deg,
-                        rgba(255, 255, 255, 0.2) 135deg,
-                        transparent 180deg,
-                        transparent 360deg) !important;
-                opacity: 1 !important;
-                animation: moonlightRotation 4s linear infinite !important;
-                z-index: 1 !important;
+            /* Override aims-list with maximum specificity */
+            html body section.section-aims div.max-width div.aims-grid div.aims-list,
+            html body div.page-shell div.section-aims div.max-width div.aims-grid div.aims-list,
+            section.section-aims div.max-width div.aims-grid div.aims-list,
+            div.aims-list.aims-list,
+            .aims-list {
+                width: 100% !important;
+                max-width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 2rem !important;
+                order: 999 !important; /* Ultra positive to guarantee last position */
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
-            body header nav.site-nav a.nav-cta:hover {
-                filter: brightness(1.15) saturate(1.1) !important;
-                transform: scale(1.05) !important;
-                box-shadow:
-                    0 0 15px rgba(46, 204, 113, 0.5),
-                    0 0 25px rgba(39, 174, 96, 0.4),
-                    inset 0 0 12px rgba(255, 255, 255, 0.4) !important;
+            /* Override aim-item styling */
+            html body section.section-aims div.max-width div.aims-grid div.aims-list article.aim-item,
+            html body div.page-shell div.section-aims div.max-width div.aims-grid div.aims-list article.aim-item,
+            section.section-aims div.max-width div.aims-grid div.aims-list article.aim-item,
+            article.aim-item.aim-item,
+            .aim-item {
+                margin-bottom: 0 !important;
+                padding: 1.5rem !important;
+                background: linear-gradient(135deg, rgba(6, 37, 29, 0.8), rgba(3, 19, 15, 0.9)) !important;
+                border-radius: 12px !important;
+                border: 1px solid rgba(46, 204, 113, 0.2) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 1rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
             }
+        }
 
-            body header nav.site-nav a.nav-cta:hover span::before {
-                background: conic-gradient(from 0deg,
-                        transparent 0deg,
-                        rgba(255, 255, 255, 0.15) 45deg,
-                        rgba(255, 255, 255, 0.3) 90deg,
-                        rgba(255, 255, 255, 0.15) 135deg,
-                        transparent 180deg,
-                        transparent 360deg) !important;
-                animation: moonlightRotation 3s linear infinite !important;
-            }
+        body header nav.site-nav a.nav-cta:hover {
+            filter: brightness(1.15) saturate(1.1) !important;
+            transform: scale(1.05) !important;
+            box-shadow:
+                0 0 15px rgba(46, 204, 113, 0.5),
+                0 0 25px rgba(39, 174, 96, 0.4),
+                inset 0 0 12px rgba(255, 255, 255, 0.4) !important;
+        }
 
-            .brand {
-                flex-shrink: 0;
-            }
+        body header nav.site-nav a.nav-cta:hover span::before {
+            background: conic-gradient(from 0deg,
+                    transparent 0deg,
+                    rgba(255, 255, 255, 0.15) 45deg,
+                    rgba(255, 255, 255, 0.3) 90deg,
+                    rgba(255, 255, 255, 0.15) 135deg,
+                    transparent 180deg,
+                    transparent 360deg) !important;
+            animation: moonlightRotation 3s linear infinite !important;
+        }
 
-            .site-nav {
-                flex: 1;
-                justify-content: flex-end;
-            }
+        .brand {
+            flex-shrink: 0;
+        }
+
+        .site-nav {
+            flex: 1;
+            justify-content: flex-end;
         }
 
         @keyframes moonlightRotation {
@@ -471,6 +601,25 @@
             }
         }
     </style>
+    <script>
+        // Simple, guaranteed solution - reorder HTML elements on mobile
+        function fixAimsLayout() {
+            if (window.innerWidth <= 1024) {
+                const aimsGrid = document.querySelector('.aims-grid');
+                const aimsList = document.querySelector('.aims-list');
+                const aimsSideCard = document.querySelector('.aims-side-card');
+                
+                if (aimsGrid && aimsList && aimsSideCard) {
+                    // Simply move the side card to be first in the grid
+                    aimsGrid.insertBefore(aimsSideCard, aimsGrid.firstChild);
+                }
+            }
+        }
+        
+        // Run immediately and on resize
+        document.addEventListener('DOMContentLoaded', fixAimsLayout);
+        window.addEventListener('resize', fixAimsLayout);
+    </script>
     <script defer="defer" src="/js/main.bundle.js"></script>
 </head>
 
@@ -530,8 +679,8 @@
                             padding: 0;
                             width: 100%;
                             box-sizing: border-box;">
-                            <div class="metric" style="flex: 1 1 300px;
-                                min-width: 200px;
+                            <div class="metric" style="flex: 1 1 250px;
+                                min-width: 150px;
                                 max-width: 100%;
                                 padding: 1.5rem 1rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
@@ -547,8 +696,8 @@
                                     color: var(--text-soft);
                                     line-height: 1.5;
                                     display: block;">Health Awareness & Education</span></div>
-                            <div class="metric" style="flex: 1 1 300px;
-                                min-width: 200px;
+                            <div class="metric" style="flex: 1 1 250px;
+                                min-width: 150px;
                                 max-width: 100%;
                                 padding: 1.5rem 1rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
@@ -564,8 +713,8 @@
                                     color: var(--text-soft);
                                     line-height: 1.5;
                                     display: block;">Menstrual Health Initiative</span></div>
-                            <div class="metric" style="flex: 1 1 300px;
-                                min-width: 200px;
+                            <div class="metric" style="flex: 1 1 250px;
+                                min-width: 150px;
                                 max-width: 100%;
                                 padding: 1.5rem 1rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
@@ -581,9 +730,9 @@
                                     color: var(--text-soft);
                                     line-height: 1.5;
                                     display: block;">Health Outreach Programs</span></div>
-                            <div class="metric" style="flex: 0 1 250px;
-                                min-width: 200px;
-                                max-width: 280px;
+                            <div class="metric" style="flex: 0 1 200px;
+                                min-width: 150px;
+                                max-width: 250px;
                                 padding: 1rem 0.8rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
                                 border: 1px solid rgba(46, 204, 113, 0.15);
@@ -947,7 +1096,8 @@
                             </svg> <span>WhatsApp</span></a></div>
                 </div>
             </div>
-            <div style="text-align: center; padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 2rem;">
+            <div
+                style="text-align: center; padding: 1rem 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: 2rem;">
                 <p style="font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin: 0;">Powered by: <span
                         style="color: rgba(46, 204, 113, 0.8); font-weight: 500;"> <a
                             href="https://solutions.avalance-resources.online">Avalance Tech Solutions</a> &copy;
@@ -1634,11 +1784,11 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .chatbot-widget {
-                width: calc(100vw - 40px);
+                width: calc(100vw - 40px) !important;
                 height: 70vh;
-                bottom: 10px;
+                max-width: 350px !important;
                 right: 20px;
-                left: 20px;
+                bottom: 20px;
             }
 
             .chatbot-toggle {
@@ -1648,8 +1798,20 @@
                 height: 50px;
             }
 
-            .chatbot-quick-actions {
-                grid-template-columns: 1fr;
+            /* Ensure no horizontal overflow */
+            body {
+                overflow-x: hidden !important;
+            }
+
+            html {
+                overflow-x: hidden !important;
+            }
+
+            /* Fix navigation dropdown positioning */
+            nav.site-nav {
+                max-width: calc(100vw - 40px) !important;
+                right: 20px !important;
+                left: auto !important;
             }
         }
 
