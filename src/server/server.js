@@ -53,7 +53,8 @@ app.post('/api/send-partnership-email', contactController.sendPartnershipEmail);
 // Payment Routes
 app.post('/api/payment/initialize', paymentController.initializePayment);
 app.get('/api/payment/verify/:reference', paymentController.verifyPayment);
-app.post('/api/payment/webhook', paymentController.handleWebhook);
+app.post('/api/payment/webhook', paymentController.handlePaystackWebhook);
+app.post('/api/payment/stripe/webhook', paymentController.handleStripeWebhook);
 
 // Donation Routes (Admin)
 app.get('/api/donations', donationController.getAllDonations);
