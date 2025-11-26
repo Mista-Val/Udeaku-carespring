@@ -473,7 +473,7 @@
         /* Mobile breakpoint to match main CSS - override grid layout */
         @media (max-width: 1024px) {
             /* ULTRA HIGH SPECIFICITY - Defeat all conflicts */
-            
+
             /* Override aims-grid with maximum specificity */
             html body section.section-aims div.max-width div.aims-grid,
             html body div.page-shell div.section-aims div.max-width div.aims-grid,
@@ -509,7 +509,8 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 display: block !important;
-                order: -999 !important; /* Ultra negative to guarantee first position */
+                order: -999 !important;
+                /* Ultra negative to guarantee first position */
                 position: relative !important;
                 padding: 1.5rem !important;
                 border-radius: 12px !important;
@@ -538,7 +539,8 @@
                 display: flex !important;
                 flex-direction: column !important;
                 gap: 2rem !important;
-                order: 999 !important; /* Ultra positive to guarantee last position */
+                order: 999 !important;
+                /* Ultra positive to guarantee last position */
                 margin: 0 !important;
                 padding: 0 !important;
             }
@@ -608,14 +610,14 @@
                 const aimsGrid = document.querySelector('.aims-grid');
                 const aimsList = document.querySelector('.aims-list');
                 const aimsSideCard = document.querySelector('.aims-side-card');
-                
+
                 if (aimsGrid && aimsList && aimsSideCard) {
                     // Simply move the side card to be first in the grid
                     aimsGrid.insertBefore(aimsSideCard, aimsGrid.firstChild);
                 }
             }
         }
-        
+
         // Mobile menu toggle functionality
         const navToggle = document.getElementById('navToggle');
         const siteNav = document.getElementById('siteNav');
@@ -624,13 +626,13 @@
         siteNav.style.pointerEvents = 'auto';
 
         if (navToggle && siteNav) {
-            navToggle.addEventListener('click', function(e) {
+            navToggle.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 // Toggle the nav-open class
                 siteNav.classList.toggle('nav-open');
-                
+
                 // Also toggle inline display styles for maximum compatibility
                 if (siteNav.classList.contains('nav-open')) {
                     siteNav.style.display = 'flex';
@@ -648,7 +650,7 @@
             });
 
             // Close menu when clicking outside
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 if (!siteNav.contains(e.target) && !navToggle.contains(e.target)) {
                     siteNav.classList.remove('nav-open');
                     siteNav.style.display = 'none';
@@ -660,7 +662,7 @@
             });
 
             // Handle window resize
-            window.addEventListener('resize', function() {
+            window.addEventListener('resize', function () {
                 if (window.innerWidth > 768) {
                     siteNav.classList.remove('nav-open');
                     siteNav.style.display = 'flex';
@@ -679,11 +681,11 @@
                 }
             });
         }
-        
+
         // Run immediately and on resize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             fixAimsLayout();
-            
+
             // Initialize mobile nav state
             if (window.innerWidth <= 768) {
                 siteNav.style.display = 'none';
