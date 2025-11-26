@@ -154,7 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show/hide confirmation dialog
     function showConfirmation() {
         if (confirmation) {
-            confirmation.style.display = 'block';
+            confirmation.classList.add('active');
+            confirmation.setAttribute('aria-hidden', 'false');
+            confirmation.style.visibility = 'visible';
+            confirmation.style.opacity = '1';
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
@@ -164,7 +167,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function hideConfirmation() {
         if (confirmation) {
-            confirmation.style.display = 'none';
+            confirmation.classList.remove('active');
+            confirmation.setAttribute('aria-hidden', 'true');
+            confirmation.style.visibility = 'hidden';
+            confirmation.style.opacity = '0';
         }
         if (formError) {
             formError.style.display = 'none';
@@ -184,6 +190,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeConfirmation) {
         closeConfirmation.addEventListener("click", hideConfirmation);
     }
+
+    // Close confirmation with Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && confirmation && confirmation.classList.contains('active')) {
+            hideConfirmation();
+        }
+    });
     
     // Navigation toggle for mobile
     const navToggle = document.getElementById("navToggle");
@@ -327,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (result && result.status === 'success') {
                     contactForm.reset();
                     toggleModal(contactModal, false);
-                    alert('Thank you for your message! We will get back to you soon.');
+                    showConfirmation();
                 } else {
                     console.error('Contact submission failed', result);
                     alert('Sorry, we could not send your message. Please try again later.');

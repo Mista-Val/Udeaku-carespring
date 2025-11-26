@@ -4210,6 +4210,19 @@ body.home .modal-overlay {
     transition: all 0.3s ease;
 }
 
+/* Ensure partnership confirmation overlay is always positioned correctly */
+#partnershipConfirmation {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
 .confirmation-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -8103,4 +8116,5 @@ footer.site-footer::before {
 .error-container li {
     text-align: center;
     margin-bottom: 0.5rem;
+}
 }

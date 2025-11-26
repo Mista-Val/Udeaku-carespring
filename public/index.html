@@ -861,7 +861,7 @@
                             Donate Today <strong>— Be the Reason Someone Lives, Learns, and Thrives</strong>
                         </p>
                         <div class="news-actions">
-                            <a href="#" onclick="openDonationModal(); return false;" class="btn-primary">Support Our Mission</a>
+                            <a href="#" id="donationModalTrigger" class="btn-primary">Support Our Mission</a>
                             <a href="projects.html#projects" class="btn-ghost">See Our Impact</a>
                         </div>
                     </div>
@@ -1815,9 +1815,9 @@
 
     <!-- Donation Modal/Overlay -->
     <div id="donationModal" class="donation-modal">
-        <div class="modal-overlay" onclick="closeDonationModal()"></div>
+        <div class="modal-overlay" id="donationModalOverlay"></div>
         <div class="modal-content">
-            <button class="modal-close" onclick="closeDonationModal()">×</button>
+            <button class="modal-close" id="donationModalClose">×</button>
             
             <div class="reveal visible section-centered-flex-text">
                 <div class="section-label section-label-centered">
@@ -2229,7 +2229,7 @@
                     </p>
                 </div>
                 <div class="confirmation-footer">
-                    <button type="button" id="closePartnershipConfirmationFooter" class="btn-primary">Got it</button>
+                    <button type="button" id="closePartnershipConfirmationFooter" class="btn-primary">Exit Window</button>
                 </div>
             </div>
         </div>
@@ -2290,6 +2290,29 @@
                 navToggle.classList.remove('nav-open');
             }
         });
+
+        // Handle donation modal trigger
+        const donationModalTrigger = document.getElementById('donationModalTrigger');
+        if (donationModalTrigger) {
+            donationModalTrigger.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (window.openDonationModal) {
+                    window.openDonationModal();
+                }
+            });
+        }
+
+        // Handle donation modal close events
+        const donationModalOverlay = document.getElementById('donationModalOverlay');
+        const donationModalClose = document.getElementById('donationModalClose');
+        
+        if (donationModalOverlay && window.closeDonationModal) {
+            donationModalOverlay.addEventListener('click', window.closeDonationModal);
+        }
+        
+        if (donationModalClose && window.closeDonationModal) {
+            donationModalClose.addEventListener('click', window.closeDonationModal);
+        }
 
         // Wait for DOM to be ready before initializing partnership modal
         document.addEventListener('DOMContentLoaded', function () {

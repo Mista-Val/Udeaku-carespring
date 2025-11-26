@@ -73,7 +73,7 @@
                 <li><strong>Visit the Homepage:</strong> Explore more about us on other pages.</li>
             </ul>
 
-            <button onclick="window.location.href='index.html'" class="btn-primary"
+            <button id="returnHomeBtn" class="btn-primary"
                 style="width: fit-content; margin: 2rem auto; padding: 1rem 2rem; border-radius: 999px; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none;">
                 Return to Homepage
             </button>
@@ -136,6 +136,14 @@
                 navToggle.classList.remove('nav-open');
             }
         });
+
+        // Handle return home button
+        const returnHomeBtn = document.getElementById('returnHomeBtn');
+        if (returnHomeBtn) {
+            returnHomeBtn.addEventListener('click', function () {
+                window.location.href = 'index.html';
+            });
+        }
     </script>
 
     <script src="/js/main.js" defer></script>

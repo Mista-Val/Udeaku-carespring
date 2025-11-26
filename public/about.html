@@ -897,6 +897,60 @@
                 </div>
             </div>
         </div>
+
+        <!-- Contact Us Modal -->
+        <div class="modal-overlay" id="contactModal" aria-hidden="true">
+            <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+                <div class="modal-header">
+                    <h2 id="contactModalTitle" class="modal-title">Get in Touch</h2>
+                    <button type="button" class="close-btn" id="closeContactModal">Close</button>
+                </div>
+                <div class="modal-body">
+                    <p>If you have enquiries about our programs, outreaches, or partnership opportunities,
+                        please send us a message below.</p>
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <div class="modal-form-group">
+                            <label for="contactName">Full Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="Enter your full name" required />
+                        </div>
+                        <div class="modal-form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" name="email"
+                                placeholder="info@udeakucarespringsupportfoundation.org" required />
+                        </div>
+                        <div class="modal-form-group">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" name="subject" placeholder="What is this about?" />
+                        </div>
+                        <div class="modal-form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+                        </div>
+                        <div class="modal-form-actions">
+                            <div class="social-links">
+                                <a href="https://wa.me/2348034060448" target="_blank" rel="noopener noreferrer"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    WhatsApp
+                                </a>
+                                <a href="https://www.instagram.com/Udeaku_Carespring_supportfound" target="_blank"
+                                    rel="noopener noreferrer"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    Instagram
+                                </a>
+                                <a href="https://www.facebook.com/profile.php?id=61583077715707" target="_blank"
+                                    rel="noopener noreferrer"
+                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
+                                    Facebook
+                                </a>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                <span>Send Enquiry</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer class="site-footer">
@@ -1062,6 +1116,58 @@
                 siteNav.classList.remove('nav-open');
                 navToggle.classList.remove('nav-open');
             }
+        });
+
+        // Wait for DOM to be ready before initializing contact modal
+        document.addEventListener('DOMContentLoaded', function () {
+            // Contact modal functionality
+            const contactModal = document.getElementById('contactModal');
+            const openContactBtns = document.querySelectorAll('[data-open-contact]');
+            const closeContactBtn = document.getElementById('closeContactModal');
+
+            function toggleModal(modal, shouldOpen) {
+                if (!modal) return;
+                if (shouldOpen) {
+                    modal.classList.add('active');
+                    modal.setAttribute('aria-hidden', 'false');
+                    document.body.classList.add('nav-open');
+                } else {
+                    modal.classList.remove('active');
+                    modal.setAttribute('aria-hidden', 'true');
+                    document.body.classList.remove('nav-open');
+                }
+            }
+
+            if (openContactBtns.length && contactModal) {
+                openContactBtns.forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        toggleModal(contactModal, true);
+                    });
+                });
+            }
+
+            if (closeContactBtn && contactModal) {
+                closeContactBtn.addEventListener('click', function () {
+                    toggleModal(contactModal, false);
+                });
+            }
+
+            // Close modal when clicking overlay
+            if (contactModal) {
+                contactModal.addEventListener('click', function (e) {
+                    if (e.target === contactModal) {
+                        toggleModal(contactModal, false);
+                    }
+                });
+            }
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && contactModal && contactModal.classList.contains('active')) {
+                    toggleModal(contactModal, false);
+                }
+            });
         });
     </script>
 
@@ -1386,69 +1492,6 @@
         });
     </script>
 
-    <!-- Contact Us Modal -->
-    <div class="modal-overlay" id="contactModal" aria-hidden="true">
-        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
-            <div class="modal-header">
-                <h2 id="contactModalTitle" class="modal-title">Get in Touch</h2>
-                <button type="button" class="close-btn" id="closeContactModal">Close</button>
-            </div>
-            <div class="modal-body">
-                <p>If you have enquiries about our programs, outreaches, or partnership opportunities,
-                    please send us a message below.</p>
-                <form id="contactForm" class="contact-form" novalidate>
-                    <div class="modal-form-group">
-                        <label for="contactName">Full Name</label>
-                        <input type="text" id="contactName" name="name" placeholder="Enter your full name" required />
-                    </div>
-                    <div class="modal-form-group">
-                        <label for="contactEmail">Email Address</label>
-                        <input type="email" id="contactEmail" name="email"
-                            placeholder="info@udeakucarespringsupportfoundation.org" required />
-                    </div>
-                    <div class="modal-form-group">
-                        <label for="contactSubject">Subject</label>
-                        <input type="text" id="contactSubject" name="subject" placeholder="What is this about?" />
-                    </div>
-                    <div class="modal-form-group">
-                        <label for="contactMessage">Message</label>
-                        <textarea id="contactMessage" name="message" placeholder="Write your enquiry here"
-                            required></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <div style="display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem;">
-                            <span>We typically respond within 1–3 working days. You can also reach us
-                                via:</span>
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-                                <a href="mailto:carespringsup@gmail.com"
-                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
-                                    Email
-                                </a>
-                                <a href="https://wa.me/2349033432591" target="_blank" rel="noopener noreferrer"
-                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
-                                    WhatsApp
-                                </a>
-                                <a href="https://www.instagram.com/Udeaku_Carespring_supportfound" target="_blank"
-                                    rel="noopener noreferrer"
-                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
-                                    Instagram
-                                </a>
-                                <a href="https://www.facebook.com/profile.php?id=61583077715707" target="_blank"
-                                    rel="noopener noreferrer"
-                                    style="padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid rgba(46, 204, 113, 0.6); color: var(--accent); font-size: 0.9rem; text-decoration: none; background: rgba(3, 19, 15, 0.9);">
-                                    Facebook
-                                </a>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn-primary">
-                            <span>Send Enquiry</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!-- Confirmation Overlay -->
     <div class="confirmation-overlay" id="confirmation">
         <div class="confirmation-card" role="alertdialog" aria-modal="true" aria-labelledby="confirmation-title">
@@ -1755,17 +1798,28 @@
             }
         }
 
-        /* Override home page modal hiding for contact modal */
+        /* Contact modal positioned over contact section */
         body.about #contactModal.modal-overlay {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: rgba(0, 0, 0, 0.8) !important;
             display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
             opacity: 0 !important;
             visibility: hidden !important;
             transition: all 0.3s ease;
+            z-index: 1000 !important;
         }
 
         body.about #contactModal.modal-overlay.active {
             opacity: 1 !important;
             visibility: visible !important;
+            display: flex !important;
+            z-index: 9999 !important;
         }
 
         /* Ensure contact modal has proper scrolling */
@@ -1774,9 +1828,89 @@
             max-height: 90vh !important;
         }
 
+        /* Confirmation overlay styles */
+        .confirmation-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top, rgba(46, 204, 113, 0.15), transparent 55%), rgba(0, 0, 0, 0.88);
+            z-index: 60;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .confirmation-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Modal form styling */
+        .modal-form-group {
+            margin-top: 0.8rem !important;
+            margin-bottom: 0.8rem !important;
+        }
+
+        .modal-form-group label {
+            margin-bottom: 0.4rem !important;
+        }
+
+        .modal-form-group input,
+        .modal-form-group textarea {
+            margin-bottom: 0 !important;
+        }
+
+        /* Add spacing between social links and Send Enquiry button */
+        .modal-form-actions {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+            align-items: center !important;
+        }
+
+        .modal-form-actions .social-links {
+            margin-bottom: 0 !important;
+        }
+
+        .modal-form-actions .btn-primary {
+            margin-top: 0 !important;
+        }
+
+        /* Ensure modal content stays within bounds */
+        #contactModal {
+            overflow: hidden !important;
+        }
+
+        #contactModal .modal-card {
+            max-width: 90% !important;
+            max-height: 90vh !important;
+            overflow: hidden !important;
+        }
+
+        #contactModal .modal-body {
+            overflow-y: auto !important;
+            max-height: calc(90vh - 120px) !important;
+        }
+
+        #contactModal .modal-form-actions {
+            position: relative !important;
+            z-index: 1 !important;
+        }
+
+        #contactModal .social-links {
+            position: relative !important;
+            z-index: 1 !important;
+        }
+
         /* Contact Section Inline Layout */
         .contact-container {
             margin-top: 2rem;
+            position: relative !important;
         }
 
         .contact-content {

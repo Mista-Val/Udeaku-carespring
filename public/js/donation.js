@@ -172,10 +172,18 @@ document.addEventListener('DOMContentLoaded', function() {
         errorDiv.innerHTML = `
             <div class="message-icon">❌</div>
             <div class="message-text">${message}</div>
-            <button class="message-close" onclick="this.parentElement.remove()">×</button>
+            <button class="message-close">×</button>
         `;
         
         donationForm.appendChild(errorDiv);
+        
+        // Add event listener for close button
+        const closeBtn = errorDiv.querySelector('.message-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function () {
+                this.parentElement.remove();
+            });
+        }
         
         // Auto remove after 5 seconds
         setTimeout(() => removeMessages(), 5000);
@@ -194,10 +202,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 <strong>${message}</strong>
                 <br><small>Reference: ${data.reference}</small>
             </div>
-            <button class="message-close" onclick="this.parentElement.remove()">×</button>
+            <button class="message-close">×</button>
         `;
         
         donationForm.appendChild(successDiv);
+        
+        // Add event listener for close button
+        const closeBtn = successDiv.querySelector('.message-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function () {
+                this.parentElement.remove();
+            });
+        }
         
         // Reset form
         donationForm.reset();
@@ -438,12 +454,20 @@ function showPaymentSuccess(paymentData) {
                     <p><strong>Reference:</strong> ${paymentData.reference}</p>
                     <p><strong>Date:</strong> ${new Date(paymentData.paid_at).toLocaleDateString()}</p>
                 </div>
-                <button onclick="this.closest('.payment-success-modal').remove()" class="close-modal-btn">Close</button>
+                <button class="close-modal-btn">Close</button>
             </div>
         </div>
     `;
     
     document.body.appendChild(successModal);
+    
+    // Add event listener for close button
+    const closeBtn = successModal.querySelector('.close-modal-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            this.closest('.payment-success-modal').remove();
+        });
+    }
     
     // Clean up URL
     window.history.replaceState({}, document.title, window.location.pathname);
@@ -460,12 +484,20 @@ function showPaymentFailed(message) {
                 <h2>Payment Failed</h2>
                 <p>${message}</p>
                 <p>Please try again or contact support if the problem persists.</p>
-                <button onclick="this.closest('.payment-error-modal').remove()" class="close-modal-btn">Close</button>
+                <button class="close-modal-btn">Close</button>
             </div>
         </div>
     `;
     
     document.body.appendChild(errorModal);
+    
+    // Add event listener for close button
+    const closeBtn = errorModal.querySelector('.close-modal-btn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            this.closest('.payment-error-modal').remove();
+        });
+    }
     
     // Clean up URL
     window.history.replaceState({}, document.title, window.location.pathname);
