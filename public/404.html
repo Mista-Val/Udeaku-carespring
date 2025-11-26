@@ -21,57 +21,38 @@
     }
 
     .nav-toggle {
-        display: inline-flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
         position: relative !important;
         z-index: 1000 !important;
     }
 
     nav.site-nav {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        position: absolute !important;
-        top: calc(100% - 5px) !important;
-        right: 0 !important;
-        background: linear-gradient(135deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.95)) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        border-radius: 8px !important;
-        padding: 0.8rem !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-        min-width: auto !important;
-        width: fit-content !important;
-        z-index: 999 !important;
-        pointer-events: none !important;
-        transition: all 0.3s ease !important;
-        transform: translateY(-10px) !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1rem !important;
     }
-
+    
     nav.site-nav.nav-open {
         display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        transform: translateY(0) !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 0.3rem !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1rem !important;
     }
 
     nav.site-nav a {
-        display: block !important;
+        display: inline-block !important;
         color: rgba(255, 255, 255, 0.9) !important;
-        text-decoration: none !important;
         padding: 0.5rem 1rem !important;
-        margin: 0 !important;
         border-radius: 6px !important;
         background: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         transition: all 0.3s ease !important;
         font-size: 0.85rem !important;
         white-space: nowrap !important;
-        width: 100% !important;
+        width: auto !important;
         text-align: center !important;
         box-sizing: border-box !important;
     }
@@ -80,67 +61,509 @@
         background: rgba(46, 204, 113, 0.2) !important;
         border-color: rgba(46, 204, 113, 0.4) !important;
         color: white !important;
-        transform: translateX(2px) !important;
+        transform: translateY(-2px) !important;
     }
 
     nav.site-nav a.nav-cta {
         background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
         color: white !important;
         font-weight: 600 !important;
-        text-align: center !important;
-        margin-top: 0.3rem !important;
         padding: 0.6rem 1rem !important;
         font-size: 0.8rem !important;
         line-height: 1.2 !important;
+        display: inline-block !important;
+        width: auto !important;
     }
-
+    
     nav.site-nav a.nav-cta:hover {
         background: linear-gradient(135deg, #27ae60, #229954) !important;
-        transform: translateX(0) scale(1.02) !important;
+        transform: translateY(-2px) scale(1.02) !important;
+    }
+
+    @media (min-width: 769px) {
+        .nav-toggle {
+            display: none !important;
+        }
+        
+        .site-nav.site-nav a {
+            color: var(--text-soft) !important;
+            text-decoration: none !important;
+            padding: 0.6rem 1.2rem !important;
+            border-radius: 999px !important;
+            border: 1px solid transparent !important;
+            background: transparent !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            position: relative !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .site-nav.site-nav a:hover,
+        .site-nav.site-nav a:focus-visible {
+            border-color: rgba(46, 204, 113, 0.6) !important;
+            background: linear-gradient(120deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.98)) !important;
+            color: var(--text-main) !important;
+        }
+
+        .site-nav.site-nav a span {
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        .site-nav.site-nav a::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(45deg,
+                    var(--accent, #2ecc71),
+                    #27ae60,
+                    #3498db,
+                    #9b59b6,
+                    #f1c40f) !important;
+            background-size: 400% 400% !important;
+            border-radius: 999px !important;
+            z-index: 1 !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .site-nav.site-nav a:hover::before,
+        .site-nav.site-nav a:focus-visible::before {
+            opacity: 1 !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            padding: 0.8rem 1.5rem !important;
+            background: linear-gradient(135deg,
+                    var(--accent, rgba(46, 204, 113, 0.9)),
+                    rgba(39, 174, 96, 0.85),
+                    rgba(52, 152, 219, 0.8),
+                    rgba(155, 89, 182, 0.75),
+                    rgba(241, 196, 15, 0.8)) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningGradient 3s ease-in-out infinite !important;
+            border: 3px solid rgba(255, 255, 255, 0.8) !important;
+            border-radius: 50% !important;
+            box-shadow:
+                0 0 15px rgba(46, 204, 113, 0.4),
+                0 0 25px rgba(39, 174, 96, 0.3),
+                0 0 35px rgba(52, 152, 219, 0.2),
+                inset 0 0 15px rgba(255, 255, 255, 0.3) !important;
+            position: relative !important;
+            overflow: hidden !important;
+            min-width: 80px !important;
+            min-height: 80px !important;
+            filter: brightness(1.05) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -3px !important;
+            left: -3px !important;
+            right: -3px !important;
+            bottom: -3px !important;
+            background: linear-gradient(45deg,
+                    var(--accent, #2ecc71),
+                    #27ae60,
+                    #3498db,
+                    #9b59b6,
+                    #f1c40f) !important;
+            background-size: 400% 400% !important;
+            border-radius: 50% !important;
+            z-index: 1 !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+            animation: gradientRotation 4s linear infinite !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta:hover::before {
+            opacity: 1 !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta span {
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 0.75rem !important;
+            line-height: 1.2 !important;
+            letter-spacing: 0.5px !important;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 2px rgba(255, 255, 255, 0.6) !important;
+            z-index: 2 !important;
+            filter: brightness(1.1) !important;
+            animation: textBrightening 2s ease-in-out infinite !important;
+        }
+
+        body header nav.site-nav.site-nav a.nav-cta:hover {
+            transform: scale(1.1) !important;
+            filter: brightness(1.15) saturate(1.1) !important;
+            box-shadow:
+                0 0 20px rgba(46, 204, 113, 0.5),
+                0 0 30px rgba(39, 174, 96, 0.4),
+                0 0 40px rgba(52, 152, 219, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.4) !important;
+        }
+
+        @keyframes brighteningGradient {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes gradientRotation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes textBrightening {
+            0%, 100% {
+                filter: brightness(1.1);
+            }
+            50% {
+                filter: brightness(1.3);
+            }
+        }
     }
 
     @media (max-width: 768px) {
-        .desktop-nav {
-            display: none !important;
-        }
-
         .nav-toggle {
             display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        nav.site-nav {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            position: absolute !important;
+            top: 100% !important;
+            right: 0 !important;
+            background: linear-gradient(135deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.95)) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 8px !important;
+            padding: 0.8rem !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+            z-index: 999 !important;
+            pointer-events: none !important;
+            transition: all 0.3s ease !important;
+            transform: translateY(-10px) !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.3rem !important;
+            width: fit-content !important;
+            min-width: 200px !important;
+            left: auto !important;
+        }
+        
+        nav.site-nav.nav-open {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transform: translateY(0) !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.3rem !important;
+        }
+        
+        nav.site-nav a {
+            display: block !important;
+            width: auto !important;
+            text-align: center !important;
+            margin-bottom: 0.3rem !important;
+            white-space: nowrap !important;
+        }
+                                
+        /* Mobile CTA with page theme colors and reduced brightness effects */
+        body header nav.site-nav a.nav-cta {
+            background: linear-gradient(135deg,
+                    var(--accent, rgba(46, 204, 113, 0.9)),
+                    rgba(39, 174, 96, 0.85),
+                    rgba(52, 152, 219, 0.8),
+                    rgba(155, 89, 182, 0.75),
+                    rgba(241, 196, 15, 0.8)) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningGradient 3s ease-in-out infinite !important;
+            border: 2px solid rgba(255, 255, 255, 0.8) !important;
+            border-radius: 50% !important;
+            box-shadow:
+                0 0 12px rgba(46, 204, 113, 0.4),
+                0 0 20px rgba(39, 174, 96, 0.3),
+                inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
+            padding: 0.3rem !important;
+            margin: 0.2rem auto !important;
+            filter: brightness(1.05) !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+            min-width: 60px !important;
+            min-height: 60px !important;
+        }
+
+        body header nav.site-nav a.nav-cta span {
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 0.65rem !important;
+            line-height: 1.1 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.6) !important;
+            filter: brightness(1.1) !important;
+            animation: textBrightening 2s ease-in-out infinite !important;
+            position: relative !important;
+            z-index: 2 !important;
+        }
+
+        body header nav.site-nav a.nav-cta span::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -8px !important;
+            left: -8px !important;
+            right: -8px !important;
+            bottom: -8px !important;
+            border-radius: 50% !important;
+            background: conic-gradient(from 0deg,
+                    transparent 0deg,
+                    rgba(255, 255, 255, 0.2) 45deg,
+                    rgba(255, 255, 255, 0.4) 90deg,
+                    rgba(255, 255, 255, 0.2) 135deg,
+                    transparent 180deg,
+                    transparent 360deg) !important;
+            opacity: 1 !important;
+            animation: moonlightRotation 4s linear infinite !important;
+            z-index: 1 !important;
+        }
+
+        body header nav.site-nav a.nav-cta:hover {
+            filter: brightness(1.15) saturate(1.1) !important;
+            transform: scale(1.05) !important;
+            box-shadow:
+                0 0 15px rgba(46, 204, 113, 0.5),
+                0 0 25px rgba(39, 174, 96, 0.4),
+                inset 0 0 12px rgba(255, 255, 255, 0.4) !important;
+        }
+
+        body header nav.site-nav a.nav-cta:hover span::before {
+            background: conic-gradient(from 0deg,
+                    transparent 0deg,
+                    rgba(255, 255, 255, 0.15) 45deg,
+                    rgba(255, 255, 255, 0.3) 90deg,
+                    rgba(255, 255, 255, 0.15) 135deg,
+                    transparent 180deg,
+                    transparent 360deg) !important;
+            animation: moonlightRotation 3s linear infinite !important;
+        }
+
+        .brand {
+            flex-shrink: 0;
         }
 
         .site-nav {
-            display: none !important;
-            padding: 0.2rem !important;
-            top: 75px !important;
-            right: 0.5rem !important;
-            left: auto !important;
-            width: auto !important;
-            position: absolute !important;
-            background: linear-gradient(135deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.95)) !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+            flex: 1;
+            justify-content: flex-end;
+        }
+    }
+
+    /* Moonlight #register button styling from projects.html */
+    body header nav.site-nav.site-nav a.nav-cta {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        position: relative !important;
+        padding: 0.6rem 1rem !important;
+        border-radius: 50% !important;
+        width: 80px !important;
+        height: 80px !important;
+        background: linear-gradient(135deg,
+                rgba(46, 204, 113, 0.4),
+                rgba(39, 174, 96, 0.35),
+                rgba(52, 152, 219, 0.3)) !important;
+        border: 2px solid rgba(46, 204, 113, 0.7) !important;
+        box-shadow:
+            0 0 15px rgba(46, 204, 113, 0.3),
+            0 0 25px rgba(39, 174, 96, 0.2),
+            inset 0 0 15px rgba(255, 255, 255, 0.1) !important;
+        color: var(--accent) !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+        font-size: 0.65rem !important;
+        line-height: 1.1 !important;
+        letter-spacing: 0.3px !important;
+        overflow: hidden !important;
+        min-height: 70px !important;
+        transition: all 0.3s ease !important;
+        animation: pulseGlow 2s ease-in-out infinite !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -2px !important;
+        left: -2px !important;
+        right: -2px !important;
+        bottom: -2px !important;
+        background: linear-gradient(45deg,
+                rgba(46, 204, 113, 0.8),
+                rgba(39, 174, 96, 0.7),
+                rgba(52, 152, 219, 0.6)) !important;
+        border-radius: 50% !important;
+        z-index: 1 !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover::before {
+        opacity: 1 !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta span {
+        color: white !important;
+        font-weight: 700 !important;
+        font-size: 0.7rem !important;
+        line-height: 1.2 !important;
+        letter-spacing: 0.5px !important;
+        text-align: center !important;
+        z-index: 2 !important;
+        position: relative !important;
+        filter: brightness(1.1) !important;
+        text-shadow: 0 0 4px rgba(46, 204, 113, 0.5) !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta span::before {
+        content: '' !important;
+        position: absolute !important;
+        top: -8px !important;
+        left: -8px !important;
+        right: -8px !important;
+        bottom: -8px !important;
+        border-radius: 50% !important;
+        background: conic-gradient(from 0deg,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.2) 45deg,
+                rgba(255, 255, 255, 0.4) 90deg,
+                rgba(255, 255, 255, 0.2) 135deg,
+                transparent 180deg,
+                transparent 360deg) !important;
+        animation: moonlightRotation 4s linear infinite !important;
+        z-index: 1 !important;
+        opacity: 1 !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta {
+        transform: scale(1.05) !important;
+        filter: brightness(1.1) saturate(1.2) !important;
+        box-shadow:
+            0 0 30px rgba(46, 204, 113, 0.5),
+            0 0 45px rgba(39, 174, 96, 0.4),
+            0 0 60px rgba(52, 152, 219, 0.3),
+            inset 0 0 30px rgba(255, 255, 255, 0.25) !important;
+        animation: moonlightGlow 2s ease-in-out infinite !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover {
+        transform: scale(1.08) !important;
+        filter: brightness(1.15) saturate(1.3) !important;
+        box-shadow:
+            0 0 35px rgba(46, 204, 113, 0.6),
+            0 0 50px rgba(39, 174, 96, 0.5),
+            0 0 65px rgba(52, 152, 219, 0.4),
+            inset 0 0 35px rgba(255, 255, 255, 0.3) !important;
+    }
+
+    body header nav.site-nav.site-nav a.nav-cta:hover span::before {
+        background: conic-gradient(from 0deg,
+                transparent 0deg,
+                rgba(255, 255, 255, 0.15) 45deg,
+                rgba(255, 255, 255, 0.3) 90deg,
+                rgba(255, 255, 255, 0.15) 135deg,
+                transparent 180deg,
+                transparent 360deg) !important;
+        animation: moonlightRotation 3s linear infinite !important;
+    }
+
+    @keyframes moonlightRotation {
+        0% {
+            transform: rotate(0deg);
         }
 
-        .site-nav.nav-open {
-            display: block !important;
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes moonlightGlow {
+        0% {
+            box-shadow:
+                0 0 40px rgba(46, 204, 113, 0.6),
+                0 0 60px rgba(39, 174, 96, 0.5),
+                0 0 80px rgba(52, 152, 219, 0.4),
+                inset 0 0 40px rgba(255, 255, 255, 0.3);
         }
 
-        .site-nav a {
-            display: block !important;
-            margin-bottom: 2px !important;
+        50% {
+            box-shadow:
+                0 0 60px rgba(46, 204, 113, 0.8),
+                0 0 80px rgba(39, 174, 96, 0.7),
+                0 0 100px rgba(52, 152, 219, 0.6),
+                inset 0 0 50px rgba(255, 255, 255, 0.5);
         }
 
-        .site-nav a span {
-            font-size: 0.75rem !important;
-            padding: 0.3rem 0.5rem !important;
-            background: rgba(0, 0, 0, 0.7) !important;
-            color: white !important;
-            display: block !important;
-            border-radius: 4px !important;
+        100% {
+            box-shadow:
+                0 0 40px rgba(46, 204, 113, 0.6),
+                0 0 60px rgba(39, 174, 96, 0.5),
+                0 0 80px rgba(52, 152, 219, 0.4),
+                inset 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+    }
+
+    @keyframes pulseGlow {
+        0% {
+            box-shadow:
+                0 0 10px rgba(46, 204, 113, 0.3),
+                0 0 20px rgba(39, 174, 96, 0.2),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
         }
 
-        .site-nav a.nav-cta span {
-            background: rgba(46, 204, 113, 0.8) !important;
+        50% {
+            box-shadow:
+                0 0 15px rgba(46, 204, 113, 0.5),
+                0 0 25px rgba(39, 174, 96, 0.3),
+                inset 0 0 15px rgba(255, 255, 255, 0.15);
+        }
+
+        100% {
+            box-shadow:
+                0 0 10px rgba(46, 204, 113, 0.3),
+                0 0 20px rgba(39, 174, 96, 0.2),
+                inset 0 0 10px rgba(255, 255, 255, 0.1);
         }
     }
     </style>

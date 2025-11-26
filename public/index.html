@@ -38,23 +38,26 @@
     }
 
     nav.site-nav {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        position: absolute !important;
-        top: calc(100% - 5px) !important;
-        right: 0 !important;
-        background: linear-gradient(135deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.95)) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        border-radius: 8px !important;
-        padding: 0.8rem !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
         min-width: auto !important;
-        width: fit-content !important;
+        width: auto !important;
         z-index: 999 !important;
-        pointer-events: none !important;
+        pointer-events: auto !important;
         transition: all 0.3s ease !important;
-        transform: translateY(-10px) !important;
+        transform: none !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1rem !important;
     }
 
     nav.site-nav.nav-open {
@@ -62,14 +65,14 @@
         visibility: visible !important;
         opacity: 1 !important;
         pointer-events: auto !important;
-        transform: translateY(0) !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 0.3rem !important;
+        transform: none !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 1rem !important;
     }
 
     nav.site-nav a {
-        display: block !important;
+        display: inline-block !important;
         color: rgba(255, 255, 255, 0.9) !important;
         text-decoration: none !important;
         padding: 0.5rem 1rem !important;
@@ -80,7 +83,7 @@
         transition: all 0.3s ease !important;
         font-size: 0.85rem !important;
         white-space: nowrap !important;
-        width: 100% !important;
+        width: auto !important;
         text-align: center !important;
         box-sizing: border-box !important;
     }
@@ -89,7 +92,7 @@
         background: rgba(46, 204, 113, 0.2) !important;
         border-color: rgba(46, 204, 113, 0.4) !important;
         color: white !important;
-        transform: translateX(2px) !important;
+        transform: translateY(-2px) !important;
     }
 
     nav.site-nav a.nav-cta {
@@ -97,19 +100,25 @@
         color: white !important;
         font-weight: 600 !important;
         text-align: center !important;
-        margin-top: 0.3rem !important;
+        margin: 0 !important;
         padding: 0.6rem 1rem !important;
         font-size: 0.8rem !important;
         line-height: 1.2 !important;
+        display: inline-block !important;
+        width: auto !important;
     }
 
     nav.site-nav a.nav-cta:hover {
         background: linear-gradient(135deg, #27ae60, #229954) !important;
-        transform: translateX(0) scale(1.02) !important;
+        transform: translateY(-2px) scale(1.02) !important;
     }
 
     @media (min-width: 769px) {
         .desktop-nav {
+            display: none !important;
+        }
+        
+        .nav-toggle {
             display: none !important;
         }
 
@@ -310,50 +319,57 @@
         .desktop-nav {
             display: none !important;
         }
-
+        
         .nav-toggle {
             display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
-
-        .site-nav {
+        
+        nav.site-nav {
             display: none !important;
-            padding: 0.2rem !important;
-            top: 75px !important;
-            right: 0.5rem !important;
-            left: auto !important;
-            border-radius: 6px !important;
-            width: 120px !important;
-            margin: 0 !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
             position: absolute !important;
-            z-index: 1000 !important;
-            background: transparent !important;
-            backdrop-filter: none !important;
-            border: 1px solid rgba(255, 255, 255, 0.3) !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+            top: 100% !important;
+            right: 0 !important;
+            background: linear-gradient(135deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.95)) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 8px !important;
+            padding: 0.8rem !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+            z-index: 999 !important;
+            pointer-events: none !important;
+            transition: all 0.3s ease !important;
+            transform: translateY(-10px) !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.3rem !important;
+            width: fit-content !important;
+            min-width: 200px !important;
+            left: auto !important;
         }
-
-        .site-nav.nav-open {
+        
+        nav.site-nav.nav-open {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            transform: translateY(0) !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0.3rem !important;
+        }
+        
+        nav.site-nav a {
             display: block !important;
+            width: auto !important;
+            text-align: center !important;
+            margin-bottom: 0.3rem !important;
+            white-space: nowrap !important;
         }
 
-        .site-nav a {
-            display: block !important;
-            margin-bottom: 2px !important;
-        }
-
-        .site-nav a span {
-            font-size: 0.75rem !important;
-            padding: 0.3rem 0.5rem !important;
-            background: rgba(0, 0, 0, 0.7) !important;
-            color: white !important;
-            display: block !important;
-            border-radius: 4px !important;
-        }
-
-        .site-nav a.nav-cta span {
-            background: rgba(46, 204, 113, 0.8) !important;
-        }
-
+                                
         /* Mobile CTA with page theme colors and reduced brightness effects */
         body header nav.site-nav a.nav-cta {
             background: linear-gradient(135deg,
@@ -409,11 +425,12 @@
             border-radius: 50% !important;
             background: conic-gradient(from 0deg,
                     transparent 0deg,
-                    rgba(255, 255, 255, 0.1) 45deg,
-                    rgba(255, 255, 255, 0.3) 90deg,
-                    rgba(255, 255, 255, 0.1) 135deg,
+                    rgba(255, 255, 255, 0.2) 45deg,
+                    rgba(255, 255, 255, 0.4) 90deg,
+                    rgba(255, 255, 255, 0.2) 135deg,
                     transparent 180deg,
                     transparent 360deg) !important;
+            opacity: 1 !important;
             animation: moonlightRotation 4s linear infinite !important;
             z-index: 1 !important;
         }
@@ -430,12 +447,12 @@
         body header nav.site-nav a.nav-cta:hover span::before {
             background: conic-gradient(from 0deg,
                     transparent 0deg,
-                    rgba(255, 255, 255, 0.2) 45deg,
-                    rgba(255, 255, 255, 0.4) 90deg,
-                    rgba(255, 255, 255, 0.2) 135deg,
+                    rgba(255, 255, 255, 0.15) 45deg,
+                    rgba(255, 255, 255, 0.3) 90deg,
+                    rgba(255, 255, 255, 0.15) 135deg,
                     transparent 180deg,
                     transparent 360deg) !important;
-            animation: moonlightRotation 2s linear infinite !important;
+            animation: moonlightRotation 3s linear infinite !important;
         }
 
         @keyframes moonlightRotation {
