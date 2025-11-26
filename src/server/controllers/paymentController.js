@@ -1,5 +1,7 @@
 // Mock Paystack for development (remove when paystack-sdk is installed)
 // Updated: 2025-11-25
+// NOTE: Google Pay environment variables are configured but Google Pay SDK is not yet implemented
+// To enable Google Pay: 1) Install Google Pay SDK 2) Implement Google Pay API integration
 const mockPaystack = {
   transaction: {
     initialize: async (data) => {
@@ -38,6 +40,8 @@ const mockPaystack = {
 };
 
 // Mock Stripe for development (remove when stripe is installed)
+// NOTE: Stripe environment variables are configured but Stripe SDK is not yet installed
+// To enable Stripe: 1) npm install stripe 2) Uncomment Stripe implementation below
 const mockStripe = {
   checkout: {
     sessions: {

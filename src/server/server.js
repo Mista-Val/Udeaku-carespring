@@ -6,13 +6,18 @@ const workshopController = require('./controllers/workshopController');
 const contactController = require('./controllers/contactController');
 const paymentController = require('./controllers/paymentController');
 const donationController = require('./controllers/donationController');
+const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
 const publicPath = path.join(__dirname, '../../public');
 
 // CORS configuration
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? ['https://udeakucarespringsupportfoundation.org', 'https://www.udeakucarespringsupportfoundation.org'] 
+  : ['http://localhost:3001', 'http://127.0.0.1:3001', 'http://localhost:5001', 'http://127.0.0.1:5001'];
+
 app.use(cors({
-  origin: ['http://localhost:3001', 'http://127.0.0.1:3001'],
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -22,7 +27,7 @@ app.use(cors({
 app.use((req, res, next) => {
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://maps.googleapis.com https://www.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.carespringsup.org http://localhost:5001; frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube.com https://player.vimeo.com;"
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://maps.googleapis.com https://www.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.udeakucarespringsupportfoundation.org http://localhost:5001; frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube.com https://player.vimeo.com;"
   );
   next();
 });
@@ -66,7 +71,13 @@ app.use('/api', (req, res, next) => {
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.status(200).json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    version: process.env.npm_package_version || '1.0.0',
+    environment: process.env.NODE_ENV || 'development'
+  });
 });
 
 // Test route
@@ -80,23 +91,7 @@ app.get('/', (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, _next) => {
-  console.error(err.stack);
-  
-  // Handle AppError instances
-  if (err.isOperational) {
-    return res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message
-    });
-  }
-  
-  // Handle other errors
-  res.status(err.statusCode || 500).json({
-    status: 'error',
-    message: err.message || 'Internal Server Error'
-  });
-});
+app.use(errorHandler);
 
 const PORT = 5001;
 const server = app.listen(PORT, () => {
