@@ -343,9 +343,9 @@
                 flex-direction: column !important;
                 align-items: stretch !important;
                 gap: 0.3rem !important;
-                width: fit-content !important;
-                min-width: 200px !important;
+                width: 280px !important;
                 max-width: calc(100vw - 40px) !important;
+                min-width: 250px !important;
                 left: auto !important;
             }
 
@@ -616,8 +616,83 @@
             }
         }
         
+        // Mobile menu toggle functionality
+        const navToggle = document.getElementById('navToggle');
+        const siteNav = document.getElementById('siteNav');
+
+        // Force pointer-events to auto for our navigation
+        siteNav.style.pointerEvents = 'auto';
+
+        if (navToggle && siteNav) {
+            navToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Toggle the nav-open class
+                siteNav.classList.toggle('nav-open');
+                
+                // Also toggle inline display styles for maximum compatibility
+                if (siteNav.classList.contains('nav-open')) {
+                    siteNav.style.display = 'flex';
+                    siteNav.style.visibility = 'visible';
+                    siteNav.style.opacity = '1';
+                    siteNav.style.pointerEvents = 'auto';
+                    siteNav.style.transform = 'translateY(0)';
+                } else {
+                    siteNav.style.display = 'none';
+                    siteNav.style.visibility = 'hidden';
+                    siteNav.style.opacity = '0';
+                    siteNav.style.pointerEvents = 'none';
+                    siteNav.style.transform = 'translateY(-10px)';
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!siteNav.contains(e.target) && !navToggle.contains(e.target)) {
+                    siteNav.classList.remove('nav-open');
+                    siteNav.style.display = 'none';
+                    siteNav.style.visibility = 'hidden';
+                    siteNav.style.opacity = '0';
+                    siteNav.style.pointerEvents = 'none';
+                    siteNav.style.transform = 'translateY(-10px)';
+                }
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    siteNav.classList.remove('nav-open');
+                    siteNav.style.display = 'flex';
+                    siteNav.style.visibility = 'visible';
+                    siteNav.style.opacity = '1';
+                    siteNav.style.pointerEvents = 'auto';
+                    siteNav.style.transform = 'none';
+                } else {
+                    if (!siteNav.classList.contains('nav-open')) {
+                        siteNav.style.display = 'none';
+                        siteNav.style.visibility = 'hidden';
+                        siteNav.style.opacity = '0';
+                        siteNav.style.pointerEvents = 'none';
+                        siteNav.style.transform = 'translateY(-10px)';
+                    }
+                }
+            });
+        }
+        
         // Run immediately and on resize
-        document.addEventListener('DOMContentLoaded', fixAimsLayout);
+        document.addEventListener('DOMContentLoaded', function() {
+            fixAimsLayout();
+            
+            // Initialize mobile nav state
+            if (window.innerWidth <= 768) {
+                siteNav.style.display = 'none';
+                siteNav.style.visibility = 'hidden';
+                siteNav.style.opacity = '0';
+                siteNav.style.pointerEvents = 'none';
+                siteNav.style.transform = 'translateY(-10px)';
+            }
+        });
         window.addEventListener('resize', fixAimsLayout);
     </script>
     <script defer="defer" src="/js/main.bundle.js"></script>
@@ -679,8 +754,8 @@
                             padding: 0;
                             width: 100%;
                             box-sizing: border-box;">
-                            <div class="metric" style="flex: 1 1 250px;
-                                min-width: 150px;
+                            <div class="metric" style="flex: 1 1 auto;
+                                min-width: 140px;
                                 max-width: 100%;
                                 padding: 1.5rem 1rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
@@ -696,8 +771,8 @@
                                     color: var(--text-soft);
                                     line-height: 1.5;
                                     display: block;">Health Awareness & Education</span></div>
-                            <div class="metric" style="flex: 1 1 250px;
-                                min-width: 150px;
+                            <div class="metric" style="flex: 1 1 auto;
+                                min-width: 140px;
                                 max-width: 100%;
                                 padding: 1.5rem 1rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
@@ -713,8 +788,8 @@
                                     color: var(--text-soft);
                                     line-height: 1.5;
                                     display: block;">Menstrual Health Initiative</span></div>
-                            <div class="metric" style="flex: 1 1 250px;
-                                min-width: 150px;
+                            <div class="metric" style="flex: 1 1 auto;
+                                min-width: 140px;
                                 max-width: 100%;
                                 padding: 1.5rem 1rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
@@ -730,9 +805,9 @@
                                     color: var(--text-soft);
                                     line-height: 1.5;
                                     display: block;">Health Outreach Programs</span></div>
-                            <div class="metric" style="flex: 0 1 200px;
-                                min-width: 150px;
-                                max-width: 250px;
+                            <div class="metric" style="flex: 0 1 auto;
+                                min-width: 140px;
+                                max-width: 200px;
                                 padding: 1rem 0.8rem;
                                 background: linear-gradient(145deg, rgba(4, 26, 20, 0.7), rgba(2, 7, 7, 0.7));
                                 border: 1px solid rgba(46, 204, 113, 0.15);
@@ -1105,61 +1180,7 @@
             </div>
         </div>
     </footer>
-    <script>// Mobile menu toggle functionality
-        const navToggle = document.getElementById('navToggle');
-        const siteNav = document.getElementById('siteNav');
-
-        // Force pointer-events to auto for our navigation
-        siteNav.style.pointerEvents = 'auto';
-
-        navToggle.addEventListener('click', function (e) {
-            e.stopPropagation();
-            siteNav.classList.toggle('nav-open');
-            navToggle.classList.toggle('nav-open');
-
-            // Ensure pointer-events are enabled when menu is open
-            if (siteNav.classList.contains('nav-open')) {
-                siteNav.style.pointerEvents = 'auto';
-            }
-        });
-
-        // Close menu when clicking outside - use capture phase
-        document.addEventListener('click', function (event) {
-            // Check if click is outside both nav and toggle
-            if (!siteNav.contains(event.target) && !navToggle.contains(event.target)) {
-                siteNav.classList.remove('nav-open');
-                navToggle.classList.remove('nav-open');
-            }
-        }, true); // Use capture phase
-
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.site-nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault(); // Prevent immediate navigation for demo
-                siteNav.classList.remove('nav-open');
-                navToggle.classList.remove('nav-open');
-
-                // Navigate after a short delay to allow menu to close
-                setTimeout(() => {
-                    window.location.href = this.getAttribute('href');
-                }, 100);
-            });
-        });
-
-        // Prevent menu clicks from bubbling up to document
-        siteNav.addEventListener('click', function (e) {
-            e.stopPropagation();
-        });
-
-        // Handle window resize to reset menu state
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 768) {
-                siteNav.classList.remove('nav-open');
-                navToggle.classList.remove('nav-open');
-            }
-        });
-
+    <script>
         // Wait for DOM to be ready before initializing contact modal
         document.addEventListener('DOMContentLoaded', function () {
             // Contact modal functionality
@@ -1210,7 +1231,8 @@
                     toggleModal(contactModal, false);
                 }
             });
-        });</script>
+        });
+    </script>
     <div class="chatbot-widget" id="chatbotWidget">
         <div class="chatbot-header">
             <div class="chatbot-info">
