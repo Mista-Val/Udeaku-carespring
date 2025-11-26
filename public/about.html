@@ -27,6 +27,7 @@
             position: relative !important;
         }
 
+        /* CRITICAL: Override main stylesheet nav-toggle display: none */
         .nav-toggle {
             display: inline-flex !important;
             visibility: visible !important;
@@ -626,76 +627,86 @@
         const siteNav = document.getElementById('siteNav');
 
         // Force pointer-events to auto for our navigation
-        siteNav.style.pointerEvents = 'auto';
+        if (siteNav) {
+            siteNav.style.pointerEvents = 'auto';
+        }
 
-        if (navToggle && siteNav) {
-            navToggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
+        // Event listeners will be attached in DOMContentLoaded to ensure proper initialization
 
-                // Toggle the nav-open class
-                siteNav.classList.toggle('nav-open');
+        // Run immediately and on resize
+        document.addEventListener('DOMContentLoaded', function () {
+            fixAimsLayout();
 
-                // Also toggle inline display styles for maximum compatibility
-                if (siteNav.classList.contains('nav-open')) {
-                    siteNav.style.display = 'flex';
-                    siteNav.style.visibility = 'visible';
-                    siteNav.style.opacity = '1';
-                    siteNav.style.pointerEvents = 'auto';
-                    siteNav.style.transform = 'translateY(0)';
-                } else {
-                    siteNav.style.display = 'none';
-                    siteNav.style.visibility = 'hidden';
-                    siteNav.style.opacity = '0';
-                    siteNav.style.pointerEvents = 'none';
-                    siteNav.style.transform = 'translateY(-10px)';
-                }
-            });
+            // Re-initialize navigation elements to ensure they're available
+            const navToggle = document.getElementById('navToggle');
+            const siteNav = document.getElementById('siteNav');
 
-            // Close menu when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!siteNav.contains(e.target) && !navToggle.contains(e.target)) {
-                    siteNav.classList.remove('nav-open');
-                    siteNav.style.display = 'none';
-                    siteNav.style.visibility = 'hidden';
-                    siteNav.style.opacity = '0';
-                    siteNav.style.pointerEvents = 'none';
-                    siteNav.style.transform = 'translateY(-10px)';
-                }
-            });
+            // Initialize mobile nav state ONLY if elements exist
+            if (window.innerWidth <= 768 && siteNav) {
+                siteNav.style.display = 'none';
+                siteNav.style.visibility = 'hidden';
+                siteNav.style.opacity = '0';
+                siteNav.style.pointerEvents = 'none';
+                siteNav.style.transform = 'translateY(-10px)';
+            }
 
-            // Handle window resize
-            window.addEventListener('resize', function () {
-                if (window.innerWidth > 768) {
-                    siteNav.classList.remove('nav-open');
-                    siteNav.style.display = 'flex';
-                    siteNav.style.visibility = 'visible';
-                    siteNav.style.opacity = '1';
-                    siteNav.style.pointerEvents = 'auto';
-                    siteNav.style.transform = 'none';
-                } else {
-                    if (!siteNav.classList.contains('nav-open')) {
+            // Re-attach event listener if it was lost
+            if (navToggle && siteNav && !navToggle.hasAttribute('data-click-attached')) {
+                navToggle.setAttribute('data-click-attached', 'true');
+                navToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle the nav-open class
+                    siteNav.classList.toggle('nav-open');
+                    
+                    // Also toggle inline display styles for maximum compatibility
+                    if (siteNav.classList.contains('nav-open')) {
+                        siteNav.style.display = 'flex';
+                        siteNav.style.visibility = 'visible';
+                        siteNav.style.opacity = '1';
+                        siteNav.style.pointerEvents = 'auto';
+                        siteNav.style.transform = 'translateY(0)';
+                    } else {
                         siteNav.style.display = 'none';
                         siteNav.style.visibility = 'hidden';
                         siteNav.style.opacity = '0';
                         siteNav.style.pointerEvents = 'none';
                         siteNav.style.transform = 'translateY(-10px)';
                     }
-                }
-            });
-        }
+                });
 
-        // Run immediately and on resize
-        document.addEventListener('DOMContentLoaded', function () {
-            fixAimsLayout();
+                // Close menu when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!siteNav.contains(e.target) && !navToggle.contains(e.target)) {
+                        siteNav.classList.remove('nav-open');
+                        siteNav.style.display = 'none';
+                        siteNav.style.visibility = 'hidden';
+                        siteNav.style.opacity = '0';
+                        siteNav.style.pointerEvents = 'none';
+                        siteNav.style.transform = 'translateY(-10px)';
+                    }
+                });
 
-            // Initialize mobile nav state
-            if (window.innerWidth <= 768) {
-                siteNav.style.display = 'none';
-                siteNav.style.visibility = 'hidden';
-                siteNav.style.opacity = '0';
-                siteNav.style.pointerEvents = 'none';
-                siteNav.style.transform = 'translateY(-10px)';
+                // Handle window resize
+                window.addEventListener('resize', function () {
+                    if (window.innerWidth > 768) {
+                        siteNav.classList.remove('nav-open');
+                        siteNav.style.display = 'flex';
+                        siteNav.style.visibility = 'visible';
+                        siteNav.style.opacity = '1';
+                        siteNav.style.pointerEvents = 'auto';
+                        siteNav.style.transform = 'none';
+                    } else {
+                        if (!siteNav.classList.contains('nav-open')) {
+                            siteNav.style.display = 'none';
+                            siteNav.style.visibility = 'hidden';
+                            siteNav.style.opacity = '0';
+                            siteNav.style.pointerEvents = 'none';
+                            siteNav.style.transform = 'translateY(-10px)';
+                        }
+                    }
+                });
             }
         });
         window.addEventListener('resize', fixAimsLayout);
@@ -992,28 +1003,28 @@
                         <div class="founder-role founder-role-custom"
                             style="text-align: center !important; display: block !important; margin: 0 auto !important; font-size: 1.2rem !important; font-weight: 600 !important;">
                             Founder, Udeaku CareSpring Support Foundation</div><br><br>
-                        <p class="founder-paragraph" style="text-align: justify;">Precious-Winifred is a compassionate
+                        <p class="founder-paragraph" style="text-align: justify !important;">Precious-Winifred is a compassionate
                             and purpose-driven woman whose life experiences shaped her vision for the Udeaku CareSpring
                             Support Foundation.</p>
-                        <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify;">With a
+                        <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify !important;">With a
                             background in Tourism & Hospitality Management and professional experience in nursing and
                             caregiving, she brings both empathy and organization to her humanitarian work. Her journey
                             toward founding Udeaku CareSpring was inspired by personal loss. An experience that deepened
                             her desire to help others, provide comfort, and share hope with those in need.</p>
-                        <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify;">Through
+                        <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify !important;">Through
                             Udeaku CareSpring, she has led initiatives like the Pad a Girl Program and medical bill
                             support projects, reaching individuals and families who would have struggled in silence. She
                             founded Udeaku CareSpring Support Foundation to serve as a bridge between compassion and
                             structured support.</p>
-                        <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify;">She continues
+                        <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify !important;">She continues
                             to lead with grace, faith, and a firm belief that one person's compassion can spark change
                             in an entire community.</p><br><br>
                         <div class="founder-quote founder-quote-custom">
-                            <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify;">Udeaku
+                            <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify !important;">Udeaku
                                 CareSpring Support Foundation is more than an organization; it is an answer to a deep
                                 longing for hope, care, and practical support in communities where these are most
                                 needed.</p>
-                            <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify;">Under
+                            <p class="founder-paragraph founder-paragraph-custom" style="text-align: justify !important;">Under
                                 Precious-Winifred's leadership, Udeaku CareSpring stands as a bridge between empathy and
                                 action transforming compassion into structured programs that educate, support, and
                                 uplift communities.</p>
