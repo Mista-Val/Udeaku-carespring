@@ -61,9 +61,14 @@ module.exports = {
     port: 3001,
     hot: true,
     historyApiFallback: true,
-    proxy: {
-      '/api': 'http://localhost:5001',
-    },
+proxy: [
+      {
+        context: ['/api'],
+        target: 'http://localhost:5001',
+        secure: false,
+        changeOrigin: true
+      }
+    ],
     headers: {
       'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://maps.googleapis.com https://www.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.carespringsup.org http://localhost:5001; frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube.com https://player.vimeo.com;"
     }

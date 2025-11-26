@@ -383,15 +383,12 @@ section.about p,
 }
 
 /* Override specific cases that should remain centered */
-.form-notice p,
 .form-header p,
 .form-header__subtitle p,
 .modal-body p,
 .confirmation-body p,
 .footer-section p,
 .vision-card p,
-.form-sidebar p,
-.section-heading p,
 .form-step-description p,
 .error-message p,
 .success-message p,
@@ -475,8 +472,6 @@ section#upcoming-projects .max-width .projects-label-flex {
 /* Override specific cases that should remain left-aligned */
 .form-field p,
 .form-group p,
-.form-sidebar .contact-support>div p,
-.form-sidebar .location-map>div p,
 .founder-story p {
     text-align: left !important;
 }
@@ -1581,23 +1576,9 @@ section#upcoming-projects .max-width .projects-label-flex {
 }
 
 .form-sidebar {
-    padding: 1.5rem;
-    background: rgba(1, 10, 8, 0.5);
-    border-left: 1px solid rgba(46, 204, 113, 0.1);
-    border-right: none;
-    border-bottom: none;
-    position: relative;
-    top: 0;
-    height: 100%;
-    min-height: 100%;
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
     grid-column: 2;
     grid-row: 1;
     margin-top: 0;
-    padding-top: 1.5rem;
 }
 
 .form-sidebar__content {
@@ -1648,20 +1629,6 @@ section#upcoming-projects .max-width .projects-label-flex {
 
 .sidebar-section .input-with-icon {
     margin-top: 0.5rem;
-}
-
-.form-sidebar__title {
-    font-size: 1.5rem;
-    color: #fff;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.form-sidebar__text {
-    color: #a0aec0;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    text-align: center;
 }
 
 /* Center align training details sections */
@@ -1715,27 +1682,6 @@ section#upcoming-projects .max-width .projects-label-flex {
         flex-direction: column !important;
         gap: 1rem !important;
         align-items: center !important;
-        text-align: center !important;
-    }
-
-    .meta-item {
-        flex-direction: row !important;
-        gap: 0.5rem !important;
-        text-align: center !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-
-    .meta-item svg {
-        flex-shrink: 0 !important;
-        margin: 0 !important;
-    }
-
-    .meta-item div {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        gap: 0.5rem !important;
         text-align: center !important;
     }
 
@@ -2110,51 +2056,10 @@ section#upcoming-projects .max-width .projects-label-flex {
     transition: transform 0.5s ease;
 }
 
-/* Form Features */
-.form-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin: 2rem 0;
-}
-
-.form-feature {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-    color: #e0e0e0;
-}
-
-.form-feature svg {
-    flex-shrink: 0;
-    color: var(--accent);
-    margin-top: 0.2rem;
-}
-
-/* Form Notice */
-.form-notice {
-    background: rgba(46, 204, 113, 0.08);
-    border: 1px solid rgba(46, 204, 113, 0.15);
-    border-radius: 8px;
-    padding: 1rem;
-    display: flex;
-    gap: 0.75rem;
-    margin: 1.5rem 0;
-    align-items: flex-start;
-}
-
-.form-notice__icon {
-    color: var(--accent);
-    flex-shrink: 0;
-    margin-top: 0.2rem;
-}
-
-.form-notice__text {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #a0aec0;
-    line-height: 1.5;
+/* Enhanced Step Demarcators with Icons */
+.form-step {
+    position: relative;
+    padding: 1.5rem 0;
 }
 
 /* Form */
@@ -3985,7 +3890,7 @@ section {
 
 /* ---------- Registration Form (from index.html) ---------- */
 .section-form {
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
 }
 
 .form-shell {
@@ -4284,7 +4189,7 @@ select {
 
 /* ---------- Confirmation Card ---------- */
 /* Hide overlay on home page only in production */
-body.home .confirmation-overlay,
+body.home .confirmation-overlay:not(#partnershipConfirmation),
 body.home .modal-overlay {
     display: none !important;
 }
@@ -7377,6 +7282,26 @@ footer.site-footer::before {
                                                                                                                                                                                                                                                                                                         color: var(--text-primary);
                                                                                                                                                                                                                                                                                                     }
 
+                                                                                                                                                                                                                                                                                                    .form-meta {
+                                            display: flex;
+                                            gap: 1.5rem;
+                                            justify-content: center;
+                                            margin-top: 2rem;
+                                            flex-wrap: wrap;
+                                        }
+
+                                        .meta-label {
+                                            font-size: 0.85rem;
+                                            color: var(--text-muted);
+                                            line-height: 1.3;
+                                        }
+
+                                        .meta-value {
+                                            font-weight: 600;
+                                            font-size: 1rem;
+                                            color: var(--text-primary);
+                                        }
+
                                                                                                                                                                                                                                                                                                     .feature-item svg {
                                                                                                                                                                                                                                                                                                         color: var(--accent);
                                                                                                                                                                                                                                                                                                         flex-shrink: 0;
@@ -7752,50 +7677,207 @@ footer.site-footer::before {
     margin: 1.5rem 0;
 }
 
-.meta-item-custom {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    flex-wrap: nowrap !important;
-}
-
-.meta-item-custom svg {
+/* Base SVG color rules for all screen sizes */
+.form-meta-custom .meta-item-custom svg {
     color: #2ecc71 !important;
+    stroke: #2ecc71 !important;
+    fill: #2ecc71 !important;
     flex-shrink: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+    opacity: 1 !important;
 }
 
-.meta-item-custom div {
-    display: flex !important;
+.form-meta-custom .meta-item-custom {
+    display: inline-flex !important;
     align-items: center !important;
     gap: 0.5rem !important;
-    flex-wrap: nowrap !important;
+    margin-right: 2rem !important;
+    padding: 0.5rem 1rem !important;
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(52, 152, 219, 0.1)) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(46, 204, 113, 0.2) !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
 }
 
-.meta-label-custom {
-    font-weight: 500 !important;
-    margin-right: 0.5rem !important;
-    color: #27ae60 !important;
-}
-
-.meta-item-custom .meta-value {
+.form-meta-custom .meta-label-custom {
     font-weight: 600 !important;
-    color: #2c3e50 !important;
-    background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
+    margin-right: 0.5rem !important;
+    color: #2ecc71 !important;
+    font-size: 0.9rem !important;
 }
 
+.form-meta-custom .meta-item-custom .meta-value {
+    font-weight: 700 !important;
+    font-size: 1.05rem !important;
+    color: #2980b9 !important;
+}
+
+/* Enhanced form notice styling */
 .form-notice-custom {
-    margin: 1rem auto;
-    padding: 1rem;
-    background: rgba(33, 150, 243, 0.1);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    max-width: 100%;
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    padding: 1.2rem 1.5rem !important;
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(76, 175, 80, 0.1)) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(33, 150, 243, 0.2) !important;
+    margin: 1.5rem auto !important;
+    max-width: 100% !important;
+}
+
+.notice-icon-custom {
+    color: #2196F3 !important;
+    flex-shrink: 0 !important;
+    width: 25px !important;
+    height: 25px !important;
+}
+
+.notice-text-custom {
+    margin: 0 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    color: #333 !important;
+}
+
+.notice-text-strong {
+    color: #2196F3 !important;
+    font-weight: 700 !important;
+}
+
+/* Enhanced form features styling */
+.form-features-custom {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    margin-top: 1.5rem !important;
+}
+
+.form-feature-custom {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    padding: 0.8rem 1rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.form-feature-custom:hover {
+    transform: translateX(5px) !important;
+}
+
+.feature-icon-custom {
+    flex-shrink: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.feature-icon-green {
+    color: #4CAF50 !important;
+}
+
+.feature-icon-blue {
+    color: #2196F3 !important;
+}
+
+.feature-icon-orange {
+    color: #FF9800 !important;
+}
+
+.feature-icon-purple {
+    color: #9C27B0 !important;
+}
+
+.feature-text-custom {
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    color: #333 !important;
+}
+
+/* Enhanced form sidebar styling */
+.form-sidebar__title {
+    color: #2ecc71 !important;
+    font-size: 1.3rem !important;
+    margin-bottom: 1rem !important;
+    font-weight: 700 !important;
+}
+
+.form-sidebar__text {
+    color: #666 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.form-visual__image {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Desktop-specific media query with maximum specificity */
+@media (min-width: 769px) {
+    .form-meta-custom .meta-item-custom {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        margin-right: 2rem !important;
+        padding: 0.5rem 1rem !important;
+        background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(52, 152, 219, 0.1)) !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(46, 204, 113, 0.2) !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+    }
+
+    .form-meta-custom .meta-item-custom svg {
+        color: #2ecc71 !important;
+        stroke: #2ecc71 !important;
+        fill: #2ecc71 !important;
+        flex-shrink: 0 !important;
+        width: 20px !important;
+        height: 20px !important;
+        opacity: 1 !important;
+    }
+
+    .form-meta-custom .meta-label-custom {
+        font-weight: 600 !important;
+        margin-right: 0.5rem !important;
+        color: #2ecc71 !important;
+        font-size: 0.9rem !important;
+    }
+
+    .form-meta-custom .meta-item-custom .meta-value {
+        font-weight: 700 !important;
+        font-size: 1.05rem !important;
+        color: #2980b9 !important;
+    }
+
+    .form-meta-custom {
+        display: flex !important;
+        gap: 2rem !important;
+        justify-content: center !important;
+        margin: 1.5rem 0 !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+    }
+
+    .form-notice-custom {
+        padding: 1.5rem 2rem !important;
+        background: linear-gradient(135deg, rgba(33, 150, 243, 0.08), rgba(76, 175, 80, 0.08)) !important;
+    }
+
+    .form-feature-custom:nth-child(odd) {
+        background: rgba(76, 175, 80, 0.05) !important;
+        border-left: 3px solid #4CAF50 !important;
+    }
+
+    .form-feature-custom:nth-child(even) {
+        background: rgba(33, 150, 243, 0.05) !important;
+        border-left: 3px solid #2196F3 !important;
+    }
 }
 
 .notice-icon-custom {
@@ -7922,28 +8004,6 @@ footer.site-footer::before {
     color: #E91E63;
 }
 
-.training-topics {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    margin-top: 0.3rem;
-}
-
-.training-topic {
-    font-size: 0.75rem;
-}
-
-.training-topic-green {
-    color: #2ecc71;
-}
-
-.training-topic-blue {
-    color: #3498db;
-}
-
-.training-topic-orange {
-    color: #f39c12;
-}
 
 /* Day-specific backgrounds */
 .day-1-bg {
@@ -8043,6 +8103,4 @@ footer.site-footer::before {
 .error-container li {
     text-align: center;
     margin-bottom: 0.5rem;
-}
-
 }

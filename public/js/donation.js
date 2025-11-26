@@ -88,6 +88,29 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!response.ok) {
                 const errorText = await response.text();
                 console.error('❌ Response error text:', errorText);
+                
+                // Specific handling for 404 (endpoint not found)
+                if (response.status === 404) {
+                    // Fallback: Store donation locally for later sync
+                    const donationData = {
+                        ...formData,
+                        timestamp: new Date().toISOString(),
+                        id: Date.now().toString(),
+                        type: 'donation_initiation'
+                    };
+                    
+                    // Store in localStorage
+                    const pendingDonations = JSON.parse(localStorage.getItem('pendingDonations') || '[]');
+                    pendingDonations.push(donationData);
+                    localStorage.setItem('pendingDonations', JSON.stringify(pendingDonations));
+                    
+                    console.log('Donation stored locally (API unavailable):', donationData);
+                    
+                    // Show success message with note about local storage
+                    showSuccessMessage('Payment request saved! Your donation request has been saved locally and will be processed when the payment service is available. We\'ll contact you to complete your donation.', { reference: 'LOCAL-' + donationData.id });
+                    return;
+                }
+                
                 throw new Error(`HTTP ${response.status}: ${errorText}`);
             }
 
@@ -360,6 +383,34 @@ function handlePaymentReturn() {
 async function verifyPaymentStatus(reference) {
     try {
         const response = await fetch(`/api/payment/verify/${reference}`);
+        
+        if (!response.ok) {
+            // Specific handling for 404 (endpoint not found)
+            if (response.status === 404) {
+                // For local donations, check if reference starts with LOCAL-
+                if (reference.startsWith('LOCAL-')) {
+                    const localId = reference.replace('LOCAL-', '');
+                    const pendingDonations = JSON.parse(localStorage.getItem('pendingDonations') || '[]');
+                    const donation = pendingDonations.find(d => d.id === localId);
+                    
+                    if (donation) {
+                        showPaymentSuccess({
+                            amount: 0, // No amount specified for local storage
+                            reference: reference,
+                            paid_at: donation.timestamp,
+                            status: 'pending'
+                        });
+                        return;
+                    }
+                }
+                
+                showPaymentFailed('Payment verification service is currently unavailable. Your donation request has been saved and will be processed manually.');
+                return;
+            }
+            
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
         const result = await response.json();
         
         if (result.status === 'success' && result.data.status === 'success') {

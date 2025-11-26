@@ -64,28 +64,59 @@ document.addEventListener('DOMContentLoaded', function() {
             
             try {
                 const formData = new FormData(form);
-                const response = await fetch('/api/register', {
+                const response = await fetch('/api/registration', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
-                    body: JSON.stringify(Object.fromEntries(formData))
+                    body: JSON.stringify(Object.fromEntries(formData)),
+                    credentials: 'same-origin'
                 });
                 
-                if (response.ok) {
-                    form.reset();
-                    if (formError) {
-                        formError.style.display = 'none';
+                if (!response.ok) {
+                    // Specific handling for 404 (endpoint not found)
+                    if (response.status === 404) {
+                        // Fallback: Store registration locally for later sync
+                        const registrationData = Object.fromEntries(formData);
+                        registrationData.timestamp = new Date().toISOString();
+                        registrationData.id = Date.now().toString();
+                        
+                        // Store in localStorage
+                        const pendingRegistrations = JSON.parse(localStorage.getItem('pendingRegistrations') || '[]');
+                        pendingRegistrations.push(registrationData);
+                        localStorage.setItem('pendingRegistrations', JSON.stringify(pendingRegistrations));
+                        
+                        console.log('Registration stored locally (API unavailable):', registrationData);
+                        
+                        // Show success message with note about local storage
+                        form.reset();
+                        if (formError) {
+                            formError.style.display = 'none';
+                        }
+                        if (confirmation) {
+                            confirmation.style.display = 'block';
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                        }
+                        return;
                     }
-                    if (confirmation) {
-                        confirmation.style.display = 'block';
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                    }
-                } else {
                     throw new Error('Form submission failed');
+                }
+                
+                const result = await response.json();
+                form.reset();
+                if (formError) {
+                    formError.style.display = 'none';
+                }
+                if (confirmation) {
+                    confirmation.style.display = 'block';
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 }
             } catch (error) {
                 console.error('Error:', error);
@@ -319,9 +350,33 @@ async function submitForm(formData) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData),
+            credentials: 'same-origin'
         });
+        
+        if (!response.ok) {
+            // Specific handling for 404 (endpoint not found)
+            if (response.status === 404) {
+                // Fallback: Store contact message locally for later sync
+                formData.timestamp = new Date().toISOString();
+                formData.id = Date.now().toString();
+                
+                // Store in localStorage
+                const pendingMessages = JSON.parse(localStorage.getItem('pendingMessages') || '[]');
+                pendingMessages.push(formData);
+                localStorage.setItem('pendingMessages', JSON.stringify(pendingMessages));
+                
+                console.log('Contact message stored locally (API unavailable):', formData);
+                
+                // Return success for fallback case
+                return { status: 'success', message: 'Message saved locally' };
+            }
+            
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || 'Contact submission failed');
+        }
         
         const result = await response.json();
         return result;

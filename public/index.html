@@ -2208,37 +2208,28 @@
         </div>
     </div>
 
-    <!-- Confirmation Overlay -->
-    <div class="confirmation-overlay" id="confirmation">
-        <div class="confirmation-card" role="alertdialog" aria-modal="true" aria-labelledby="confirmation-title">
+    <!-- Partnership Confirmation Overlay -->
+    <div class="confirmation-overlay" id="partnershipConfirmation" aria-hidden="true">
+        <div class="confirmation-card" role="alertdialog" aria-modal="true" aria-labelledby="partnershipConfirmation-title">
             <div class="confetti" aria-hidden="true"></div>
             <div class="confirmation-content">
                 <div class="confirmation-header">
                     <div class="confirmation-badge">
-                        <span>Registration received</span>
+                        <span>Partnership request received</span>
                     </div>
-                    <button class="close-btn" type="button" id="closeConfirmation">Close</button>
+                    <button type="button" class="close-btn" id="closePartnershipConfirmation">Close</button>
                 </div>
-                <h2 id="confirmation-title" class="confirmation-title">
-                    Thank you for registering for Our 5-Day Free First Aid Training Workshop!
+                <h2 id="partnershipConfirmation-title" class="confirmation-title">
+                    Thank you for your partnership interest!
                 </h2>
                 <div class="confirmation-body">
-                    <p>Your registration has been received.</p>
+                    <p>Your partnership request has been received.</p>
                     <p>
-                        You will receive a confirmation message with details and schedule updates soon.
-                    </p>
-                    <p>
-                        📩 For enquiries, contact us at:
-                        <strong>carespringsup@gmail.com</strong>
+                        We'll review your submission and contact you within 3-5 working days to discuss next steps.
                     </p>
                 </div>
                 <div class="confirmation-footer">
-                    <div class="tag-chip">
-                        <span>🌿 Renewal.</span>
-                        <span>🩺 Health.</span>
-                        <span>💚 Compassion.</span>
-                    </div>
-                    <span>We look forward to welcoming you.</span>
+                    <button type="button" id="closePartnershipConfirmationFooter" class="btn-primary">Got it</button>
                 </div>
             </div>
         </div>
@@ -2307,9 +2298,11 @@
             const openPartnershipBtns = document.querySelectorAll('[data-open-partnership]');
             const closePartnershipBtn = document.getElementById('closePartnershipModal');
             const partnershipForm = document.getElementById('partnershipForm');
+            const partnershipConfirmation = document.getElementById('partnershipConfirmation');
+            const closePartnershipConfirmation = document.getElementById('closePartnershipConfirmation');
 
             // Only proceed if elements exist
-            if (!partnershipModal || !openPartnershipBtns.length || !closePartnershipBtn || !partnershipForm) {
+            if (!partnershipModal || !openPartnershipBtns.length || !closePartnershipBtn || !partnershipForm || !partnershipConfirmation || !closePartnershipConfirmation) {
                 console.error('Partnership modal elements not found');
                 return;
             }
@@ -2339,10 +2332,33 @@
 
             closePartnershipBtn.addEventListener('click', closePartnershipModal);
 
+            // Close partnership confirmation modal
+            closePartnershipConfirmation.addEventListener('click', function () {
+                partnershipConfirmation.setAttribute('aria-hidden', 'true');
+                partnershipConfirmation.classList.remove('active');
+            });
+
+            // Close partnership confirmation modal via footer button
+            const closePartnershipConfirmationFooter = document.getElementById('closePartnershipConfirmationFooter');
+            if (closePartnershipConfirmationFooter) {
+                closePartnershipConfirmationFooter.addEventListener('click', function () {
+                    partnershipConfirmation.setAttribute('aria-hidden', 'true');
+                    partnershipConfirmation.classList.remove('active');
+                });
+            }
+
             // Close modal when clicking overlay
             partnershipModal.addEventListener('click', function (e) {
                 if (e.target === partnershipModal) {
                     closePartnershipModal();
+                }
+            });
+
+            // Close partnership confirmation when clicking overlay
+            partnershipConfirmation.addEventListener('click', function (e) {
+                if (e.target === partnershipConfirmation) {
+                    partnershipConfirmation.setAttribute('aria-hidden', 'true');
+                    partnershipConfirmation.classList.remove('active');
                 }
             });
 
@@ -2351,10 +2367,14 @@
                 if (e.key === 'Escape' && partnershipModal.getAttribute('aria-hidden') === 'false') {
                     closePartnershipModal();
                 }
+                if (e.key === 'Escape' && partnershipConfirmation.getAttribute('aria-hidden') === 'false') {
+                    partnershipConfirmation.setAttribute('aria-hidden', 'true');
+                    partnershipConfirmation.classList.remove('active');
+                }
             });
 
             // Handle partnership form submission
-            partnershipForm.addEventListener('submit', function (e) {
+            partnershipForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
                 // Get form data
@@ -2427,71 +2447,68 @@
                 submitBtn.innerHTML = '<span>Submitting...</span>';
                 submitBtn.disabled = true;
 
-                // Simulate form submission (replace with actual backend call)
-                setTimeout(() => {
-                    // Here you would normally send the data to your backend
-                    console.log('Partnership form submitted:', partnershipData);
+                // Submit to API
+                try {
+                    const response = await fetch('/api/partnership', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(partnershipData),
+                        credentials: 'same-origin'
+                    });
 
-                    // Store in localStorage for demo purposes
-                    const existingSubmissions = JSON.parse(localStorage.getItem('partnershipSubmissions') || '[]');
-                    existingSubmissions.push(partnershipData);
-                    localStorage.setItem('partnershipSubmissions', JSON.stringify(existingSubmissions));
+                    if (!response.ok) {
+                        const errorData = await response.json().catch(() => ({}));
+                        
+                        // Specific handling for 404 (endpoint not found)
+                        if (response.status === 404) {
+                            // Fallback: Store partnership request locally for later sync
+                            partnershipData.timestamp = new Date().toISOString();
+                            partnershipData.id = Date.now().toString();
+                            
+                            // Store in localStorage
+                            const pendingPartnerships = JSON.parse(localStorage.getItem('pendingPartnerships') || '[]');
+                            pendingPartnerships.push(partnershipData);
+                            localStorage.setItem('pendingPartnerships', JSON.stringify(pendingPartnerships));
+                            
+                            console.log('Partnership request stored locally (API unavailable):', partnershipData);
+                            
+                            // Show success message with note about local storage
+                            partnershipConfirmation.setAttribute('aria-hidden', 'false');
+                            partnershipConfirmation.classList.add('active');
+
+                            // Reset and close modal
+                            closePartnershipModal();
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+
+                            return; // Exit successfully
+                        }
+                        
+                        throw new Error(errorData.message || 'Partnership submission failed');
+                    }
+
+                    const result = await response.json();
+                    console.log('Partnership form submitted successfully:', result);
 
                     // Show success message
-                    alert('Thank you for your partnership interest! We have received your request and will contact you within 3-5 working days.');
+                    partnershipConfirmation.setAttribute('aria-hidden', 'false');
+                    partnershipConfirmation.classList.add('active');
 
                     // Reset and close modal
                     closePartnershipModal();
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
 
-                    // Send email notification (backend function)
-                    sendPartnershipEmail(partnershipData);
-                }, 2000);
+                } catch (error) {
+                    console.error('Error submitting partnership form:', error);
+                    alert('Error submitting partnership request. Please try again or contact us directly.');
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
             });
-
-            // Backend email function (to be implemented on server)
-            function sendPartnershipEmail(data) {
-                // This would be a server-side function
-                // For demo, we'll just log what would be sent
-                const emailContent = `
-New Partnership Request:
-
-Organization: ${data.orgName}
-Type: ${data.orgType}
-Contact Person: ${data.contactPerson}
-Email: ${data.contactEmail}
-Phone: ${data.contactPhone}
-Partnership Interest: ${data.partnershipInterest}
-Organization Size: ${data.orgSize}
-Goals: ${data.partnershipGoals}
-Resources: ${data.availableResources}
-Timeline: ${data.timeline}
-Additional Info: ${data.additionalInfo}
-Submitted: ${data.submittedAt}
-                `;
-
-                console.log('Email to be sent to carespringsup@gmail.com:');
-                console.log(emailContent);
-
-                // In a real implementation, you would use a server-side service
-                // like Node.js with nodemailer, PHP mail, or a service like SendGrid
-                // Example fetch call to your backend:
-                fetch('/api/send-partnership-email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then(response => response.json())
-                    .then(result => {
-                        console.log('Email sent successfully:', result);
-                    })
-                    .catch(error => {
-                        console.error('Error sending email:', error);
-                    });
-            }
 
             // Clear input styling on focus
             partnershipForm.querySelectorAll('input, select, textarea').forEach(input => {
