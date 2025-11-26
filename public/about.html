@@ -1,307 +1,174 @@
-<!doctype html><html lang="en"><head><link rel="stylesheet" href="/css/styles.css?v=20251121-22-t175245"><meta charset="UTF-8"/><meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.udeakucarespringsupportfoundation.org; frame-src 'self' https://www.youtube.com https://player.vimeo.com;"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>About Us - Udeaku CareSpring Support Foundation</title><link rel="icon" type="image/x-icon" href="/images/TitleImage.jpeg"><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet"/><link rel="preload" href="/images/logo.jpeg" as="image"><link rel="preload" href="/css/styles.css?v=20251121-22-t175245" as="style"><meta property="og:title" content="About Us - Udeaku CareSpring Support Foundation"><meta property="og:description" content="Learn about our mission, values, and impact."><meta property="og:image" content="/images/logo.jpeg"><meta property="og:url" content="https://udeakucarespringsupportfoundation.org/about"><meta name="twitter:card" content="summary_large_image"><style>/* Responsive Navigation */
-        @media (min-width: 769px) {
-            .desktop-nav {
-                display: none !important;
-            }
+<!doctype html><html lang="en"><head><link rel="stylesheet" href="/css/styles.css?v=20251121-22-t175245"><meta charset="UTF-8"/><meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://maps.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.udeakucarespringsupportfoundation.org; frame-src 'self' https://www.youtube.com https://player.vimeo.com;"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>About Us - Udeaku CareSpring Support Foundation</title><link rel="icon" type="image/x-icon" href="/images/TitleImage.jpeg"><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet"/><link rel="preload" href="/images/logo.jpeg" as="image"><link rel="preload" href="/css/styles.css?v=20251121-22-t175245" as="style"><meta property="og:title" content="About Us - Udeaku CareSpring Support Foundation"><meta property="og:description" content="Learn about our mission, values, and impact."><meta property="og:image" content="/images/logo.jpeg"><meta property="og:url" content="https://udeakucarespringsupportfoundation.org/about"><meta name="twitter:card" content="summary_large_image"><style>
+    /* Responsive Navigation - Override all other styles */
+    header {
+        position: relative !important;
+    }
 
-            .nav-toggle {
-                display: none !important;
-            }
+    .nav-toggle {
+        display: inline-flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1000 !important;
+    }
 
-            .site-nav.site-nav {
-                display: flex !important;
-                align-items: center !important;
-                gap: 0.5rem !important;
-                font-size: 0.9rem !important;
-                position: static !important;
-                background: transparent !important;
-                border: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                top: auto !important;
-                right: auto !important;
-                left: auto !important;
-                width: auto !important;
-                height: auto !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                z-index: auto !important;
-                pointer-events: auto !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
+    nav.site-nav {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        top: calc(100% - 5px) !important;
+        right: 0 !important;
+        background: linear-gradient(135deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.95)) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 8px !important;
+        padding: 0.8rem !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+        min-width: auto !important;
+        width: fit-content !important;
+        z-index: 999 !important;
+        pointer-events: none !important;
+        transition: all 0.3s ease !important;
+        transform: translateY(-10px) !important;
+    }
 
-            .site-nav.site-nav a {
-                color: var(--text-soft) !important;
-                text-decoration: none !important;
-                padding: 0.6rem 1.2rem !important;
-                border-radius: 999px !important;
-                border: 1px solid transparent !important;
-                background: transparent !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                position: relative !important;
-                font-size: inherit !important;
-                font-weight: inherit !important;
-                transition: all 0.3s ease !important;
-            }
+    nav.site-nav.nav-open {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.3rem !important;
+    }
 
-            .site-nav.site-nav a:hover,
-            .site-nav.site-nav a:focus-visible {
-                border-color: rgba(46, 204, 113, 0.6) !important;
-                background: linear-gradient(120deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.98)) !important;
-                color: var(--text-main) !important;
-            }
+    nav.site-nav a {
+        display: block !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        text-decoration: none !important;
+        padding: 0.5rem 1rem !important;
+        margin: 0 !important;
+        border-radius: 6px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        transition: all 0.3s ease !important;
+        font-size: 0.85rem !important;
+        white-space: nowrap !important;
+        width: 100% !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
 
-            .site-nav.site-nav a span {
-                z-index: 1 !important;
-                position: relative !important;
-            }
+    nav.site-nav a:hover {
+        background: rgba(46, 204, 113, 0.2) !important;
+        border-color: rgba(46, 204, 113, 0.4) !important;
+        color: white !important;
+        transform: translateX(2px) !important;
+    }
 
-            .site-nav.site-nav a::before {
-                content: '' !important;
-                position: absolute !important;
-                inset: 0 !important;
-                background: radial-gradient(circle at 0 0, rgba(46, 204, 113, 0.38), transparent 55%) !important;
-                opacity: 0 !important;
-                border-radius: 999px !important;
-                transition: opacity 0.3s ease !important;
-            }
+    nav.site-nav a.nav-cta {
+        background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+        color: white !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        margin-top: 0.3rem !important;
+        padding: 0.6rem 1rem !important;
+        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
+    }
 
-            .site-nav.site-nav a:hover::before,
-            .site-nav.site-nav a:focus-visible::before {
-                opacity: 1 !important;
-            }
+    nav.site-nav a.nav-cta:hover {
+        background: linear-gradient(135deg, #27ae60, #229954) !important;
+        transform: translateX(0) scale(1.02) !important;
+    }
 
-            /* Circular ring CTA button with page theme colors and reduced brightness effects */
-            body header nav.site-nav.site-nav a.nav-cta {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
-                text-align: center !important;
-                padding: 0.8rem 1.5rem !important;
-                background: linear-gradient(135deg,
-                        var(--accent, rgba(46, 204, 113, 0.9)),
-                        rgba(39, 174, 96, 0.85),
-                        rgba(52, 152, 219, 0.8),
-                        rgba(155, 89, 182, 0.75),
-                        rgba(241, 196, 15, 0.8)) !important;
-                background-size: 400% 400% !important;
-                animation: brighteningGradient 3s ease-in-out infinite !important;
-                border: 3px solid rgba(255, 255, 255, 0.8) !important;
-                border-radius: 50% !important;
-                box-shadow:
-                    0 0 15px rgba(46, 204, 113, 0.4),
-                    0 0 25px rgba(39, 174, 96, 0.3),
-                    0 0 35px rgba(52, 152, 219, 0.2),
-                    inset 0 0 15px rgba(255, 255, 255, 0.3) !important;
-                position: relative !important;
-                overflow: hidden !important;
-                min-width: 80px !important;
-                min-height: 80px !important;
-                filter: brightness(1.05) !important;
-                transition: all 0.3s ease !important;
-            }
-
-            body header nav.site-nav.site-nav a.nav-cta::before {
-                content: '' !important;
-                position: absolute !important;
-                top: -3px !important;
-                left: -3px !important;
-                right: -3px !important;
-                bottom: -3px !important;
-                background: linear-gradient(45deg,
-                        var(--accent, #2ecc71),
-                        #27ae60,
-                        #3498db,
-                        #9b59b6,
-                        #f1c40f,
-                        var(--accent, #2ecc71),
-                        #27ae60,
-                        #3498db,
-                        #9b59b6,
-                        #f1c40f) !important;
-                background-size: 400% 400% !important;
-                animation: brighteningBorder 2.5s linear infinite !important;
-                border-radius: 50% !important;
-                z-index: -1 !important;
-                opacity: 0 !important;
-                transition: opacity 0.3s ease !important;
-                filter: brightness(1.1) !important;
-            }
-
-            body header nav.site-nav.site-nav a.nav-cta:hover::before {
-                opacity: 1 !important;
-            }
-
-            body header nav.site-nav.site-nav a.nav-cta span {
-                color: white !important;
-                font-weight: 600 !important;
-                font-size: 0.75rem !important;
-                line-height: 1.2 !important;
-                letter-spacing: 0.5px !important;
-                text-shadow: 0 0 8px rgba(0, 0, 0, 0.4), 0 0 2px rgba(255, 255, 255, 0.6) !important;
-                z-index: 2 !important;
-                filter: brightness(1.1) !important;
-                animation: textBrightening 2s ease-in-out infinite !important;
-            }
-
-            body header nav.site-nav.site-nav a.nav-cta:hover {
-                transform: scale(1.1) !important;
-                filter: brightness(1.15) saturate(1.1) !important;
-                box-shadow:
-                    0 0 20px rgba(46, 204, 113, 0.5),
-                    0 0 30px rgba(39, 174, 96, 0.4),
-                    0 0 40px rgba(52, 152, 219, 0.3),
-                    inset 0 0 20px rgba(255, 255, 255, 0.4) !important;
-            }
-
-            @keyframes brighteningGradient {
-                0% {
-                    background-position: 0% 50%;
-                    filter: brightness(1.05) saturate(1);
-                }
-
-                25% {
-                    background-position: 50% 25%;
-                    filter: brightness(1.1) saturate(1.05);
-                }
-
-                50% {
-                    background-position: 100% 50%;
-                    filter: brightness(1.15) saturate(1.1);
-                }
-
-                75% {
-                    background-position: 50% 75%;
-                    filter: brightness(1.1) saturate(1.05);
-                }
-
-                100% {
-                    background-position: 0% 50%;
-                    filter: brightness(1.05) saturate(1);
-                }
-            }
-
-            @keyframes brighteningBorder {
-                0% {
-                    background-position: 0% 0%;
-                    filter: brightness(1.1) hue-rotate(0deg);
-                }
-
-                25% {
-                    background-position: 100% 25%;
-                    filter: brightness(1.2) hue-rotate(90deg);
-                }
-
-                50% {
-                    background-position: 200% 50%;
-                    filter: brightness(1.25) hue-rotate(180deg);
-                }
-
-                75% {
-                    background-position: 300% 75%;
-                    filter: brightness(1.2) hue-rotate(270deg);
-                }
-
-                100% {
-                    background-position: 400% 0%;
-                    filter: brightness(1.1) hue-rotate(360deg);
-                }
-            }
-
-            @keyframes textBrightening {
-
-                0%,
-                100% {
-                    filter: brightness(1.1) drop-shadow(0 0 1px rgba(255, 255, 255, 0.6));
-                }
-
-                50% {
-                    filter: brightness(1.2) drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
-                }
-            }
+    @media (max-width: 768px) {
+        .desktop-nav {
+            display: none !important;
         }
 
-        @media (max-width: 768px) {
-            .desktop-nav {
-                display: none !important;
-            }
+        .nav-toggle {
+            display: inline-flex !important;
+        }
 
-            .nav-toggle {
-                display: inline-flex !important;
-            }
+        .site-nav {
+            display: none !important;
+            padding: 0.2rem !important;
+            top: 75px !important;
+            right: 0.5rem !important;
+            left: auto !important;
+            width: auto !important;
+            position: absolute !important;
+            background: linear-gradient(135deg, rgba(6, 37, 29, 0.98), rgba(3, 19, 15, 0.95)) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+        }
 
-            .site-nav {
-                display: none !important;
-                padding: 0.2rem !important;
-                top: 75px !important;
-                right: 0.5rem !important;
-                left: auto !important;
-                border-radius: 6px !important;
-                width: 120px !important;
-                margin: 0 !important;
-                position: absolute !important;
-                z-index: 1000 !important;
-                background: transparent !important;
-                backdrop-filter: none !important;
-                border: 1px solid rgba(255, 255, 255, 0.3) !important;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-            }
+        .site-nav.nav-open {
+            display: block !important;
+        }
 
-            .site-nav.nav-open {
-                display: block !important;
-            }
+        .site-nav a {
+            display: block !important;
+            margin-bottom: 2px !important;
+        }
 
-            .site-nav a {
-                display: block !important;
-                margin-bottom: 2px !important;
-            }
+        .site-nav a span {
+            font-size: 0.75rem !important;
+            padding: 0.3rem 0.5rem !important;
+            background: rgba(0, 0, 0, 0.7) !important;
+            color: white !important;
+            display: block !important;
+            border-radius: 4px !important;
+        }
 
-            .site-nav a span {
-                font-size: 0.75rem !important;
-                padding: 0.3rem 0.5rem !important;
-                background: rgba(0, 0, 0, 0.7) !important;
-                color: white !important;
-                display: block !important;
-                border-radius: 4px !important;
-            }
+        .site-nav a.nav-cta span {
+            background: rgba(46, 204, 113, 0.8) !important;
+        }
 
-            .site-nav a.nav-cta span {
-                background: rgba(46, 204, 113, 0.8) !important;
-            }
+        /* Mobile CTA with page theme colors and reduced brightness effects */
+        body header nav.site-nav a.nav-cta {
+            background: linear-gradient(135deg,
+                    var(--accent, rgba(46, 204, 113, 0.9)),
+                    rgba(39, 174, 96, 0.85),
+                    rgba(52, 152, 219, 0.8),
+                    rgba(155, 89, 182, 0.75),
+                    rgba(241, 196, 15, 0.8)) !important;
+            background-size: 400% 400% !important;
+            animation: brighteningGradient 3s ease-in-out infinite !important;
+            border: 2px solid rgba(255, 255, 255, 0.8) !important;
+            border-radius: 50% !important;
+            box-shadow:
+                0 0 12px rgba(46, 204, 113, 0.4),
+                0 0 20px rgba(39, 174, 96, 0.3),
+                inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
+            padding: 0.3rem !important;
+            margin: 0.2rem auto !important;
+            filter: brightness(1.05) !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            position: relative !important;
+            overflow: hidden !important;
+            min-width: 60px !important;
+            min-height: 60px !important;
+        }
 
-            /* Mobile CTA with page theme colors and reduced brightness effects */
-            body header nav.site-nav a.nav-cta {
-                background: linear-gradient(135deg,
-                        var(--accent, rgba(46, 204, 113, 0.9)),
-                        rgba(39, 174, 96, 0.85),
-                        rgba(52, 152, 219, 0.8),
-                        rgba(155, 89, 182, 0.75),
-                        rgba(241, 196, 15, 0.8)) !important;
-                background-size: 400% 400% !important;
-                animation: brighteningGradient 3s ease-in-out infinite !important;
-                border: 2px solid rgba(255, 255, 255, 0.8) !important;
-                border-radius: 50% !important;
-                box-shadow:
-                    0 0 12px rgba(46, 204, 113, 0.4),
-                    0 0 20px rgba(39, 174, 96, 0.3),
-                    inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
-                padding: 0.3rem !important;
-                margin: 0.2rem auto !important;
-                filter: brightness(1.05) !important;
-                transition: all 0.3s ease !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-                text-align: center !important;
-                position: relative !important;
-                overflow: hidden !important;
-                min-width: 60px !important;
-                min-height: 60px !important;
-            }
-
+        body header nav.site-nav a.nav-cta span {
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 0.65rem !important;
+            line-height: 1.1 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            text-shadow: 0 0 6px rgba(0, 0, 0, 0.4), 0 0 1px rgba(255, 255, 255, 0.6) !important;
+            filter: brightness(1.1) !important;
+            animation: textBrightening 2s ease-in-out infinite !important;
+            position: relative !important;
+            z-index: 2 !important;
             body header nav.site-nav a.nav-cta span {
                 color: white !important;
                 font-weight: 600 !important;
@@ -1656,4 +1523,6 @@
     </div>
 </div>
 
-<script src="/js/main.js" defer="defer"></script></body></html>
+<script src="/js/main.js" defer="defer"></script>
+</body>
+</html>
