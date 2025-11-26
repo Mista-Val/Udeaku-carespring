@@ -835,6 +835,17 @@
         transform: scale(1) translateY(0);
     }
 
+    /* Increase confirmation message text size */
+    .confirmation-body {
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .confirmation-body p {
+        font-size: 1.1rem !important;
+        margin-bottom: 1rem !important;
+    }
+
     .confirmation-icon {
         width: 60px;
         height: 60px;
@@ -2274,21 +2285,52 @@
                     if (!overlay) return;
 
                     const titleEl = overlay.querySelector('.confirmation-title');
-                    const messageEl = overlay.querySelector('.confirmation-message');
+                    const messageBody = overlay.querySelector('.confirmation-body');
 
                     if (titleEl) titleEl.textContent = title;
-                    if (messageEl) messageEl.textContent = message;
+                    if (messageBody) {
+                        messageBody.innerHTML = `<p>${message}</p>`;
+                    }
 
                     overlay.style.display = 'flex';
+                    overlay.setAttribute('aria-hidden', 'false');
+                    overlay.style.visibility = 'visible';
+                    overlay.style.opacity = '1';
 
                     // Close on overlay click
                     const closeOverlay = function (e) {
                         if (e.target === overlay) {
                             overlay.style.display = 'none';
-                            overlay.removeEventListener('click', closeOverlay);
+                            overlay.setAttribute('aria-hidden', 'true');
+                            overlay.style.visibility = 'hidden';
+                            overlay.style.opacity = '0';
+                            document.removeEventListener('click', closeOverlay);
                         }
                     };
-                    overlay.addEventListener('click', closeOverlay);
+                    document.addEventListener('click', closeOverlay);
+
+                    // Close on close button click
+                    const closeBtn = overlay.querySelector('#closeConfirmation');
+                    if (closeBtn) {
+                        closeBtn.onclick = function () {
+                            overlay.style.display = 'none';
+                            overlay.setAttribute('aria-hidden', 'true');
+                            overlay.style.visibility = 'hidden';
+                            overlay.style.opacity = '0';
+                        };
+                    }
+
+                    // Close on ESC key
+                    const escHandler = function (e) {
+                        if (e.key === 'Escape' && overlay.style.display === 'flex') {
+                            overlay.style.display = 'none';
+                            overlay.setAttribute('aria-hidden', 'true');
+                            overlay.style.visibility = 'hidden';
+                            overlay.style.opacity = '0';
+                            document.removeEventListener('keydown', escHandler);
+                        }
+                    };
+                    document.addEventListener('keydown', escHandler);
                 }
 
                 function showError(title, message) {
@@ -3281,6 +3323,72 @@
     </script>
 
     <style>
+        /* Increase header element sizes */
+        .brand-mark {
+            width: 60px !important;
+            height: 60px !important;
+        }
+
+        .brand-mark-img {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .brand-text {
+            font-size: 1.4rem !important;
+        }
+
+        .brand-subtitle {
+            font-size: 0.9rem !important;
+        }
+
+        /* Increase header element sizes to utilize empty space */
+        .brand-mark {
+            width: auto !important;
+            height: auto !important;
+            max-width: 120px !important;
+            max-height: 120px !important;
+        }
+
+        .brand-mark-img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+        }
+
+        .brand-text {
+            font-size: 1.8rem !important;
+        }
+
+        .brand-subtitle {
+            font-size: 1.1rem !important;
+        }
+
+        .site-nav a {
+            font-size: 1.2rem !important;
+            padding: 1rem 1.5rem !important;
+        }
+
+        /* Increase header height to accommodate larger elements */
+        header {
+            padding: 1.5rem 0 !important;
+        }
+
+        .site-nav {
+            gap: 1rem !important;
+        }
+
+        .nav-cta {
+            font-size: 0.65rem !important;
+            padding: 0.6rem 1rem !important;
+        }
+
+        .nav-toggle {
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 1.2rem !important;
+        }
+
         /* Chatbot Styles */
         .chatbot-widget {
             position: fixed;
