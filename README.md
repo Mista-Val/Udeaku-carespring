@@ -229,19 +229,7 @@ The frontend can be deployed as a static site to:
 
 ## API Documentation
 
-### Endpoints
-
-#### Health Check
-```http
-GET /health
-Response: {
-  "status": "healthy",
-  "timestamp": "2024-01-01T00:00:00.000Z",
-  "uptime": 3600.123,
-  "version": "1.0.0",
-  "environment": "production"
-}
-```
+### Available POST /api Endpoints
 
 #### Workshop Registration
 ```http
@@ -256,7 +244,7 @@ Content-Type: application/json
 }
 ```
 
-#### Contact Form
+#### Contact Form Submission
 ```http
 POST /api/contact
 Content-Type: application/json
@@ -265,7 +253,8 @@ Content-Type: application/json
   "name": "John Doe",
   "email": "info@udeakucarespringsupportfoundation.org",
   "subject": "Inquiry",
-  "message": "I would like more information..."
+  "message": "I would like more information...",
+  "phone": "+234XXXXXXXXXX"
 }
 ```
 
@@ -276,10 +265,100 @@ Content-Type: application/json
 
 {
   "orgName": "Organization Name",
+  "orgType": "NGO",
   "contactPerson": "John Doe",
   "contactEmail": "info@udeakucarespringsupportfoundation.org",
-  "partnershipInterest": "Training Program"
+  "contactPhone": "+234XXXXXXXXXX",
+  "partnershipInterest": "Training Program",
+  "orgSize": "50-100",
+  "partnershipGoals": "Community outreach",
+  "availableResources": "Volunteers, funding",
+  "timeline": "Q1 2025",
+  "additionalInfo": "Additional details"
 }
+```
+
+#### Payment Initialization
+```http
+POST /api/payment/initialize
+Content-Type: application/json
+
+{
+  "email": "donor@example.com",
+  "donorName": "John Doe",
+  "phone": "+234XXXXXXXXXX",
+  "paymentMethod": "paystack|googlepay|stripe",
+  "currency": "NGN|USD|EUR"
+}
+```
+
+#### Paystack Webhook Handler
+```http
+POST /api/payment/webhook
+Headers: x-paystack-signature
+Content-Type: application/json
+
+{
+  "event": "charge.success",
+  "data": {
+    "reference": "UDK-123456789",
+    "amount": 500000,
+    "customer": {
+      "email": "donor@example.com"
+    }
+  }
+}
+```
+
+#### Create Donation (Admin)
+```http
+POST /api/donations
+Content-Type: application/json
+
+{
+  "donorName": "John Doe",
+  "email": "donor@example.com",
+  "amount": 5000,
+  "paymentMethod": "paystack",
+  "status": "completed",
+  "reference": "UDK-123456789"
+}
+```
+
+### Other Available Endpoints
+
+#### Health Check
+```http
+GET /health
+Response: {
+  "status": "healthy",
+  "timestamp": "2024-01-01T00:00:00.000Z",
+  "uptime": 3600.123,
+  "version": "1.0.0",
+  "environment": "production"
+}
+```
+
+#### Payment Verification
+```http
+GET /api/payment/verify/:reference
+Response: {
+  "status": "success",
+  "data": {
+    "reference": "UDK-123456789",
+    "status": "success",
+    "amount": 5000
+  }
+}
+```
+
+#### Donation Management (Admin)
+```http
+GET /api/donations              # Get all donations
+GET /api/donations/:id          # Get donation by ID
+PATCH /api/donations/:id/status # Update donation status
+GET /api/donations/stats        # Get donation statistics
+DELETE /api/donations/:id       # Delete donation
 ```
 
 ## Recent Improvements
