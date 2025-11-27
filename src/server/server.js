@@ -7,9 +7,13 @@ const contactController = require('./controllers/contactController');
 const paymentController = require('./controllers/paymentController');
 const donationController = require('./controllers/donationController');
 const errorHandler = require('./middleware/errorHandler');
+const { testConnection } = require('./config/supabase');
 
 const app = express();
 const publicPath = path.join(__dirname, '../../public');
+
+// Test Supabase connection on startup
+testConnection();
 
 // CORS configuration
 const allowedOrigins = process.env.NODE_ENV === 'production' 
@@ -47,6 +51,8 @@ app.use(express.static(publicPath));
 
 // API Routes
 app.post('/api/register', workshopController.registerForWorkshop);
+app.get('/api/registrations', workshopController.getAllRegistrations);
+app.patch('/api/registrations/:id/status', workshopController.updateRegistrationStatus);
 app.post('/api/contact', contactController.submitContact);
 app.post('/api/send-partnership-email', contactController.sendPartnershipEmail);
 

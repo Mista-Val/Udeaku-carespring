@@ -29,6 +29,7 @@
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -38,7 +39,8 @@
     "helmet": "^7.1.0",
     "node-fetch": "^2.7.0",
     "paystack-sdk": "^2.5.27",
-    "stripe": "^20.0.0"
+    "stripe": "^20.0.0",
+    "supabase": "^2.63.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.0",

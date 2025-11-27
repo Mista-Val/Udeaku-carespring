@@ -1,40 +1,27 @@
 const AppError = require('../utils/appError');
+const { supabaseAdmin } = require('../config/supabase');
 
 // Get all donations (admin only)
 exports.getAllDonations = async (req, res, next) => {
   try {
-    // TODO: Implement database query to get all donations
-    // For now, return mock data
-    const mockDonations = [
-      {
-        id: 'UDK-001',
-        donorName: 'John Doe',
-        donorEmail: 'john@example.com',
-        amount: 5000,
-        paymentMethod: 'paystack',
-        paymentStatus: 'completed',
-        transactionId: 'REF_001',
-        createdAt: new Date('2024-01-15'),
-        updatedAt: new Date('2024-01-15')
-      },
-      {
-        id: 'UDK-002',
-        donorName: 'Jane Smith',
-        donorEmail: 'jane@example.com',
-        amount: 10000,
-        paymentMethod: 'paystack',
-        paymentStatus: 'completed',
-        transactionId: 'REF_002',
-        createdAt: new Date('2024-01-16'),
-        updatedAt: new Date('2024-01-16')
-      }
-    ];
-    
+    const { data, error } = await supabaseAdmin
+      .from('donations')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Database error:', error);
+      return res.status(500).json({
+        status: 'error',
+        message: 'Failed to fetch donations'
+      });
+    }
+
     res.status(200).json({
       status: 'success',
-      results: mockDonations.length,
+      results: data?.length || 0,
       data: {
-        donations: mockDonations
+        donations: data || []
       }
     });
     
@@ -49,24 +36,24 @@ exports.getDonationById = async (req, res, next) => {
   try {
     const { id } = req.params;
     
-    // TODO: Implement database query to get donation by ID
-    // For now, return mock data
-    const mockDonation = {
-      id: id,
-      donorName: 'John Doe',
-      donorEmail: 'john@example.com',
-      amount: 5000,
-      paymentMethod: 'paystack',
-      paymentStatus: 'completed',
-      transactionId: 'REF_001',
-      createdAt: new Date('2024-01-15'),
-      updatedAt: new Date('2024-01-15')
-    };
+    const { data, error } = await supabaseAdmin
+      .from('donations')
+      .select('*')
+      .eq('id', id)
+      .single();
+
+    if (error) {
+      console.error('Database error:', error);
+      return res.status(404).json({
+        status: 'error',
+        message: 'Donation not found'
+      });
+    }
     
     res.status(200).json({
       status: 'success',
       data: {
-        donation: mockDonation
+        donation: data
       }
     });
     
@@ -79,35 +66,66 @@ exports.getDonationById = async (req, res, next) => {
 // Create donation record
 exports.createDonation = async (req, res, next) => {
   try {
-    const { donorName, donorEmail, amount, paymentMethod, transactionId, paymentStatus } = req.body;
+    const { 
+      donorName, 
+      donorEmail, 
+      donorPhone, 
+      amount, 
+      paymentMethod, 
+      paymentReference, 
+      paymentStatus, 
+      purpose, 
+      isAnonymous 
+    } = req.body;
     
     // Validate required fields
-    if (!donorName || !donorEmail || !amount || !paymentMethod || !transactionId) {
-      return next(new AppError('Missing required fields', 400));
+    if (!amount || !paymentMethod || !paymentReference) {
+      return next(new AppError('Missing required fields: amount, paymentMethod, paymentReference', 400));
     }
     
-    // TODO: Implement database insertion
-    const newDonation = {
-      id: `UDK-${Date.now()}`,
-      donorName,
-      donorEmail,
-      amount,
-      paymentMethod,
-      paymentStatus: paymentStatus || 'pending',
-      transactionId,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
-    
-    console.log('New donation record created:', newDonation);
-    
-    res.status(201).json({
-      status: 'success',
-      message: 'Donation record created successfully',
-      data: {
-        donation: newDonation
+    // Save to Supabase database
+    try {
+      const { data: donationData, error: dbError } = await supabaseAdmin
+        .from('donations')
+        .insert([
+          {
+            donor_name: donorName || null,
+            donor_email: donorEmail || null,
+            donor_phone: donorPhone || null,
+            amount: parseFloat(amount),
+            currency: 'NGN', // Default currency
+            donation_type: 'one_time', // Default type
+            payment_method: paymentMethod,
+            payment_reference: paymentReference,
+            payment_status: paymentStatus || 'pending',
+            purpose: purpose || null,
+            is_anonymous: isAnonymous || false,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          }
+        ])
+        .select()
+        .single();
+
+      if (dbError) {
+        console.error('Supabase database error:', dbError);
+        return next(new AppError('Failed to create donation record', 500));
       }
-    });
+      
+      console.log('✅ Donation saved to database:', donationData.id);
+      
+      res.status(201).json({
+        status: 'success',
+        message: 'Donation record created successfully',
+        data: {
+          donation: donationData
+        }
+      });
+      
+    } catch (dbErr) {
+      console.error('Database save error:', dbErr);
+      next(new AppError('Failed to create donation record', 500));
+    }
     
   } catch (error) {
     console.error('Error creating donation:', error);
@@ -125,20 +143,28 @@ exports.updateDonationStatus = async (req, res, next) => {
       return next(new AppError('Payment status is required', 400));
     }
     
-    // TODO: Implement database update
-    const updatedDonation = {
-      id: id,
-      paymentStatus: paymentStatus,
-      updatedAt: new Date()
-    };
+    const { data, error } = await supabaseAdmin
+      .from('donations')
+      .update({ 
+        payment_status: paymentStatus,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Database error:', error);
+      return next(new AppError('Failed to update donation status', 500));
+    }
     
-    console.log('Donation status updated:', updatedDonation);
+    console.log('✅ Donation status updated:', id);
     
     res.status(200).json({
       status: 'success',
       message: 'Donation status updated successfully',
       data: {
-        donation: updatedDonation
+        donation: data
       }
     });
     
@@ -151,23 +177,48 @@ exports.updateDonationStatus = async (req, res, next) => {
 // Get donation statistics
 exports.getDonationStats = async (req, res, next) => {
   try {
-    // TODO: Implement database aggregation
-    // For now, return mock statistics
-    const mockStats = {
-      totalDonations: 150,
-      totalAmount: 1500000,
-      averageDonation: 10000,
-      completedDonations: 140,
-      pendingDonations: 10,
-      failedDonations: 0,
-      thisMonthDonations: 25,
-      thisMonthAmount: 250000
+    // Get total donations and amount
+    const { data: totalStats, error: totalError } = await supabaseAdmin
+      .from('donations')
+      .select('amount, payment_status, created_at');
+
+    if (totalError) {
+      console.error('Database error:', totalError);
+      return next(new AppError('Failed to fetch donation statistics', 500));
+    }
+
+    const donations = totalStats || [];
+    const completedDonations = donations.filter(d => d.payment_status === 'successful');
+    const pendingDonations = donations.filter(d => d.payment_status === 'pending');
+    const failedDonations = donations.filter(d => d.payment_status === 'failed');
+    
+    // Calculate this month's donations
+    const thisMonth = new Date().getMonth();
+    const thisYear = new Date().getFullYear();
+    const thisMonthDonations = donations.filter(d => {
+      const date = new Date(d.created_at);
+      return date.getMonth() === thisMonth && date.getFullYear() === thisYear;
+    });
+
+    const stats = {
+      totalDonations: donations.length,
+      totalAmount: completedDonations.reduce((sum, d) => sum + d.amount, 0),
+      averageDonation: completedDonations.length > 0 
+        ? completedDonations.reduce((sum, d) => sum + d.amount, 0) / completedDonations.length 
+        : 0,
+      completedDonations: completedDonations.length,
+      pendingDonations: pendingDonations.length,
+      failedDonations: failedDonations.length,
+      thisMonthDonations: thisMonthDonations.length,
+      thisMonthAmount: thisMonthDonations
+        .filter(d => d.payment_status === 'successful')
+        .reduce((sum, d) => sum + d.amount, 0)
     };
     
     res.status(200).json({
       status: 'success',
       data: {
-        stats: mockStats
+        stats: stats
       }
     });
     
@@ -182,8 +233,17 @@ exports.deleteDonation = async (req, res, next) => {
   try {
     const { id } = req.params;
     
-    // TODO: Implement database deletion
-    console.log('Donation deleted:', id);
+    const { error } = await supabaseAdmin
+      .from('donations')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Database error:', error);
+      return next(new AppError('Failed to delete donation', 500));
+    }
+    
+    console.log('✅ Donation deleted:', id);
     
     res.status(204).json({
       status: 'success',

@@ -39,3 +39,6 @@ pids/
 # Temporary folders
 tmp/
 temp/
+
+# Kubernetes configs (optional)
+k8s/

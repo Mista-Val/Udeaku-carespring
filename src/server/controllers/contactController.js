@@ -1,4 +1,5 @@
 const AppError = require("../utils/appError");
+const { supabaseAdmin } = require('../config/supabase');
 
 exports.submitContact = async (req, res, next) => {
   try {
@@ -13,6 +14,38 @@ exports.submitContact = async (req, res, next) => {
     
     if (missingFields.length > 0) {
       return next(new AppError(`Missing required fields: ${missingFields.join(', ')}`, 400));
+    }
+    
+    // Save to Supabase database
+    try {
+      const { data: contactData, error: dbError } = await supabaseAdmin
+        .from('contact_submissions')
+        .insert([
+          {
+            name: payload.name,
+            email: payload.email,
+            phone: payload.phone || null,
+            subject: payload.subject || 'General Inquiry',
+            message: payload.message,
+            submission_type: 'general',
+            status: 'new',
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          }
+        ])
+        .select()
+        .single();
+
+      if (dbError) {
+        console.error('Supabase database error:', dbError);
+        // Continue with submission even if DB fails
+        console.warn('Database save failed, continuing with email workflow');
+      } else {
+        console.log('✅ Contact submission saved to database:', contactData.id);
+      }
+    } catch (dbErr) {
+      console.error('Database save error:', dbErr);
+      console.warn('Database save failed, continuing with email workflow');
     }
     
     // In development, skip email sending and return success
@@ -81,6 +114,50 @@ exports.sendPartnershipEmail = async (req, res, next) => {
       return next(new AppError(`Missing required fields: ${missingFields.join(', ')}`, 400));
     }
     
+    // Save to Supabase database
+    try {
+      const { data: partnershipData, error: dbError } = await supabaseAdmin
+        .from('contact_submissions')
+        .insert([
+          {
+            name: payload.contactPerson,
+            email: payload.contactEmail,
+            phone: payload.contactPhone || null,
+            subject: `Partnership Request: ${payload.orgName}`,
+            message: `
+Organization: ${payload.orgName}
+Type: ${payload.orgType}
+Contact Person: ${payload.contactPerson}
+Email: ${payload.contactEmail}
+Phone: ${payload.contactPhone || 'Not provided'}
+Partnership Interest: ${payload.partnershipInterest}
+Organization Size: ${payload.orgSize || 'Not specified'}
+Goals: ${payload.partnershipGoals || 'Not specified'}
+Resources: ${payload.availableResources || 'Not specified'}
+Timeline: ${payload.timeline || 'Not specified'}
+Additional Info: ${payload.additionalInfo || 'Not specified'}
+            `,
+            submission_type: 'partnership',
+            status: 'new',
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+          }
+        ])
+        .select()
+        .single();
+
+      if (dbError) {
+        console.error('Supabase database error:', dbError);
+        // Continue with submission even if DB fails
+        console.warn('Database save failed, continuing with email workflow');
+      } else {
+        console.log('✅ Partnership submission saved to database:', partnershipData.id);
+      }
+    } catch (dbErr) {
+      console.error('Database save error:', dbErr);
+      console.warn('Database save failed, continuing with email workflow');
+    }
+    
     // In development, skip email sending and return success
     if (process.env.NODE_ENV !== 'production') {
       console.log("Development mode: Partnership form submission successful");
@@ -107,7 +184,7 @@ Goals: ${payload.partnershipGoals}
 Resources: ${payload.availableResources}
 Timeline: ${payload.timeline}
 Additional Info: ${payload.additionalInfo}
-Submitted: ${payload.submittedAt}
+Submitted: ${new Date().toISOString()}
       `
     };
     
